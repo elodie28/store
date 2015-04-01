@@ -1,3 +1,5 @@
+Coucou README
+
 Symfony Standard Edition
 ========================
 

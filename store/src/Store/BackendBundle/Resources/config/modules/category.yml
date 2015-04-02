@@ -1,0 +1,16 @@
+# Page List of Categories
+
+store_backend_category_list: # Nom de la root -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
+      path:     /list # chemin vers l'URI
+      defaults: { _controller: StoreBackendBundle:Category:list } # NomduBundle:NomduController:Nomdel'Action
+
+
+# Page View a Category
+
+store_backend_category_view:
+      path: /view/{id}/{name} # id = argument (ou variable)
+      defaults: { _controller: StoreBackendBundle:Category:view }
+      requirements:
+          id: \d+
+          name: "[a-zA-Z0-9-]{5,30}"
+          _method: GET

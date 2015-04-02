@@ -1,0 +1,16 @@
+# Page List of Supplier
+
+store_backend_supplier_list: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
+      path:     /list # chemin vers l'URI
+      defaults: { _controller: StoreBackendBundle:Supplier:list } # NomduBundle:NomduController:Nomdel'Action
+
+
+# Page View a Supplier
+
+store_backend_supplier_view:
+      path: /view/{id}/{name} # id = argument (ou variable)
+      defaults: { _controller: StoreBackendBundle:Supplier:view }
+      requirements:
+        id: \d+
+        name: "[a-zA-Z0-9-]{5,30}"
+        _method: GET

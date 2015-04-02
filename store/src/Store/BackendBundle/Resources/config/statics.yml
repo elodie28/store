@@ -1,0 +1,27 @@
+
+# Page Static Contact
+
+store_backend_statics_contact: # Nom de la route
+     path:     /contact # chemin vers l'URI
+     defaults: { _controller: StoreBackendBundle:Statics:contact } # NomduBundle:NomduController:Nomdel'Action
+
+
+# Page Static About
+
+store_backend_statics_about: # Nom de la route
+     path:     /about # chemin vers l'URI
+     defaults: { _controller: StoreBackendBundle:Statics:about } # NomduBundle:NomduController:Nomdel'Action
+
+
+# Page Static Terms
+
+store_backend_statics_terms: # Nom de la route
+     path:     /terms # chemin vers l'URI
+     defaults: { _controller: StoreBackendBundle:Statics:terms } # NomduBundle:NomduController:Nomdel'Action
+
+
+# Page Static Concept
+
+store_backend_statics_concept: # Nom de la route
+     path:     /concept # chemin vers l'URI
+     defaults: { _controller: StoreBackendBundle:Statics:concept } # NomduBundle:NomduController:Nomdel'Action

@@ -1,2 +1,9 @@
-<h1> Voir un fournisseur : {{ id }} </h1>
-<p> Nom du fournisseur : {{ name }} </p>
+{% extends "StoreBackendBundle::layout.html.twig" %}
+
+{% block titlepage %}
+    Voir le fournisseur : {{ id }}
+{% endblock %}
+
+{% block content %}
+    <p> Nom du fournisseur : {{ name }} </p>
+{% endblock %}

@@ -24,8 +24,9 @@ class CMSController extends Controller {
     }
 
     /**
-     * Page view d'un seul CMS
+     * * Page view d'un seul CMS
      * @param $id
+     * @param $name
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function viewAction($id, $name) {

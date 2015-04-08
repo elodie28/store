@@ -5,5 +5,63 @@
 {% endblock %}
 
 {% block content %}
-    <h1> </h1>
+
+    {# Boucle sur mes produits #}
+    {% for product in products %} {# for nomdelaclef (nom arbitraire) in nomdutableau #}
+        {# ref, title, price ... sont les attributs et non pas les champs de la table #}
+
+        <p> <h3> {{ product.title }} - <i> {{ product.dateCreated|date('d/m/Y') }} </i>
+
+        {% if product.active == 0 %}
+            <i class="fa fa-times"></i>
+        {% else %}
+            <i class="fa fa-check"></i>
+        {% endif %}
+
+        </h3> <sub> {{ product.ref }} </sub> {# Affiche la référence du produit #}
+        </p>
+
+    <hr />
+
+        <h3> Catégorie : </h3>
+
+            <ul>
+                {% for category in product.category %}
+                    <li>
+                        Titre  : {{ category.title }}
+                    </li>
+                {% endfor %}
+            </ul>
+
+        <h5> Nom de la boutique de mon produit : {{ product.jeweler.title }} </h5>
+        <p> Produit : <strong> {{ product.price }} € ~ </strong> Taxe : {{ product.taxe }} </p>
+        <p class="jumbotron"> Description : <i> {{ product.description }} </i> </p>
+        <p> Quantité : {{ product.quantity }} quantités </p>
+        <p> <b> Composition : </b> <i> {{ product.composition }} </i> </p>
+
+        <p> Description de la boutique de mon produit : {{ product.jeweler.description }} </p>
+
+        <div class="alert alert-dark">
+            <h3> Promotions </h3>
+
+            <ul>
+                {% for business in product.business %}
+                    <li> Montant : {{ business.amount }}
+                        Message : {{ business.message }}
+                    </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+
+        {% for cms in product.cms %}
+            <p> Titre du CMS de mon produit : {{ cms.title }} </p>
+        {% endfor %}
+
+    {% else %} {# Sinon aucun produit #}
+
+        <div class="alert alert-dark"> Aucun produit </div>
+
+    {% endfor %}
+
 {% endblock %}

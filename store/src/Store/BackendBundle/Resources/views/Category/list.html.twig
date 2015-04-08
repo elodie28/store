@@ -1,9 +1,29 @@
 {% extends "StoreBackendBundle::layout.html.twig" %}
 
 {% block titlepage %}
-    <i class="menu-icon fa fa-sitemap"></i> Liste des catégories
+    <i class="menu-icon fa fa-th"></i> Liste des catégories
 {% endblock %}
 
 {% block content %}
-    <h1> </h1>
+
+    {% for category in categories %}
+
+        <h3> {{ category.title }}
+
+            {% if category.active == 0 %}
+                <i class="fa fa-times"></i>
+            {% else %}
+                <i class="fa fa-check"></i>
+            {% endif %}
+
+        </h3>
+
+        <p class="jumbotron"> Description : <i> {{ category.description }} </i> </p>
+
+    {% else %} {# Sinon aucune catégorie #}
+
+        <div class="alert alert-dark"> Aucune catégorie </div>
+
+    {% endfor %}
+
 {% endblock %}

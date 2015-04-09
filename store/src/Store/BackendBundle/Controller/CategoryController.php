@@ -40,14 +40,40 @@ class CategoryController extends Controller {
      */
     public function viewAction($id, $name) {
 
+        // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
+        $em = $this->getDoctrine()->getManager();
+
+        // Je récupère 1 catégorie de ma BDD avec la méthode find()
+        $category = $em->getRepository('StoreBackendBundle:Category')->find($id); // NomduBundle:Nomdel'entité
+
         // Je retourne la vue View contenue dans le dossier Category de mon bundle StorebackendBundle
         // où je transmets l'id en vue
         return $this->render('StoreBackendBundle:Category:view.html.twig',
             array( // = tableau associatif = le transporteur
-                'id' => $id, // Le nom de ma clef sera le nom de ma variable en vue
-                'name' => $name
+                'category' => $category, // Le nom de ma clef sera le nom de ma variable en vue
             )
         );
+    }
+
+
+    /**
+     * Action de suppression
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function removeAction($id) {
+
+        // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
+        $em = $this->getDoctrine()->getManager();
+
+        // Je récupère 1 catégorie avec la méthode find()
+        $category = $em->getRepository('StoreBackendBundle:Category')->find($id); // NomduBundle:Nomdel'entité
+
+        $em->remove($category); // supprime la catégorie
+        $em->flush(); // la fonction flush permet d'envoyer la requête en BDD
+
+        return $this->redirectToRoute('store_backend_category_list'); // redirection vers la liste des catégories
+
     }
 
 }

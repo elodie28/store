@@ -1,9 +1,33 @@
 {% extends "StoreBackendBundle::layout.html.twig" %}
 
 {% block titlepage %}
-    Voir le produit : {{ id }}
+
+    <i class="menu-icon fa fa-bookmark"></i> Un produit
+
 {% endblock %}
 
 {% block content %}
-    <p> Nom du produit : {{ name }} </p>
+
+    <p> Nom du produit : {{ product.title }} </p>
+    <p> Résumé : {{ product.summary }} </p>
+    <p> Description : {{ product.description }} </p>
+    <p> Quantité : {{ product.quantity }} </p>
+    <p> Prix : {{ product.price }} € </p>
+
+    <h3> Produits associés : </h3>
+
+        <ul>
+            {% for category in product.category %}
+                <li> {{ category.title }} </li>
+            {% endfor %}
+        </ul>
+
+    <h3> Tags associés : </h3>
+
+    <ul>
+        {% for tag in product.tag %}
+            <li> {{ tag.word }} </li>
+        {% endfor %}
+    </ul>
+
 {% endblock %}

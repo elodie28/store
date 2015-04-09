@@ -6,24 +6,60 @@
 
 {% block content %}
 
-    {% for category in categories %}
+    <div class="table-info">
 
-        <h3> {{ category.title }}
+        <table class="table table-bordered">
 
-            {% if category.active == 0 %}
-                <i class="fa fa-times"></i>
-            {% else %}
-                <i class="fa fa-check"></i>
-            {% endif %}
+            <thead>
 
-        </h3>
+            <tr>
+                <th>#</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Nombre de produits associés</th>
+                <th>État</th>
+                <th>Actions</th>
+            </tr>
 
-        <p class="jumbotron"> Description : <i> {{ category.description }} </i> </p>
+            </thead>
 
-    {% else %} {# Sinon aucune catégorie #}
+            <tbody>
 
-        <div class="alert alert-dark"> Aucune catégorie </div>
+            {% for category in categories %}
 
-    {% endfor %}
+            <tr>
+
+                <td> {{ category.id }} </td>
+                <td> <a href="{{ path('store_backend_category_view', {'name' : category.title , 'id': category.id} ) }}"> {{ category.title }} </a> </td>
+                <td> {{ category.description }} </td>
+                <td> <span class="badge badge-info"> {{ category.product|length }} </span> produits associés </td>
+
+                <td> {% if category.active == 0 %}
+                        <i class="fa fa-times"></i> Désactivée
+                    {% else %}
+                        <i class="fa fa-check"></i> Activée
+                    {% endif %}
+                </td>
+
+                <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-cogs"></i> Actions <i class="fa fa-caret-down"></i></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('store_backend_category_view', {'name': category.title , 'id': category.id} ) }}"> <i class="fa fa-search"></i> Voir</a></li>
+                            <li><a href="#"> <i class="fa fa-pencil"></i> Éditer</a></li>
+                            <li><a href="{{ path('store_backend_category_remove', {'id': category.id} ) }}"> <i class="fa fa-times"></i> Supprimer</a></li>
+                        </ul>
+                    </div>
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
 
 {% endblock %}

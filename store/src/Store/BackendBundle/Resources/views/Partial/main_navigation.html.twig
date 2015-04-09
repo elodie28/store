@@ -31,19 +31,25 @@
     <ul class="nav navbar-nav">
 
         <li class="{% if app.request.attributes.get('_route') == "store_backend_index" %} active {% endif %}">
-            <a href="{{ path('store_backend_index') }}">Home</a>
+            <a href="{{ path('store_backend_index') }}"> <i class="menu-icon fa fa-home"></i> Home </a>
+        </li>
+        <li>
+            <i class="menu-icon fa fa-user"></i> Ma boutique
         </li>
         <li class="{% if app.request.attributes.get('_route') == "store_backend_product_list" %} active {% endif %}">
-            <a href="{{ path('store_backend_product_list') }}">Products</a>
+            <a href="{{ path('store_backend_product_list') }}"> <i class="menu-icon fa fa-bookmark"></i> Produits </a>
         </li>
         <li class="{% if app.request.attributes.get('_route') == "store_backend_category_list" %} active {% endif %}">
-            <a href="{{ path('store_backend_category_list') }}">Categories</a>
+            <a href="{{ path('store_backend_category_list') }}"> <i class="menu-icon fa fa-th"></i> Categories </a>
+        </li>
+        <li>
+            <i class="menu-icon fa  fa-shopping-cart"></i> Commandes
         </li>
         <li class="{% if app.request.attributes.get('_route') == "store_backend_cms_list" %} active {% endif %}">
-            <a href="{{ path('store_backend_cms_list') }}">CMS</a>
+            <a href="{{ path('store_backend_cms_list') }}"> <i class="menu-icon fa  fa-pencil"></i> CMS </a>
         </li>
         <li class="{% if app.request.attributes.get('_route') == "store_backend_supplier_list" %} active {% endif %}">
-            <a href="{{ path('store_backend_supplier_list') }}">Suppliers</a>
+            <a href="{{ path('store_backend_supplier_list') }}"> <i class="menu-icon fa  fa-truck"></i> Fournisseurs </a>
         </li>
 
     </ul>

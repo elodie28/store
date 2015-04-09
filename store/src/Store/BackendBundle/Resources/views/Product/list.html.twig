@@ -1,67 +1,75 @@
 {% extends "StoreBackendBundle::layout.html.twig" %}
 
 {% block titlepage %}
-    Liste des produits
+
+    <i class="menu-icon fa fa-bookmark"></i> Liste des produits
+
 {% endblock %}
 
 {% block content %}
 
-    {# Boucle sur mes produits #}
-    {% for product in products %} {# for nomdelaclef (nom arbitraire) in nomdutableau #}
-        {# ref, title, price ... sont les attributs et non pas les champs de la table #}
+    <div class="table-info">
 
-        <p> <h3> {{ product.title }} - <i> {{ product.dateCreated|date('d/m/Y') }} </i>
+        <table class="table table-bordered">
 
-        {% if product.active == 0 %}
-            <i class="fa fa-times"></i>
-        {% else %}
-            <i class="fa fa-check"></i>
-        {% endif %}
+            <thead>
 
-        </h3> <sub> {{ product.ref }} </sub> {# Affiche la référence du produit #}
-        </p>
+            <tr>
+                <th>ID</th>
+                <th>Référence</th>
+                <th>Titre</th>
+                <th class="col-md-2">Résumé</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>État</th>
+                <th>Date de création</th>
+                <th>Actions</th>
+            </tr>
 
-    <hr />
+            </thead>
 
-        <h3> Catégorie : </h3>
+            <tbody>
 
-            <ul>
-                {% for category in product.category %}
-                    <li>
-                        Titre  : {{ category.title }}
-                    </li>
-                {% endfor %}
-            </ul>
+            {# Boucle sur mes produits #}
+            {% for product in products %} {# for nomdelaclef (nom arbitraire) in nomdutableau #}
+                {# ref, title, price ... sont les attributs et non pas les champs de la table #}
 
-        <h5> Nom de la boutique de mon produit : {{ product.jeweler.title }} </h5>
-        <p> Produit : <strong> {{ product.price }} € ~ </strong> Taxe : {{ product.taxe }} </p>
-        <p class="jumbotron"> Description : <i> {{ product.description }} </i> </p>
-        <p> Quantité : {{ product.quantity }} quantités </p>
-        <p> <b> Composition : </b> <i> {{ product.composition }} </i> </p>
+            <tr>
 
-        <p> Description de la boutique de mon produit : {{ product.jeweler.description }} </p>
+                <td> {{ product.id }} </td>
+                <td> {{ product.ref }} </td>
+                <td> <a href="{{ path('store_backend_product_view', {'name' : product.title , 'id': product.id} ) }}"> {{ product.title }} </a> </td>
+                <td> {{ product.summary }} </td>
+                <td> {{ product.price }} €</td>
+                <td> {{ product.quantity }} quantités </td>
+                <td>
+                    {% if product.active == 0 %}
+                        <i class="fa fa-times"></i> Désactivé
+                    {% else %}
+                        <i class="fa fa-check"></i> Activé
+                    {% endif %}
+                </td>
+                <td> {{ product.dateCreated|date('d/m/Y') }} </td>
 
-        <div class="alert alert-dark">
-            <h3> Promotions </h3>
+                <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-cogs"></i> Actions <i class="fa fa-caret-down"></i></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('store_backend_product_view', {'name' : product.title , 'id': product.id} ) }}"> <i class="fa fa-search"></i> Voir</a></li>
+                            <li><a href="#"> <i class="fa fa-pencil"></i> Éditer</a></li>
+                            <li><a href="{{ path('store_backend_product_remove', {'id': product.id} ) }}"> <i class="fa fa-times"></i> Supprimer</a></li>
+                        </ul>
+                    </div>
+                </td>
 
-            <ul>
-                {% for business in product.business %}
-                    <li> Montant : {{ business.amount }}
-                        Message : {{ business.message }}
-                    </li>
-                {% endfor %}
-            </ul>
+            </tr>
 
-        </div>
+            {% endfor %}
 
-        {% for cms in product.cms %}
-            <p> Titre du CMS de mon produit : {{ cms.title }} </p>
-        {% endfor %}
+            </tbody>
 
-    {% else %} {# Sinon aucun produit #}
+        </table>
 
-        <div class="alert alert-dark"> Aucun produit </div>
-
-    {% endfor %}
+    </div>
 
 {% endblock %}

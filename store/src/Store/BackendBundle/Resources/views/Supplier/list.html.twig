@@ -1,9 +1,74 @@
 {% extends "StoreBackendBundle::layout.html.twig" %}
 
 {% block titlepage %}
-    Liste des fournisseurs
+
+    <i class="menu-icon fa fa-truck"></i> Liste des fournisseurs
+
 {% endblock %}
 
 {% block content %}
-    <h1> </h1>
+
+    <div class="table-primary">
+
+        <div class="table-header">
+            <div class="table-caption">
+                <i class="menu-icon fa fa-truck"></i> Les fournisseurs
+            </div>
+        </div>
+
+        <table class="table table-bordered">
+
+            <thead>
+
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th class="col-md-2">Description</th>
+                <th>Image</th>
+                <th>Date de création</th>
+                <th>État</th>
+                <th>Nombre de produits associés</th>
+                <th>Actions</th>
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for supplier in suppliers %}
+
+            <tr>
+                <td> {{ supplier.id }} </td>
+                <td> <a href="{{ path('store_backend_supplier_view', {'name' : supplier.name , 'id': supplier.id} ) }}"> {{ supplier.name }} </a> </td>
+                <td> {{ supplier.description }} </td>
+                <td> <img src="{{ supplier.image }}"/> </td>
+                <td> {{ supplier.dateCreated|date('d/m/Y') }} </td>
+                <td>
+                    {% if supplier.active == 0 %}
+                        <i class="fa fa-times"></i> Désactivé
+                    {% else %}
+                        <i class="fa fa-check"></i> Activé
+                    {% endif %}
+                </td>
+                <td> <span class="badge badge-info"> {{ supplier.product|length }} </span> produits associés </td>
+                <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-cogs"></i> Actions <i class="fa fa-caret-down"></i></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('store_backend_supplier_view', {'name': supplier.name , 'id': supplier.id} ) }}"> <i class="fa fa-search"></i> Voir</a></li>
+                            <li><a href="#"> <i class="fa fa-pencil"></i> Éditer</a></li>
+                            <li><a href="{{ path('store_backend_supplier_remove', {'id': supplier.id} ) }}"> <i class="fa fa-times"></i> Supprimer</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
 {% endblock %}

@@ -1,9 +1,15 @@
 {% extends "StoreBackendBundle::layout.html.twig" %}
 
 {% block titlepage %}
-    <i class="menu-icon fa fa-sitemap"></i> Voir une catégorie : {{ id }}
+
+    <i class="menu-icon fa fa-th"></i> Une catégorie
+
 {% endblock %}
 
 {% block content %}
-    <p> Nom de la catégorie : {{ name }} </p>
+
+    <p> Nom de la catégorie : {{ category.title }} </p>
+    <p> Description de la catégorie : {{ category.description }} </p>
+
+
 {% endblock %}

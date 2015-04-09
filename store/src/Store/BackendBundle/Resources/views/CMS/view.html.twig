@@ -1,9 +1,15 @@
 {% extends "StoreBackendBundle::layout.html.twig" %}
 
 {% block titlepage %}
-    Voir un CMS : {{ id }}
+
+    <i class="menu-icon fa fa-bold"></i> Un CMS
+
 {% endblock %}
 
 {% block content %}
-    <p> Nom du CMS : {{ name }} </p>
+
+    <p> Nom du CMS : {{ cms.title }} </p>
+    <p> Résumé du CMS : {{ cms.summary }} </p>
+    <p> Description du CMS : {{ cms.description }} </p>
+
 {% endblock %}

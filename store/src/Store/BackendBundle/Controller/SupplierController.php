@@ -19,8 +19,16 @@ class SupplierController extends Controller {
      */
     public function listAction() {
 
+        // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
+        $em = $this->getDoctrine()->getManager();
+
+        // Je récupère tous les fournisseurs de ma BDD avec la méthode findAll()
+        $suppliers = $em->getRepository('StoreBackendBundle:Supplier')->findAll(); // NomduBundle:Nomdel'entité
+
         // Je retourne la vue List contenue dans le dossier Supplier de mon bundle StorebackendBundle
-        return $this->render('StoreBackendBundle:Supplier:list.html.twig');
+        return $this->render('StoreBackendBundle:Supplier:list.html.twig', array(
+            'suppliers' => $suppliers
+        ));
     }
 
     /**
@@ -39,5 +47,22 @@ class SupplierController extends Controller {
                 'name' => $name
             )
         );
+    }
+
+
+
+    public function removeAction($id) {
+
+        // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
+        $em = $this->getDoctrine()->getManager();
+
+        // Je récupère 1 fournisseur avec la méthode find()
+        $supplier = $em->getRepository('StoreBackendBundle:Supplier')->find($id); // NomduBundle:Nomdel'entité
+
+        $em->remove($supplier); // supprime le fournisseur
+        $em->flush(); // la fonction flush permet d'envoyer la requête en BDD
+
+        return $this->redirectToRoute('store_backend_supplier_list'); // redirection vers la liste des fournisseurs
+
     }
 }

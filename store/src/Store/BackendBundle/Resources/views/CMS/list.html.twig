@@ -1,9 +1,79 @@
 {% extends "StoreBackendBundle::layout.html.twig" %}
 
 {% block titlepage %}
-    Liste des CMS
+    <i class="menu-icon fa fa-bold"></i> Pages CMS
 {% endblock %}
 
 {% block content %}
-    <h1> </h1>
+
+    <div class="table-primary">
+
+        <div class="table-header">
+
+            <div class="table-caption">
+                <i class="menu-icon fa fa-bold"></i> Pages CMS
+            </div>
+
+        </div>
+
+        <table class="table table-bordered">
+
+            <thead>
+
+            <tr>
+                <th>#</th>
+                <th>Titre</th>
+                <th class="col-md-4">Résumé</th>
+                <th>État</th>
+                <th>Nombre de produits associés</th>
+                <th>Date de création</th>
+                <th>Actions</th>
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            {# Boucle sur les CMS #}
+            {% for cms in cms %} {# for nomdelaclef (nom arbitraire) in nomdutableau #}
+
+            <tr>
+
+                <td> {{ cms.id }} </td>
+                <td> <a href="{{ path('store_backend_cms_view', {'name' : cms.title , 'id': cms.id} ) }}"> {{ cms.title }} </td>
+                <td> {{ cms.summary }} </td>
+
+                <td>
+                    {% if cms.active == 0 %}
+                        <i class="fa fa-times"></i> Désactivé
+                    {% else %}
+                        <i class="fa fa-check"></i> Activé
+                    {% endif %}
+                </td>
+
+                <td> <span class="badge badge-info"> {{ cms.product|length }} </span> produits associés </td>
+
+                <td> {{ cms.dateCreated|date('d/m/Y') }} </td>
+
+                <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-cogs"></i> Actions <i class="fa fa-caret-down"></i></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('store_backend_cms_view', {'name' : cms.title , 'id': cms.id} ) }}"> <i class="fa fa-search"></i> Voir</a></li>
+                            <li><a href="#"> <i class="fa fa-pencil"></i> Éditer</a></li>
+                            <li><a href="{{ path('store_backend_cms_remove', {'id': cms.id} ) }}"> <i class="fa fa-times"></i> Supprimer</a></li>
+                        </ul>
+                    </div>
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
 {% endblock %}

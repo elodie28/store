@@ -22,8 +22,8 @@ class CategoryController extends Controller {
         // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
         $em = $this->getDoctrine()->getManager();
 
-        // Je récupère toutes les catégories de ma BDD avec la méthode findAll()
-        $categories = $em->getRepository('StoreBackendBundle:Category')->findAll(); // NomduBundle:Nomdel'entité
+        // Je récupère toutes les catégories du jeweler numéro 1
+        $categories = $em->getRepository('StoreBackendBundle:Category')->getCategoryByUser(1); // NomduBundle:Nomdel'entité
 
         // Je retourne la vue List contenue dans le dossier Category de mon bundle StorebackendBundle
         return $this->render('StoreBackendBundle:Category:list.html.twig', array(

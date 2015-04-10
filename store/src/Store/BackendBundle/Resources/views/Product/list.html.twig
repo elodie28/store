@@ -16,8 +16,8 @@
 
             <tr>
                 <th>ID</th>
-                <th>Référence</th>
                 <th>Titre</th>
+                <th>Référence</th>
                 <th class="col-md-2">Résumé</th>
                 <th>Prix</th>
                 <th>Quantité</th>
@@ -37,8 +37,8 @@
             <tr>
 
                 <td> {{ product.id }} </td>
-                <td> {{ product.ref }} </td>
                 <td> <a href="{{ path('store_backend_product_view', {'name' : product.title , 'id': product.id} ) }}"> {{ product.title }} </a> </td>
+                <td> {{ product.ref }} </td>
                 <td> {{ product.summary }} </td>
                 <td> {{ product.price }} €</td>
                 <td> {{ product.quantity }} quantités </td>

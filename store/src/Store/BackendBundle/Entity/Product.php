@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Product
  *
  * @ORM\Table(name="product", indexes={@ORM\Index(name="jeweler_id", columns={"jeweler_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Store\BackendBundle\Repository\ProductRepository")
  */
 class Product
 {
@@ -34,6 +34,16 @@ class Product
      * @ORM\Column(name="title", type="string", length=150, nullable=true)
      */
     private $title;
+
+    /**
+     * @var\ProductImage
+     *
+     * @ORM\ManyToOne(targetEntity="ProductImage")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="product_id", referencedColumnName="id")
+     * })
+     */
+    //private $image;
 
     /**
      * @var string

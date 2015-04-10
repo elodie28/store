@@ -22,8 +22,8 @@ class CMSController extends Controller {
         // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
         $em = $this->getDoctrine()->getManager();
 
-        // Je récupère tous les CMS de ma BDD avec la méthode findAll()
-        $cms = $em->getRepository('StoreBackendBundle:Cms')->findAll(); // NomduBundle:Nomdel'entité
+        // Je récupère tous les CMS du jeweler numéro 1
+        $cms = $em->getRepository('StoreBackendBundle:Cms')->getCmsByUser(1); // NomduBundle:Nomdel'entité
 
         // Je retourne la vue List contenue dans le dossier CMS de mon bundle StorebackendBundle
         return $this->render('StoreBackendBundle:CMS:list.html.twig', array(

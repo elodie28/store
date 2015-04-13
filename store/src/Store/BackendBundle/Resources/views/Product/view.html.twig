@@ -9,6 +9,9 @@
 {% block content %}
 
     <p> Nom du produit : {{ product.title }} </p>
+    {% for value in product.image %}
+        <img src="{{ value.imageThumb }}"/>
+    {% endfor %}
     <p> Résumé : {{ product.summary }} </p>
     <p> Description : {{ product.description }} </p>
     <p> Quantité : {{ product.quantity }} </p>

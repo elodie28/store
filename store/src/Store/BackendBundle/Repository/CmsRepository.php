@@ -31,4 +31,29 @@ class CmsRepository extends EntityRepository {
         return $query->getResult();
     }
 
+
+    /**
+     * Count All Cms
+     * SELECT COUNT(id)
+     * FROM `cms`
+     * WHERE jeweler_id = 1
+     * @param null $user
+     * @return mixed
+     */
+    public function getCountByUser($user = null) {
+
+        // Compte le nombre de pages cms pour 1 bijoutier
+        $query = $this->getEntityManager()
+
+            ->createQuery(
+                " SELECT count(cms) AS nb
+                  FROM StoreBackendBundle:Cms cms
+                  WHERE cms.jeweler = :user"
+            )
+            ->setParameter('user', $user);
+
+        // retourne 1 résultat ou null (correspond au row dans CodeIgniter)
+        return $query->getOneOrNullResult();
+    }
+
 }

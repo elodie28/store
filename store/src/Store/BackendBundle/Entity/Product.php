@@ -36,14 +36,11 @@ class Product
     private $title;
 
     /**
-     * @var\ProductImage
      *
-     * @ORM\ManyToOne(targetEntity="ProductImage")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="product_id", referencedColumnName="id")
-     * })
+     * @ORM\OneToMany(targetEntity="ProductImage", mappedBy="product")
+     * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
      */
-    //private $image;
+    private $image;
 
     /**
      * @var string
@@ -270,6 +267,7 @@ class Product
         $this->product2 = new \Doctrine\Common\Collections\ArrayCollection();
         $this->supplier = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tag = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->image = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -937,4 +935,22 @@ class Product
     {
         return $this->tag;
     }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+
 }

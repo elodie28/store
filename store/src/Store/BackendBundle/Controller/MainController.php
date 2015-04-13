@@ -17,8 +17,44 @@ class MainController extends Controller {
      */
     public function indexAction() {
 
-       // Je retourne la vue index contenue dans le dossier Main de mon bundle StorebackendBundle
-       return $this->render('StoreBackendBundle:Main:index.html.twig');
+        // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
+        $em = $this->getDoctrine()->getManager();
+
+        // Je récupère le nombre de produits de mon bijoutier numéro 1
+        // Je fais appel à mon repository ProductRepository et à la fonction getCountByUser(1)
+        $nbprod = $em->getRepository('StoreBackendBundle:Product')->getCountByUser(1); // NomduBundle:Nomdel'entité
+
+        $nbcat = $em->getRepository('StoreBackendBundle:Category')->getCountByUser(1);
+
+        $nbpage = $em->getRepository('StoreBackendBundle:Cms')->getCountByUser(1);
+
+        $nbcom = $em->getRepository('StoreBackendBundle:Comment')->getCountByUser(1);
+
+        $nbsup = $em->getRepository('StoreBackendBundle:Supplier')->getCountByUser(1);
+
+        $nborder = $em->getRepository('StoreBackendBundle:Orders')->getCountByUser(1);
+
+        $totalorder = $em->getRepository('StoreBackendBundle:Orders')->getTotalByUser(1);
+
+        $lastcomact = $em->getRepository('StoreBackendBundle:Comment')->getLastCommentsActByUser(1);
+
+        $lastcomval = $em->getRepository('StoreBackendBundle:Comment')->getLastCommentsValByUser(1);
+
+        $lastorders = $em->getRepository('StoreBackendBundle:Orders')->getLastOrdersByUser(1);
+
+        // Je retourne la vue index contenue dans le dossier Main de mon bundle StorebackendBundle
+        return $this->render('StoreBackendBundle:Main:index.html.twig', array(
+            'nbprod' => $nbprod,
+            'nbcat' => $nbcat,
+            'nbpage' => $nbpage,
+            'nbcom' => $nbcom,
+            'nbsup' => $nbsup,
+            'nborder' => $nborder,
+            'totalorder' => $totalorder,
+            'lastcomact' => $lastcomact,
+            'lastcomval' => $lastcomval,
+            'lastorders' => $lastorders
+        ));
     }
 }
 

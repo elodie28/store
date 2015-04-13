@@ -22,8 +22,8 @@ class SupplierController extends Controller {
         // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
         $em = $this->getDoctrine()->getManager();
 
-        // Je récupère tous les fournisseurs de ma BDD avec la méthode findAll()
-        $suppliers = $em->getRepository('StoreBackendBundle:Supplier')->findAll(); // NomduBundle:Nomdel'entité
+        // Je récupère tous les fournisseurs des produits où le jeweler est égal au numéro 1
+        $suppliers = $em->getRepository('StoreBackendBundle:Supplier')->getSupplierByUser(1); // NomduBundle:Nomdel'entité
 
         // Je retourne la vue List contenue dans le dossier Supplier de mon bundle StorebackendBundle
         return $this->render('StoreBackendBundle:Supplier:list.html.twig', array(

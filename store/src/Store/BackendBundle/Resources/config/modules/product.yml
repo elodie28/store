@@ -21,3 +21,10 @@ store_backend_product_view:
 store_backend_product_remove: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
       path:     /remove/{id} # chemin vers l'URI
       defaults: { _controller: StoreBackendBundle:Product:remove } # NomduBundle:NomduController:Nomdel'Action
+
+
+# Page New a Product
+
+store_backend_product_new: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
+      path:     /new # chemin vers l'URI
+      defaults: { _controller: StoreBackendBundle:Product:new } # NomduBundle:NomduController:Nomdel'Action

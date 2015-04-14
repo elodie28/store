@@ -155,4 +155,14 @@ class UserAddress
     {
         return $this->user;
     }
+
+
+    /**
+     * Retourne l'adresse et le code postal
+     * @return string
+     */
+    public function __toString() {
+        return $this->address." ".$this->zipcode;
+    }
+
 }

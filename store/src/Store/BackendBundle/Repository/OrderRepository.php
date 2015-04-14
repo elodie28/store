@@ -75,7 +75,7 @@ class OrderRepository extends EntityRepository {
                 "SELECT o
                  FROM StoreBackendBundle:Orders o
                  WHERE o.jeweler = :user
-                 ORDER BY o.date DESC"
+                 ORDER BY o.id DESC"
             )
             ->setParameter('user', $user)
             ->setMaxResults(5);

@@ -953,4 +953,13 @@ class Product
     }
 
 
+    /**
+     * Retourne le titre
+     * @return string
+     */
+    public function __toString() {
+        return $this->title;
+    }
+
+
 }

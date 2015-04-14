@@ -47,7 +47,7 @@ class CategoryRepository extends EntityRepository {
         $query = $this->getEntityManager()
 
             ->createQuery(
-                " SELECT count(c) AS nb
+                " SELECT COUNT(c) AS nb
                   FROM StoreBackendBundle:Category c
                   WHERE c.jeweler = :user"
             )
@@ -59,25 +59,33 @@ class CategoryRepository extends EntityRepository {
 
 
     /**
-     * Affiche les catégories avec le nombre de produits du jeweler
+     * SELECT category.title, COUNT(product.id)
+     * FROM `category`
+     * INNER JOIN product_category
+     * ON category.id = product_category.category_id
+     * INNER JOIN product
+     * ON product_category.product_id = product.id
+     * WHERE product.jeweler_id = 1
+     * GROUP BY category.id
      * @param $user
      * @return array
      */
-    public function getCategoryWithProductsByUser($user) {
+    public function getCategoryWithProductsByUser($user = null) {
 
-        $query=$this->getEntityManager()
+        // Affiche le nom des catégories et le nombre de produits par categorie pour 1 bijoutier
+        $query = $this->getEntityManager()
 
             ->createQuery(
                 "SELECT c
                  FROM StoreBackendBundle:Category c
                  JOIN c.product p
-                 WHERE p.jeweler = :user
-                 GROUP BY p.jeweler"
+                 WHERE p.jeweler = :user"
             )
             ->setParameter('user', $user);
 
         return $query->getResult();
-
     }
+
+
 
 }

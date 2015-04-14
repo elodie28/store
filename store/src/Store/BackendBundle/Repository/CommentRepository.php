@@ -40,6 +40,96 @@ class CommentRepository extends EntityRepository {
 
 
     /**
+     * Count All Comments ACTIFS
+     * SELECT COUNT(comment.id)
+     * FROM `comment`
+     * INNER JOIN product
+     * ON comment.product_id = product.id
+     * WHERE jeweler_id = 1
+     * AND state = 2
+     * @param null $user
+     * @return mixed
+     */
+    public function getCountActByUser($user = null) {
+
+        // Compte le nombre de commentaires ACTIFS pour 1 bijoutier
+        $query = $this->getEntityManager()
+
+            ->createQuery(
+                " SELECT COUNT(com) AS nb
+                  FROM StoreBackendBundle:Comment com
+                  JOIN com.product p
+                  WHERE p.jeweler = :user
+                  AND com.state = 2"
+            )
+            ->setParameter('user', $user);
+
+        // retourne 1 résultat ou null (correspond au row dans CodeIgniter)
+        return $query->getOneOrNullResult();
+    }
+
+
+    /**
+     * Count All Comments EN COURS DE VALIDATION
+     * SELECT COUNT(comment.id)
+     * FROM `comment`
+     * INNER JOIN product
+     * ON comment.product_id = product.id
+     * WHERE jeweler_id = 1
+     * AND state = 1
+     * @param null $user
+     * @return mixed
+     */
+    public function getCountValByUser($user = null) {
+
+        // Compte le nombre de commentaires EN COURS DE VALIDATION pour 1 bijoutier
+        $query = $this->getEntityManager()
+
+            ->createQuery(
+                " SELECT COUNT(com) AS nb
+                  FROM StoreBackendBundle:Comment com
+                  JOIN com.product p
+                  WHERE p.jeweler = :user
+                  AND com.state = 1"
+            )
+            ->setParameter('user', $user);
+
+        // retourne 1 résultat ou null (correspond au row dans CodeIgniter)
+        return $query->getOneOrNullResult();
+    }
+
+
+    /**
+     * Count All Comments INACTIFS
+     * SELECT COUNT(comment.id)
+     * FROM `comment`
+     * INNER JOIN product
+     * ON comment.product_id = product.id
+     * WHERE jeweler_id = 1
+     * AND state = 0
+     * @param null $user
+     * @return mixed
+     */
+    public function getCountInactByUser($user = null) {
+
+        // Compte le nombre de commentaires INACTIFS pour 1 bijoutier
+        $query = $this->getEntityManager()
+
+            ->createQuery(
+                " SELECT COUNT(com) AS nb
+                  FROM StoreBackendBundle:Comment com
+                  JOIN com.product p
+                  WHERE p.jeweler = :user
+                  AND com.state = 0"
+            )
+            ->setParameter('user', $user);
+
+        // retourne 1 résultat ou null (correspond au row dans CodeIgniter)
+        return $query->getOneOrNullResult();
+    }
+
+
+    /**
      * SELECT content
      * FROM comment
      * INNER JOIN product
@@ -94,6 +184,38 @@ class CommentRepository extends EntityRepository {
                  JOIN com.product p
                  WHERE p.jeweler = :user
                  AND com.state = 1
+                 ORDER BY com.dateCreated DESC"
+            )
+            ->setParameter('user', $user)
+            ->setMaxResults(5);
+
+        return $query->getResult();
+    }
+
+
+    /**
+     * SELECT content
+     * FROM comment
+     * INNER JOIN product
+     * ON product_id = product.id
+     * WHERE jeweler_id = 1
+     * AND state = 0
+     * ORDER BY comment.date_created DESC
+     * LIMIT 5
+     * @param null $user
+     * @return mixed
+     */
+    public function getLastCommentsInactByUser($user = null) {
+
+        // Donne les 5 derniers commentaires INACTIFS pour 1 bijoutier
+        $query = $this->getEntityManager()
+
+            ->createQuery(
+                "SELECT com
+                 FROM StoreBackendBundle:Comment com
+                 JOIN com.product p
+                 WHERE p.jeweler = :user
+                 AND com.state = 0
                  ORDER BY com.dateCreated DESC"
             )
             ->setParameter('user', $user)

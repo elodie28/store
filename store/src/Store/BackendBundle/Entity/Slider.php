@@ -185,4 +185,14 @@ class Slider
     {
         return $this->product;
     }
+
+
+    /**
+     * Retourne la caption
+     * @return string
+     */
+    public function __toString() {
+        return $this->caption;
+    }
+
 }

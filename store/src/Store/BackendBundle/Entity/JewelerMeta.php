@@ -515,4 +515,13 @@ class JewelerMeta
     {
         return $this->jeweler;
     }
+
+
+    /**
+     * Retourne l'id
+     * @return int
+     */
+    public function __toString() {
+        return $this->id;
+    }
 }

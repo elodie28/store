@@ -46,9 +46,35 @@ class ProductRepository extends EntityRepository {
         $query = $this->getEntityManager()
 
             ->createQuery(
-            " SELECT count(p) AS nb
+            " SELECT COUNT(p) AS nb
               FROM StoreBackendBundle:Product p
               WHERE p.jeweler = :user"
+            )
+            ->setParameter('user', $user);
+
+        // retourne 1 résultat ou null (correspond au row dans CodeIgniter)
+        return $query->getOneOrNullResult();
+    }
+
+
+    /**
+     * SELECT COUNT( id )
+     * FROM  `likes`
+     * INNER JOIN product ON product_id = product.id
+     * WHERE jeweler_id =1
+     * @param null $user
+     * @return mixed
+     */
+    public function getCountLikesByUser($user = null) {
+
+        // Compte le nombre de Likes pour 1 bijoutier
+        $query = $this->getEntityManager()
+
+            ->createQuery(
+            "SELECT COUNT(p) AS nb
+             FROM StoreBackendBundle:Product p
+             JOIN p.user u
+             WHERE p.jeweler = :user"
             )
             ->setParameter('user', $user);
 

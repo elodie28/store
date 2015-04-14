@@ -5,6 +5,7 @@ namespace Store\BackendBundle\Controller;
 
 // J'inclus la class Controller de Symfony pour pouvoir hériter de cette class
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Store\BackendBundle\Form\ProductType;
 
 
 /**
@@ -75,6 +76,21 @@ class ProductController extends Controller {
 
         return $this->redirectToRoute('store_backend_product_list'); // redirection vers la liste des produits
 
+    }
+
+
+    /**
+     * Page création d'un produit
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function newAction() {
+
+        // Je crée un formulaire de produit
+        $form = $this->createForm(new ProductType());
+
+        return $this->render('StoreBackendBundle:Product:new.html.twig', array(
+            'form' => $form->createView()
+        ));
     }
 
 }

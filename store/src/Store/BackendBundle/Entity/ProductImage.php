@@ -125,4 +125,13 @@ class ProductImage
     {
         return $this->product;
     }
+
+
+    /**
+     * Retourne l'image
+     * @return string
+     */
+    public function __toString() {
+        return $this->image;
+    }
 }

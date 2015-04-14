@@ -36,11 +36,23 @@ class MainController extends Controller {
 
         $totalorder = $em->getRepository('StoreBackendBundle:Orders')->getTotalByUser(1);
 
+        $nbcomact = $em->getRepository('StoreBackendBundle:Comment')->getCountActByUser(1);
+
+        $nbcomval = $em->getRepository('StoreBackendBundle:Comment')->getCountValByUser(1);
+
+        $nbcominact = $em->getRepository('StoreBackendBundle:Comment')->getCountInactByUser(1);
+
+        $nblikes = $em->getRepository('StoreBackendBundle:Product')->getCountLikesByUser(1);
+
         $lastcomact = $em->getRepository('StoreBackendBundle:Comment')->getLastCommentsActByUser(1);
 
         $lastcomval = $em->getRepository('StoreBackendBundle:Comment')->getLastCommentsValByUser(1);
 
+        $lastcominact = $em->getRepository('StoreBackendBundle:Comment')->getLastCommentsInactByUser(1);
+
         $lastorders = $em->getRepository('StoreBackendBundle:Orders')->getLastOrdersByUser(1);
+
+        $catpop = $em->getRepository('StoreBackendBundle:Category')->getCategoryWithProductsByUser(1);
 
         // Je retourne la vue index contenue dans le dossier Main de mon bundle StorebackendBundle
         return $this->render('StoreBackendBundle:Main:index.html.twig', array(
@@ -51,9 +63,15 @@ class MainController extends Controller {
             'nbsup' => $nbsup,
             'nborder' => $nborder,
             'totalorder' => $totalorder,
+            'nbcomact' => $nbcomact,
+            'nbcomval' => $nbcomval,
+            'nbcominact' => $nbcominact,
+            'nblikes' => $nblikes,
             'lastcomact' => $lastcomact,
             'lastcomval' => $lastcomval,
-            'lastorders' => $lastorders
+            'lastcominact' => $lastcominact,
+            'lastorders' => $lastorders,
+            'catpop' => $catpop
         ));
     }
 }

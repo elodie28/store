@@ -1,14 +1,30 @@
 {% extends "StoreBackendBundle::layout.html.twig" %}
 
+
+{% block javascripts %}
+
+    {{ parent() }}
+    <script>
+        init.push(function () {
+            $('#dashboard-recent .panel-body > div').slimScroll({ height: 300, alwaysVisible: true, color: '#888',allowPageScroll: true });
+        })
+    </script>
+
+{% endblock %}
+
+
 {% block titlepage %}
     <i class="menu-icon fa fa-dashboard"></i> Dashboard
 {% endblock %}
+
 
 {% block content %}
 
     <div class="row">
 
         <div class="col-md-8">
+
+        <div class="stat-panel">
 
             {# STATISTIQUES : nb Produits / nb Catégories / nb Pages CMS / nb Commentaires / nb Commandes #}
 
@@ -44,22 +60,153 @@
                 </ul>
             </div>
 
+            <div class="stat-cell col-sm-8 bg-primary padding-sm valign-middle">
+                <div id="hero-graph" class="graph" style="height: 230px;"><svg height="230" version="1.1" width="660" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.1.2</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs><text x="25.875" y="191" text-anchor="end" font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;" font-size="12px" font-family="sans-serif" font-weight="normal"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">0</tspan></text><path fill="none" stroke="#ffffff" d="M38.375,191H635" stroke-opacity="0.5" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="25.875" y="149.5" text-anchor="end" font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;" font-size="12px" font-family="sans-serif" font-weight="normal"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">5</tspan></text><path fill="none" stroke="#ffffff" d="M38.375,149.5H635" stroke-opacity="0.5" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="25.875" y="108" text-anchor="end" font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;" font-size="12px" font-family="sans-serif" font-weight="normal"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">10</tspan></text><path fill="none" stroke="#ffffff" d="M38.375,108H635" stroke-opacity="0.5" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="25.875" y="66.49999999999999" text-anchor="end" font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;" font-size="12px" font-family="sans-serif" font-weight="normal"><tspan dy="3.999999999999986" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">15</tspan></text><path fill="none" stroke="#ffffff" d="M38.375,66.49999999999999H635" stroke-opacity="0.5" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="25.875" y="25" text-anchor="end" font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;" font-size="12px" font-family="sans-serif" font-weight="normal"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">20</tspan></text><path fill="none" stroke="#ffffff" d="M38.375,25H635" stroke-opacity="0.5" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="635" y="203.5" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;" font-size="12px" font-family="sans-serif" font-weight="normal" transform="matrix(1,0,0,1,0,7)"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Mar 16</tspan></text><text x="535.5625" y="203.5" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;" font-size="12px" font-family="sans-serif" font-weight="normal" transform="matrix(1,0,0,1,0,7)"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Mar 15</tspan></text><text x="436.12499999999994" y="203.5" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;" font-size="12px" font-family="sans-serif" font-weight="normal" transform="matrix(1,0,0,1,0,7)"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Mar 14</tspan></text><text x="336.6875" y="203.5" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;" font-size="12px" font-family="sans-serif" font-weight="normal" transform="matrix(1,0,0,1,0,7)"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Mar 13</tspan></text><text x="237.24999999999997" y="203.5" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;" font-size="12px" font-family="sans-serif" font-weight="normal" transform="matrix(1,0,0,1,0,7)"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Mar 12</tspan></text><text x="137.8125" y="203.5" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;" font-size="12px" font-family="sans-serif" font-weight="normal" transform="matrix(1,0,0,1,0,7)"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Mar 11</tspan></text><text x="38.375" y="203.5" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;" font-size="12px" font-family="sans-serif" font-weight="normal" transform="matrix(1,0,0,1,0,7)"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Mar 10</tspan></text><path fill="none" stroke="#ffffff" d="M38.375,25C63.234375,45.75,112.953125,102.8125,137.8125,108C162.671875,113.1875,212.39062499999997,68.57499999999999,237.24999999999997,66.49999999999999C262.109375,64.42499999999998,311.828125,81.02499999999999,336.6875,91.39999999999999C361.546875,101.77499999999999,411.26562499999994,142.2375,436.12499999999994,149.5C460.98437499999994,156.76250000000002,510.703125,165.0625,535.5625,149.5C560.421875,133.9375,610.140625,56.125,635,25" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><circle cx="38.375" cy="25" r="4" fill="#ffffff" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="137.8125" cy="108" r="7" fill="#ffffff" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="237.24999999999997" cy="66.49999999999999" r="4" fill="#ffffff" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="336.6875" cy="91.39999999999999" r="4" fill="#ffffff" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="436.12499999999994" cy="149.5" r="4" fill="#ffffff" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="535.5625" cy="149.5" r="4" fill="#ffffff" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="635" cy="25" r="4" fill="#ffffff" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle></svg><div class="morris-hover morris-default-style" style="left: 99.3125px; top: 50px;"><div class="morris-hover-row-label">2014-03-11</div><div class="morris-hover-point" style="color: #fff">
+                            Value:
+                            10
+                        </div></div></div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-xs-4">
+                <!-- Centered text -->
+                <div class="stat-panel text-center">
+                    <div class="stat-row">
+                        <!-- Dark gray background, small padding, extra small text, semibold text -->
+                        <div class="stat-cell bg-dark-gray padding-sm text-xs text-semibold">
+                            <i class="fa fa-globe"></i>&nbsp;&nbsp;BANDWIDTH
+                        </div>
+                    </div> <!-- /.stat-row -->
+                    <div class="stat-row">
+                        <!-- Bordered, without top border, without horizontal padding -->
+                        <div class="stat-cell bordered no-border-t no-padding-hr">
+                            <div class="pie-chart" data-percent="43" id="easy-pie-chart-1">
+                                <div class="pie-chart-label">12.3TB</div>
+                                <canvas height="90" width="90"></canvas></div>
+                        </div>
+                    </div> <!-- /.stat-row -->
+                </div> <!-- /.stat-panel -->
+            </div>
+            <div class="col-xs-4">
+                <div class="stat-panel text-center">
+                    <div class="stat-row">
+                        <!-- Dark gray background, small padding, extra small text, semibold text -->
+                        <div class="stat-cell bg-dark-gray padding-sm text-xs text-semibold">
+                            <i class="fa fa-flash"></i>&nbsp;&nbsp;PICK LOAD
+                        </div>
+                    </div> <!-- /.stat-row -->
+                    <div class="stat-row">
+                        <!-- Bordered, without top border, without horizontal padding -->
+                        <div class="stat-cell bordered no-border-t no-padding-hr">
+                            <div class="pie-chart" data-percent="93" id="easy-pie-chart-2">
+                                <div class="pie-chart-label">93%</div>
+                                <canvas height="90" width="90"></canvas></div>
+                        </div>
+                    </div> <!-- /.stat-row -->
+                </div> <!-- /.stat-panel -->
+            </div>
+            <div class="col-xs-4">
+                <div class="stat-panel text-center">
+                    <div class="stat-row">
+                        <!-- Dark gray background, small padding, extra small text, semibold text -->
+                        <div class="stat-cell bg-dark-gray padding-sm text-xs text-semibold">
+                            <i class="fa fa-cloud"></i>&nbsp;&nbsp;USED RAM
+                        </div>
+                    </div> <!-- /.stat-row -->
+                    <div class="stat-row">
+                        <!-- Bordered, without top border, without horizontal padding -->
+                        <div class="stat-cell bordered no-border-t no-padding-hr">
+                            <div class="pie-chart" data-percent="75" id="easy-pie-chart-3">
+                                <div class="pie-chart-label">12GB</div>
+                                <canvas height="90" width="90"></canvas></div>
+                        </div>
+                    </div> <!-- /.stat-row -->
+                </div> <!-- /.stat-panel -->
+            </div>
+        </div>
+
         </div>
 
         <div class="col-md-4">
 
-            <div class="stat-panel">
-                <!-- Danger background, vertically centered text -->
-                <div class="stat-cell bg-danger valign-middle">
-                    <!-- Stat panel bg icon -->
-                    <i class="fa fa-euro bg-icon"></i>
-                    <!-- Extra large text -->
-                    <span class="text-xlg"><span class="text-lg text-slim">€</span><strong> {{ totalorder.total|default('0')|number_format(2, ',', ' ') }} </strong></span><br>
-                    <!-- Big text -->
-                    <span class="text-bg">Chiffre d'affaires </span><br>
-                    <!-- Small text -->
-                    <span class="text-sm"><a href="#">Depuis votre inscription</a></span>
-                </div> <!-- /.stat-cell -->
+            <div class="row">
+
+                <div class="col-sm-4 col-md-12">
+
+                    <div class="stat-panel">
+                        <!-- Danger background, vertically centered text -->
+                        <div class="stat-cell bg-danger valign-middle">
+                            <!-- Stat panel bg icon -->
+                            <i class="fa fa-euro bg-icon"></i>
+                            <!-- Extra large text -->
+                            <span class="text-xlg"><span class="text-lg text-slim">€</span><strong> {{ totalorder.total|default('0')|number_format(2, ',', ' ') }} </strong></span><br>
+                            <!-- Big text -->
+                            <span class="text-bg">Chiffre d'affaires </span><br>
+                            <!-- Small text -->
+                            <span class="text-sm"><a href="#">Depuis votre inscription</a></span>
+                        </div> <!-- /.stat-cell -->
+                    </div>
+
+                </div>
+
+                <div class="col-sm-4 col-md-12">
+
+                    <div class="stat-panel">
+                        <!-- Success background, bordered, without top and bottom borders, without left border, without padding, vertically and horizontally centered text, large text -->
+                        <a href="#" class="stat-cell col-xs-5 bg-warning bordered no-border-vr no-border-l no-padding valign-middle text-center text-lg">
+                            <i class="fa fa-comments"></i>&nbsp;&nbsp;<strong> {{ nbcom.nb|default('0') }} Commentaires </strong>
+                        </a> <!-- /.stat-cell -->
+                        <!-- Without padding, extra small text -->
+                        <div class="stat-cell col-xs-7 no-padding valign-middle">
+                            <!-- Add parent div.stat-rows if you want build nested rows -->
+                            <div class="stat-rows">
+                                <div class="stat-row">
+                                    <!-- Success background, small padding, vertically aligned text -->
+                                    <a href="#" class="stat-cell bg-warning padding-sm valign-middle">
+                                        {{ nbcomact.nb|default('0') }} Actifs
+                                        <i class="fa fa-check pull-right"></i>
+                                    </a>
+                                </div>
+                                <div class="stat-row">
+                                    <!-- Success darken background, small padding, vertically aligned text -->
+                                    <a href="#" class="stat-cell bg-warning darken padding-sm valign-middle">
+                                        {{ nbcomval.nb|default('0') }} En cours
+                                        <i class="fa fa-home pull-right"></i>
+                                    </a>
+                                </div>
+                                <div class="stat-row">
+                                    <!-- Success darker background, small padding, vertically aligned text -->
+                                    <a href="#" class="stat-cell bg-warning darker padding-sm valign-middle">
+                                        {{ nbcominact.nb|default('0') }} Inactifs
+                                        <i class="fa fa-times pull-right"></i>
+                                    </a>
+                                </div>
+                            </div> <!-- /.stat-rows -->
+                        </div> <!-- /.stat-cell -->
+                    </div>
+
+                </div>
+
+                <div class="col-sm-4 col-md-12">
+
+                    <div class="stat-panel">
+                        <!-- Success background. vertically centered text -->
+                        <div class="stat-cell bg-success valign-middle">
+                            <!-- Stat panel bg icon -->
+                            <i class="fa fa-heart bg-icon"></i>
+                            <!-- Extra large text -->
+                            <span class="text-xlg"><strong> {{ nblikes.nb|default('0') }} </strong></span><br>
+                            <!-- Big text -->
+                            <span class="text-bg">Likes</span><br>
+                            <!-- Small text -->
+                            <span class="text-sm">Sur tous mes bijoux</span>
+                        </div> <!-- /.stat-cell -->
+                    </div>
+
+                </div>
+
             </div>
 
         </div>
@@ -70,15 +217,18 @@
 
         <div class="col-md-6">
 
-            <div class="panel panel-warning" id="dashboard-recent">
+            <div class="panel panel-info" id="dashboard-recent">
             <div class="panel-heading">
                 <span class="panel-title"><i class="panel-title-icon fa fa-comment text-danger"></i> 5 Derniers Commentaires </span>
                 <ul class="nav nav-tabs nav-tabs-xs">
                     <li class="active">
-                        <a href="#dashboard-recent-comments" data-toggle="tab">Commentaires Actifs</a>
+                        <a href="#dashboard-recent-comments-act" data-toggle="tab">Actifs</a>
                     </li>
                     <li>
-                        <a href="#dashboard-recent-threads" data-toggle="tab">Commentaires En cours</a>
+                        <a href="#dashboard-recent-comments-val" data-toggle="tab">En cours</a>
+                    </li>
+                    <li>
+                        <a href="#dashboard-recent-comments-inact" data-toggle="tab">Inactifs</a>
                     </li>
                 </ul>
             </div> <!-- / .panel-heading -->
@@ -87,7 +237,7 @@
             <!-- Comments widget -->
 
             <!-- Without padding -->
-            <div class="widget-comments panel-body tab-pane no-padding fade active in" id="dashboard-recent-comments">
+            <div class="widget-comments panel-body tab-pane no-padding fade active in" id="dashboard-recent-comments-act">
                 <!-- Panel padding, without vertical padding -->
                 <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 300px;"><div class="panel-padding no-padding-vr" style="overflow: hidden; width: auto; height: 300px;">
 
@@ -112,20 +262,21 @@
 
                     {% endfor %}
 
-                    </div><div class="slimScrollBar" style="width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; right: 1px; height: 112.640801001252px; background: rgb(136, 136, 136);"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div></div>
+                    </div></div>
             </div> <!-- / .widget-comments -->
 
-            <!-- Threads widget -->
+            <!-- Comments widget -->
 
             <!-- Without padding -->
-            <div class="widget-threads panel-body tab-pane no-padding fade" id="dashboard-recent-threads">
+            <div class="widget-comments panel-body tab-pane no-padding fade" id="dashboard-recent-comments-val">
+                <!-- Panel padding, without vertical padding -->
                 <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 300px;"><div class="panel-padding no-padding-vr" style="overflow: hidden; width: auto; height: 300px;">
 
-                    {% for value in  lastcomval %}
+                    {% for value in lastcomval %}
 
-                        <div class="thread">
-                            <img src="assets/demo/avatars/2.jpg" alt="" class="thread-avatar">
-                            <div class="thread-body">
+                        <div class="comment">
+                            <img src="assets/demo/avatars/5.jpg" alt="" class="comment-avatar">
+                            <div class="comment-body">
                                 <div class="comment-by">
                                     <a href="#" title="">{{ value.user.firstname ~ " " ~ value.user.lastname }}</a> a commenté sur <a href="#" title="">{{ value.product.title }}</a>
                                 </div>
@@ -137,21 +288,54 @@
                                     <a href="#"><i class="fa fa-times"></i>Remove</a>
                                     <span class="pull-right">2 hours ago</span>
                                 </div>
-                            </div> <!-- / .thread-body -->
-                        </div>
+                            </div> <!-- / .comment-body -->
+                        </div> <!-- / .comment -->
 
                     {% endfor %}
 
-                    </div><div class="slimScrollBar" style="width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; right: 1px; background: rgb(136, 136, 136);"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div></div>
-            </div> <!-- / .panel-body -->
-            </div>
-            </div> <!-- / .widget-threads -->
+                    </div></div>
+            </div> <!-- / .widget-comments -->
+
+            <!-- Comments widget -->
+
+            <!-- Without padding -->
+            <div class="widget-comments panel-body tab-pane no-padding fade" id="dashboard-recent-comments-inact">
+                <!-- Panel padding, without vertical padding -->
+                <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 300px;"><div class="panel-padding no-padding-vr" style="overflow: hidden; width: auto; height: 300px;">
+
+                    {% for value in lastcominact %}
+
+                        <div class="comment">
+                            <img src="assets/demo/avatars/5.jpg" alt="" class="comment-avatar">
+                            <div class="comment-body">
+                                <div class="comment-by">
+                                    <a href="#" title="">{{ value.user.firstname ~ " " ~ value.user.lastname }}</a> a commenté sur <a href="#" title="">{{ value.product.title }}</a>
+                                </div>
+                                <div class="comment-text">
+                                    {{ value.content }}
+                                </div>
+                                <div class="comment-actions">
+                                    <a href="#"><i class="fa fa-pencil"></i>Edit</a>
+                                    <a href="#"><i class="fa fa-times"></i>Remove</a>
+                                    <span class="pull-right">2 hours ago</span>
+                                </div>
+                            </div> <!-- / .comment-body -->
+                        </div> <!-- / .comment -->
+
+                    {% endfor %}
+
+                    </div></div>
+            </div> <!-- / .widget-comments -->
+
+        </div>
+
+        </div>
 
         </div>
 
         <div class="col-md-6">
 
-            <div class="panel panel-success widget-support-tickets" id="dashboard-support-tickets">
+            <div class="panel panel-info widget-support-tickets" id="dashboard-support-tickets">
                 <div class="panel-heading">
                     <span class="panel-title"><i class="panel-title-icon fa fa-shopping-cart"></i>5 Dernières Commandes</span>
                 </div> <!-- / .panel-heading -->
@@ -167,13 +351,13 @@
                                 {% elseif value.state == 2 %}
                                     <span class="label label-success ticket-label">Livrée</span>
                                 {% else %}
-                                    <span class="label label-danger ticket-label">Erreur</span>
+                                    <span class="label label-danger ticket-label">Annulée</span>
                                 {% endif %}
 
-                                <a href="#" title="" class="ticket-title">{{ value.address }}<span>[€{{ value.total }}]</span></a>
-								<!--<span class="ticket-info">
-									Opened by <a href="#" title="">Timothy Owens</a> today
-								</span>-->
+                                <a href="#" title="" class="ticket-title">{{ value.address }}<span>[#{{ value.id }}]</span></a>
+								<span class="ticket-info">
+									Commande par <a href="#" title="">{{ value.user.firstname ~ " " ~ value.user.lastname }}</a> le {{ value.date|date('d/m/Y') }}
+								</span>
                             </div> <!-- / .ticket -->
                         {% endfor %}
 
@@ -184,7 +368,46 @@
 
         </div>
 
-    </ div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <span class="panel-title"><i class="panel-title-icon fa fa-star"></i>Catégories populaires</span>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-condensed">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nom</th>
+                            <th>Nombre de produits</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for value in catpop %}
+
+                            <tr>
+                                <td>1</td>
+                                <td> {{ value.title}} </td>
+                                <td> <a href="#" class="badge badge-info"> {{ value.product|length }} </a> </td>
+                                <td> <button class="btn btn-xs btn-danger btn-rounded">Voir la catégorie</button> </td>
+                            </tr>
+
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 
 {% endblock %}

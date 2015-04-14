@@ -303,4 +303,13 @@ class Orders
     {
         return $this->product;
     }
+
+
+    /**
+     * Retourne l'id
+     * @return int
+     */
+    public function __toString() {
+        return $this->id;
+    }
 }

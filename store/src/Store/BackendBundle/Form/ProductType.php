@@ -73,7 +73,7 @@ class ProductType extends AbstractType {
             )
         ));
 
-        $builder->add('price', 'money', array(
+        $builder->add('price', null, array(
             'label'    => 'Prix HT en €',
             'required' => true,
             'attr'     => array(
@@ -103,10 +103,24 @@ class ProductType extends AbstractType {
 
         $builder->add('active', null, array(
             'label' => 'Produit activé dans la boutique ?',
+            'attr'  => array(
+                'class' => 'checkbox'
+            )
         ));
 
         $builder->add('cover', null, array(
             'label' => "Produit mis en page d'accueil dans la boutique ?",
+            'attr'  => array(
+                'class' => 'checkbox'
+            )
+        ));
+
+        $builder->add('composition', null, array(
+            'label'    => 'Composition de votre bijou',
+            'attr'     => array(
+                'class'       => 'form-control',
+                'placeholder' => 'Composition du bijou'
+            )
         ));
 
         $builder->add('cms', null, array(

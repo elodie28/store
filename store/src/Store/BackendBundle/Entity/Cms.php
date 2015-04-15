@@ -3,6 +3,7 @@
 namespace Store\BackendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert; // user les contraintes pour pouvoir les utiliser dans les entités (création formulaire)
 
 /**
  * Cms
@@ -23,6 +24,15 @@ class Cms
 
     /**
      * @var string
+     * @Assert\NotBlank(
+     *    message = "Le titre ne doit pas être vide"
+     * )
+     * @Assert\Length(
+     *     min = "5",
+     *     max = "150",
+     *     minMessage = "Votre titre doit faire au moins {{ limit }} caractères",
+     *     maxMessage = "Votre titre ne peut pas être plus long que {{ limit }} caractères"
+     * )
      *
      * @ORM\Column(name="title", type="string", length=300, nullable=true)
      */
@@ -30,6 +40,15 @@ class Cms
 
     /**
      * @var string
+     * @Assert\NotBlank(
+     *    message = "Le résumé ne doit pas être vide"
+     * )
+     * @Assert\Length(
+     *     min = "10",
+     *     max = "150",
+     *     minMessage = "Votre résumé doit faire au moins {{ limit }} caractères",
+     *     maxMessage = "Votre résumé ne peut pas être plus long que {{ limit }} caractères"
+     * )
      *
      * @ORM\Column(name="summary", type="text", nullable=true)
      */
@@ -37,6 +56,15 @@ class Cms
 
     /**
      * @var string
+     * @Assert\NotBlank(
+     *    message = "La description ne doit pas être vide"
+     * )
+     * @Assert\Length(
+     *     min = "15",
+     *     max = "150",
+     *     minMessage = "Votre description doit faire au moins {{ limit }} caractères",
+     *     maxMessage = "Votre description ne peut pas être plus longue que {{ limit }} caractères"
+     * )
      *
      * @ORM\Column(name="description", type="text", nullable=true)
      */
@@ -58,6 +86,9 @@ class Cms
 
     /**
      * @var integer
+     * @Assert\Choice(choices = {"0", "1", "2"},
+     *     message = "Choisissez un état valide"
+     * )
      *
      * @ORM\Column(name="state", type="integer", nullable=true)
      */

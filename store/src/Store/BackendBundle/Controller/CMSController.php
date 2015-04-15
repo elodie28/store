@@ -3,8 +3,11 @@
 // L'endroit où je déclare ma class CMSController
 namespace Store\BackendBundle\Controller;
 
-// J'inclus la class Controller de Symfony pour pouvoir hériter de cette class
+// J'inclus la class Controller de Symfony pour pouvoir hériter de cette classe
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Store\BackendBundle\Form\CmsType;
+use Store\BackendBundle\Entity\Cms;
+use Symfony\Component\HttpFoundation\Request;
 
 
 /**
@@ -72,6 +75,51 @@ class CMSController extends Controller {
         $em->flush(); // la fonction flush permet d'envoyer la requête en BDD
 
         return $this->redirectToRoute('store_backend_cms_list'); // redirection vers la liste des CMS
-
     }
+
+
+    /**
+     * Page création d'un CMS
+     * Je récupère l'objet Request qui contient toutes mes données en GET, POST ...
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function newAction(Request $request) {
+
+        // Je crée un nouvel objet entité Cms
+        // À chaque fois que je crée un objet d'une classe, je dois user la classe
+        $cms = new Cms();
+
+        $em = $this->getDoctrine()->getManager(); // Je récupère le manager de Doctrine
+        $jeweler = $em->getRepository('StoreBackendBundle:Jeweler')->find(1); // Je récupère le jeweler numéro 1
+        $cms->setJeweler($jeweler); // J'associe mon jeweler à mon CMS
+
+        // Je crée un formulaire de CMS en l'associant avec mon CMS
+        $form = $this->createForm(new CmsType(), $cms, array(
+            'attr' => array(
+                'method' => 'post',
+                'novalidate' => 'novalidate', //(pour virer la validation HTML5)
+                'action' => $this->generateUrl('store_backend_cms_new') // l'URL de la route new
+                // action de mon formulaire pointe vers cette même action de contrôleur
+            )
+        ));
+
+        // Je fusionne ma requête avec mon formulaire
+        $form->handleRequest($request);
+
+        // Si la totalité de mon formulaire est valide
+        if($form->isValid()) {
+            $em = $this->getDoctrine()->getManager(); // Je récupère le manager de Doctrine
+            $em->persist($cms); // J'enregistre mon objet cms dans Doctrine
+            $em->flush(); // J'envoie ma requête d'insert à ma table cms
+
+            return $this->redirectToRoute('store_backend_cms_list'); // redirection selon la route
+        }
+
+        // createView() est toujours la méthode utilisée pour renvoyer la vue d'un formulaire
+        return $this->render('StoreBackendBundle:CMS:new.html.twig', array(
+            'form' => $form->createView()
+        ));
+    }
+
 }

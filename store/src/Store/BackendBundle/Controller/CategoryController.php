@@ -3,8 +3,11 @@
 // L'endroit où je déclare ma class CategoryController
 namespace Store\BackendBundle\Controller;
 
-// J'inclus la class Controller de Symfony pour pouvoir hériter de cette class
+// J'inclus la class Controller de Symfony pour pouvoir hériter de cette classe
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Store\BackendBundle\Form\CategoryType;
+use Store\BackendBundle\Entity\Category;
+use Symfony\Component\HttpFoundation\Request;
 
 
 /**
@@ -74,6 +77,51 @@ class CategoryController extends Controller {
 
         return $this->redirectToRoute('store_backend_category_list'); // redirection vers la liste des catégories
 
+    }
+
+
+    /**
+     * Page création d'une catégorie
+     * Je récupère l'objet Request qui contient toutes mes données en GET, POST ...
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function newAction(Request $request) {
+
+        // Je crée un nouvel objet entité Category
+        // À chaque fois que je crée un objet d'une classe, je dois user la classe
+        $category = new Category();
+
+        $em = $this->getDoctrine()->getManager(); // Je récupère le manager de Doctrine
+        $jeweler = $em->getRepository('StoreBackendBundle:Jeweler')->find(1); // Je récupère le jeweler numéro 1
+        $category->setJeweler($jeweler); // J'associe mon jeweler à ma catégorie
+
+        // Je crée un formulaire de catégorie en l'associant avec ma catégorie
+        $form = $this->createForm(new CategoryType(), $category, array(
+            'attr' => array(
+                'method' => 'post',
+                'novalidate' => 'novalidate', //(pour virer la validation HTML5)
+                'action' => $this->generateUrl('store_backend_category_new') // l'URL de la route new
+                // action de mon formulaire pointe vers cette même action de contrôleur
+            )
+        ));
+
+        // Je fusionne ma requête avec mon formulaire
+        $form->handleRequest($request);
+
+        // Si la totalité de mon formulaire est valide
+        if($form->isValid()) {
+            $em = $this->getDoctrine()->getManager(); // Je récupère le manager de Doctrine
+            $em->persist($category); // J'enregistre mon objet product dans Doctrine
+            $em->flush(); // J'envoie ma requête d'insert à ma table category
+
+            return $this->redirectToRoute('store_backend_category_list'); // redirection selon la route
+        }
+
+        // createView() est toujours la méthode utilisée pour renvoyer la vue d'un formulaire
+        return $this->render('StoreBackendBundle:Category:new.html.twig', array(
+            'form' => $form->createView()
+        ));
     }
 
 }

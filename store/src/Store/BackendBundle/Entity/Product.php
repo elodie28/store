@@ -3,6 +3,7 @@
 namespace Store\BackendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert; // user les contraintes pour pouvoir les utiliser dans les entités (création formulaire)
 
 /**
  * Product
@@ -23,14 +24,27 @@ class Product
 
     /**
      * @var string
-     *
+     * @Assert\Regex(pattern="/[A-Z]{2}[0-9]{2,}/",
+     *     message = "Le format de la référence n'est pas valide"
+     * )
+     * @Assert\NotBlank(
+     *     message = "La référence ne doit pas être vide"
+     * )
      * @ORM\Column(name="ref", type="string", length=30, nullable=true)
      */
     private $ref;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(
+     *     message = "Le titre ne doit pas être vide"
+     * )
+     * @Assert\Length(
+     *     min = "4",
+     *     max = "150",
+     *     minMessage = "Votre titre doit faire au moins {{ limit }} caractères",
+     *     maxMessage = "Votre titre ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="title", type="string", length=150, nullable=true)
      */
     private $title;
@@ -44,6 +58,15 @@ class Product
 
     /**
      * @var string
+     * @Assert\NotBlank(
+     *     message = "Le résumé ne doit pas être vide"
+     * )
+     * @Assert\Length(
+     *     min = "10",
+     *     max = "500",
+     *     minMessage = "Votre résumé doit faire au moins {{ limit }} caractères",
+     *     maxMessage = "Votre résumé ne peut pas être plus long que {{ limit }} caractères"
+     * )
      *
      * @ORM\Column(name="summary", type="text", nullable=true)
      */
@@ -51,6 +74,15 @@ class Product
 
     /**
      * @var string
+     * @Assert\NotBlank(
+     *     message = "La description ne doit pas être vide"
+     * )
+     * @Assert\Length(
+     *     min = "15",
+     *     max = "500",
+     *     minMessage = "Votre description doit faire au moins {{ limit }} caractères",
+     *     maxMessage = "Votre description ne peut pas être plus longue que {{ limit }} caractères"
+     * )
      *
      * @ORM\Column(name="description", type="text", nullable=true)
      */
@@ -58,6 +90,12 @@ class Product
 
     /**
      * @var string
+     * @Assert\Length(
+     *     min = "5",
+     *     max = "500",
+     *     minMessage = "La composition de votre produit doit faire au moins {{ limit }} caractères",
+     *     maxMessage = "La composition de votre produit ne peut pas être plus longue que {{ limit }} caractères"
+     * )
      *
      * @ORM\Column(name="composition", type="text", nullable=true)
      */
@@ -65,6 +103,15 @@ class Product
 
     /**
      * @var float
+     * @Assert\NotBlank(
+     *     message = "Le prix ne doit pas être vide"
+     * )
+     * @Assert\Range(
+     *      min = 10,
+     *      max = 5000,
+     *      minMessage = "Votre bijou doit avoir la valeur de {{ limit }} € minimum",
+     *      maxMessage = "Votre bijou doit avoir la valeur de {{ limit }} € maximum"
+     * )
      *
      * @ORM\Column(name="price", type="float", precision=10, scale=0, nullable=true)
      */
@@ -72,6 +119,9 @@ class Product
 
     /**
      * @var float
+     * @Assert\Choice(choices = {"5,5", "19,6", "20"},
+     *     message = "Choisissez une taxe valide"
+     * )
      *
      * @ORM\Column(name="taxe", type="float", precision=10, scale=0, nullable=true)
      */
@@ -79,6 +129,15 @@ class Product
 
     /**
      * @var integer
+     * @Assert\NotBlank(
+     *     message = "La quantité ne doit pas être vide"
+     * )
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 200,
+     *      minMessage = "Votre bijou doit avoir une quantité minimum de {{ limit }} unités",
+     *      maxMessage = "Votre bijou doit avoir une quantité maximum de {{ limit }} unités"
+     * )
      *
      * @ORM\Column(name="quantity", type="integer", nullable=true)
      */
@@ -255,7 +314,7 @@ class Product
     private $tag;
 
     /**
-     * Constructor
+     * Constructeur qui initialise les propriétés de mon objet Product
      */
     public function __construct()
     {
@@ -268,6 +327,17 @@ class Product
         $this->supplier = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tag = new \Doctrine\Common\Collections\ArrayCollection();
         $this->image = new \Doctrine\Common\Collections\ArrayCollection();
+
+        // Initialise les propriétés de mon objet Product (formulaire de création d'un nouveau produit)
+        $this->active = true;
+        $this->cover = false;
+        $this->dateActive = new \DateTime('now');
+        $this->taxe = 20;
+        $this->shop = true;
+        $this->quantity = 1;
+        $this->price = 0;
+        $this->dateCreated = new \DateTime('now');
+        $this->dateUpdated = new \DateTime('now');
     }
 
 

@@ -6,6 +6,8 @@ namespace Store\BackendBundle\Controller;
 // J'inclus la class Controller de Symfony pour pouvoir hériter de cette class
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Store\BackendBundle\Form\ProductType;
+use Store\BackendBundle\Entity\Product;
+use Symfony\Component\HttpFoundation\Request;
 
 
 /**
@@ -81,13 +83,47 @@ class ProductController extends Controller {
 
     /**
      * Page création d'un produit
+     * Je récupère l'objet Request qui contient toutes mes données en GET, POST ...
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function newAction() {
+    public function newAction(Request $request) {
 
-        // Je crée un formulaire de produit
-        $form = $this->createForm(new ProductType());
+        // Je crée un nouvel objet entité Product
+        // À chaque fois que je crée un objet d'une classe, je dois user la classe
+        $product = new Product();
 
+        $em = $this->getDoctrine()->getManager(); // Je récupère le manager de Doctrine
+        $jeweler = $em->getRepository('StoreBackendBundle:Jeweler')->find(1); // Je récupère le jeweler numéro 1
+        $product->setJeweler($jeweler); // J'associe mon jeweler à mon produit
+
+        // J'initialise la quantité et le prix de mon produit sauf si l'initialisation se fait dans le constructeur
+        // $product->setQuantity(0);
+        // $product->setPrice(0);
+
+        // Je crée un formulaire de produit en l'associant avec mon produit
+        $form = $this->createForm(new ProductType(), $product, array(
+            'attr' => array(
+                'method' => 'post',
+                'novalidate' => 'novalidate', //(pour virer la validation HTML5)
+                'action' => $this->generateUrl('store_backend_product_new') // l'URL de la route new
+                // action de mon formulaire pointe vers cette même action de contrôleur
+            )
+        ));
+
+        // Je fusionne ma requête avec mon formulaire
+        $form->handleRequest($request);
+
+        // Si la totalité de mon formulaire est valide
+        if($form->isValid()) {
+            $em = $this->getDoctrine()->getManager(); // Je récupère le manager de Doctrine
+            $em->persist($product); // J'enregistre mon objet product dans Doctrine
+            $em->flush(); // J'envoie ma requête d'insert à ma table product
+
+            return $this->redirectToRoute('store_backend_product_list'); // redirection selon la route
+        }
+
+        // createView() est toujours la méthode utilisée pour renvoyer la vue d'un formulaire
         return $this->render('StoreBackendBundle:Product:new.html.twig', array(
             'form' => $form->createView()
         ));

@@ -53,25 +53,24 @@ class CmsType extends AbstractType {
             )
         ));
 
-        $builder->add('image', null, array(
+        $builder->add('image', 'text', array(
             'label'    => 'Image',
             'attr'     => array(
                 'class'       => 'form-control',
-                'placeholder' => 'URL de votre image',
+                'placeholder' => 'http://',
             )
         ));
 
-        $builder->add('dateActive', null, array(
+        $builder->add('dateActive', 'date', array(
             'label'    => 'Date active',
-            'attr'     => array(
-                'class'       => 'form-control',
-            )
+            'pattern' => '{{ day }}-{{ month }}-{{ year }}',
         ));
 
         $builder->add('video', null, array(
             'label'    => 'Vidéo',
             'attr'     => array(
                 'class'       => 'form-control',
+                'placeholder' => '<iframe src = "...">'
             )
         ));
 

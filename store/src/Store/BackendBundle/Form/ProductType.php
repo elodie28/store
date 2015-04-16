@@ -7,6 +7,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Doctrine\ORM\EntityRepository;
+use Store\BackendBundle\Repository\CategoryRepository;
+use Store\BackendBundle\Repository\CmsRepository;
 
 /**
  * Le suffixe Type est obligatoire pour les classes Formulaire
@@ -14,6 +17,22 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  * @package Store\BackendBundle\Form
  */
 class ProductType extends AbstractType {
+
+
+
+    /**
+     * @var $user
+     */
+    protected $user;
+
+    /**
+     * User param
+     * @param int $user
+     */
+    public function __construct($user = null) {
+        $this->user = $user;
+    }
+
 
 
     /**
@@ -48,12 +67,41 @@ class ProductType extends AbstractType {
             )
         ));
 
+
+
         $builder->add('category', null, array(
             'label' => 'Catégorie(s) associée(s)',
             'attr'  => array(
                 'class' => 'form-control'
-            )
+            ),
+            // Méthode numéro 1 pour afficher les catégories d'un jeweler spécifique dans le formulaire
+            'class' => 'StoreBackendBundle:Category',
+            'property' => 'title',
+            'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('c')
+                        ->where('c.jeweler = :user')
+                        ->orderBy('c.title', 'ASC')
+                        ->setParameter('user', $this->user);
+                },
         ));
+
+
+        $builder->add('category', 'entity', array(
+            'label' => 'Catégorie(s) associée(s)',
+            'attr'  => array(
+                'class' => 'form-control'
+            ),
+            // Méthode numéro 2 pour afficher les catégories d'un jeweler spécifique dans le formulaire
+            'class' => 'StoreBackendBundle:Category',
+            'property' => 'title',
+            'multiple' => true, // choix multiple
+            // 'expanded' => true, // checkbox à choix multiple
+            'query_builder' => function(CategoryRepository $er) {
+                   return $er->getCategoryByUserBuilder($this->user);
+                },
+        ));
+
+
 
         $builder->add('summary', null, array(
             'label'    => 'Petit résumé',
@@ -73,7 +121,7 @@ class ProductType extends AbstractType {
             )
         ));
 
-        $builder->add('price', null, array(
+        $builder->add('price', 'money', array(
             'label'    => 'Prix HT en €',
             'required' => true,
             'attr'     => array(
@@ -101,6 +149,11 @@ class ProductType extends AbstractType {
             )
         ));
 
+        $builder->add('dateActive', 'date', array(
+            'label' => 'Date active',
+            'pattern' => '{{ day }}-{{ month }}-{{ year }}',
+        ));
+
         $builder->add('active', null, array(
             'label' => 'Produit activé dans la boutique ?',
             'attr'  => array(
@@ -123,11 +176,19 @@ class ProductType extends AbstractType {
             )
         ));
 
-        $builder->add('cms', null, array(
+        $builder->add('cms', 'entity', array(
             'label' => 'Page(s) associée(s) au produit',
             'attr'  => array(
                 'class' => 'form-control',
-            )
+            ),
+            // Méthode numéro 2 pour afficher les pages cms d'un jeweler spécifique dans le formulaire
+            'class' => 'StoreBackendBundle:Cms',
+            'property' => 'title',
+            'multiple' => true, // choix multiple
+            // 'expanded' => true, // checkbox à choix multiple
+            'query_builder' => function(CmsRepository $er) {
+                    return $er->getCmsByUserBuilder($this->user);
+                },
         ));
 
         $builder->add('supplier', null, array(

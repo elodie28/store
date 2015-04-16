@@ -16,6 +16,13 @@ store_backend_product_view:
         _method: GET
 
 
+# Page Edit a Product
+
+store_backend_product_edit:
+      path: /edit/{id}
+      defaults: { _controller: StoreBackendBundle:Product:edit }
+
+
 # Remove a Product
 
 store_backend_product_remove: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller

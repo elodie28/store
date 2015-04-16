@@ -4,12 +4,18 @@ namespace Store\BackendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert; // user les contraintes pour pouvoir les utiliser dans les entités (création formulaire)
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity; // pour que le champ soit unique dans le formulaire, à lier avec @UniqueEntity dans la class Product
+use Store\BackendBundle\Validator\Constraints as StoreAssert;
+
 
 /**
  * Product
  *
  * @ORM\Table(name="product", indexes={@ORM\Index(name="jeweler_id", columns={"jeweler_id"})})
  * @ORM\Entity(repositoryClass="Store\BackendBundle\Repository\ProductRepository")
+ * @UniqueEntity(fields="ref", message="Votre référence de bijou est déjà utilisée")
+ * @UniqueEntity(fields="title", message="Votre titre de bijou est déjà utilisé")
+ *
  */
 class Product
 {
@@ -61,12 +67,7 @@ class Product
      * @Assert\NotBlank(
      *     message = "Le résumé ne doit pas être vide"
      * )
-     * @Assert\Length(
-     *     min = "10",
-     *     max = "500",
-     *     minMessage = "Votre résumé doit faire au moins {{ limit }} caractères",
-     *     maxMessage = "Votre résumé ne peut pas être plus long que {{ limit }} caractères"
-     * )
+     * @StoreAssert\StripTagLength
      *
      * @ORM\Column(name="summary", type="text", nullable=true)
      */
@@ -77,12 +78,7 @@ class Product
      * @Assert\NotBlank(
      *     message = "La description ne doit pas être vide"
      * )
-     * @Assert\Length(
-     *     min = "15",
-     *     max = "500",
-     *     minMessage = "Votre description doit faire au moins {{ limit }} caractères",
-     *     maxMessage = "Votre description ne peut pas être plus longue que {{ limit }} caractères"
-     * )
+     * @StoreAssert\StripTagLength
      *
      * @ORM\Column(name="description", type="text", nullable=true)
      */
@@ -90,12 +86,7 @@ class Product
 
     /**
      * @var string
-     * @Assert\Length(
-     *     min = "5",
-     *     max = "500",
-     *     minMessage = "La composition de votre produit doit faire au moins {{ limit }} caractères",
-     *     maxMessage = "La composition de votre produit ne peut pas être plus longue que {{ limit }} caractères"
-     * )
+     * @StoreAssert\StripTagLength
      *
      * @ORM\Column(name="composition", type="text", nullable=true)
      */
@@ -241,6 +232,13 @@ class Product
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
+     * @Assert\Count(
+     *      min = "1",
+     *      max = "10",
+     *      minMessage = "Vous devez spécifier au moins une catégorie",
+     *      maxMessage = "Vous ne pouvez pas spécifier plus de {{ limit }} catégories"
+     * )
+     *
      * @ORM\ManyToMany(targetEntity="Category", inversedBy="product")
      * @ORM\JoinTable(name="product_category",
      *   joinColumns={
@@ -255,6 +253,13 @@ class Product
 
     /**
      * @var \Doctrine\Common\Collections\Collection
+     *
+     * @Assert\Count(
+     *      min = "1",
+     *      max = "10",
+     *      minMessage = "Vous devez spécifier au moins une page CMS",
+     *      maxMessage = "Vous ne pouvez pas spécifier plus de {{ limit }} pages CMS"
+     * )
      *
      * @ORM\ManyToMany(targetEntity="Cms", inversedBy="product")
      * @ORM\JoinTable(name="product_cms",

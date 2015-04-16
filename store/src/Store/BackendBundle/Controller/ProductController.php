@@ -102,17 +102,17 @@ class ProductController extends Controller {
         // $product->setPrice(0);
 
         // Je crée un formulaire de produit en l'associant avec mon produit
-        $form = $this->createForm(new ProductType(), $product, array(
+        $form = $this->createForm(new ProductType(1), $product, array(
             'attr' => array(
                 'method' => 'post',
-                'novalidate' => 'novalidate', //(pour virer la validation HTML5)
+                'novalidate' => 'novalidate', //(pour enlever la validation HTML5)
                 'action' => $this->generateUrl('store_backend_product_new') // l'URL de la route new
                 // action de mon formulaire pointe vers cette même action de contrôleur
             )
         ));
 
         // Je fusionne ma requête avec mon formulaire
-        $form->handleRequest($request);
+        $form->handleRequest($request); // le formulaire lis la requête
 
         // Si la totalité de mon formulaire est valide
         if($form->isValid()) {
@@ -121,6 +121,46 @@ class ProductController extends Controller {
             $em->flush(); // J'envoie ma requête d'insert à ma table product
 
             return $this->redirectToRoute('store_backend_product_list'); // redirection selon la route
+        }
+
+        // createView() est toujours la méthode utilisée pour renvoyer la vue d'un formulaire
+        return $this->render('StoreBackendBundle:Product:new.html.twig', array(
+            'form' => $form->createView()
+        ));
+    }
+
+
+
+    /**
+     * Page Édition d'un produit
+     * Je récupère l'objet Request qui contient toutes mes données en GET, POST ...
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function editAction(Request $request, $id) {
+
+        $em = $this->getDoctrine()->getManager();
+        $product = $em->getRepository('StoreBackendBundle:Product')->find(1);
+
+        // Je crée un formulaire de produit en l'associant avec mon produit
+        $form = $this->createForm(new ProductType(1), $product, array(
+            'attr' => array(
+                'method' => 'post',
+                'novalidate' => 'novalidate',
+                'action' => $this->generateUrl('store_backend_product_edit', array(
+                        'id' => $id
+                    ))
+            )
+        ));
+
+        $form->handleRequest($request);
+
+        if($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($product);
+            $em->flush();
+
+            return $this->redirectToRoute('store_backend_product_list');
         }
 
         // createView() est toujours la méthode utilisée pour renvoyer la vue d'un formulaire

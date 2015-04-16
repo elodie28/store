@@ -18,19 +18,47 @@ class CategoryRepository extends EntityRepository {
      */
     public function getCategoryByUser($user = null) { // (paramètre facultatif)
 
-        $query =$this->getEntityManager()
+    //  $query =$this->getEntityManager()
             /* alias */
             /* nom du bundle : nom de l'entité  alias */
             /* alias . nom de l'attribut de l'entité du FROM = : nom d'une variable nommée */
-            ->createQuery(
-                " SELECT c
-                  FROM StoreBackendBundle:Category c
-                  WHERE c.jeweler = :user"
-            )
-            ->setParameter('user', $user); /* 'valeur de la variable nommée :user', $valeur du paramètre  */
+//            ->createQuery(
+//                " SELECT c
+//                  FROM StoreBackendBundle:Category c
+//                  WHERE c.jeweler = :user"
+//            )
+//            ->setParameter('user', $user); /* 'valeur de la variable nommée :user', $valeur du paramètre  */
+
+        /**
+         * J'appelle la méthode getCategoryByUserBuilder()
+         * qui me retourne un objet QueryBuilder
+         * Je le transforme ensuite en objet Query
+         */
+        $query = $this->getCategoryByUserBuilder($user)->getQuery();
 
         return $query->getResult();
     }
+
+
+    /**
+     * DQL Syntax with Form
+     * @param $user
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    public function getCategoryByUserBuilder($user) {
+
+        /**
+         * Le formulaire ProductType attend un objet createQueryBuilder()
+         * et non pas l'objet createQuery()
+         */
+        $queryBuilder = $this->createQueryBuilder('c')
+            ->where('c.jeweler = :user')
+            ->orderBy('c.title', 'ASC')
+            ->setParameter('user', $user);
+
+        return $queryBuilder;
+    }
+
 
 
     /**
@@ -85,7 +113,5 @@ class CategoryRepository extends EntityRepository {
 
         return $query->getResult();
     }
-
-
 
 }

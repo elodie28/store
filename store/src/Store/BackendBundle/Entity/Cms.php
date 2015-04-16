@@ -4,12 +4,14 @@ namespace Store\BackendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert; // user les contraintes pour pouvoir les utiliser dans les entités (création formulaire)
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity; // pour que le champ soit unique dans le formulaire, à lier avec @UniqueEntity dans la class Cms
 
 /**
  * Cms
  *
  * @ORM\Table(name="cms", indexes={@ORM\Index(name="jeweler_id", columns={"jeweler_id"})})
  * @ORM\Entity(repositoryClass="Store\BackendBundle\Repository\CmsRepository")
+ * @UniqueEntity(fields="title", message="Votre titre de CMS est déjà utilisé")
  */
 class Cms
 {
@@ -72,6 +74,9 @@ class Cms
 
     /**
      * @var string
+     * @Assert\Url(
+          message = "Veuillez entrer une adresse URL valide"
+     * )
      *
      * @ORM\Column(name="image", type="string", length=300, nullable=true)
      */
@@ -79,6 +84,9 @@ class Cms
 
     /**
      * @var string
+     * @Assert\Regex(pattern="/^<iframe src=.*>$/",
+     *     message = "Le format de la vidéo n'est pas valide"
+     * )
      *
      * @ORM\Column(name="video", type="string", length=300, nullable=true)
      */
@@ -146,13 +154,19 @@ class Cms
      */
     private $product;
 
+
+
     /**
-     * Constructor
+     * Constructeur qui initialise les propriétés de mon objet Product
      */
     public function __construct()
     {
         $this->product = new \Doctrine\Common\Collections\ArrayCollection();
+
+        // Initialise les propriétés de mon objet Product (formulaire de création d'un nouveau produit)
+        $this->dateActive = new \DateTime('now');
     }
+
 
 
     /**

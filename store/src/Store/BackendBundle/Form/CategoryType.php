@@ -50,11 +50,6 @@ class CategoryType extends AbstractType {
             )
         ));
 
-        $builder->add('envoyer', 'submit', array(
-            'attr'  => array(
-                'class' => 'btn btn-primary btn-sm'
-            )
-        ));
     }
 
 

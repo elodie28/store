@@ -1,0 +1,112 @@
+{# Création du formulaire avec label, input et messages d'erreur #}
+
+    {# Sort tout le formulaire #}
+    {# {{ form(form) }} #}
+
+    {# Permet de décomposer chaque champ pour pouvoir les customiser #}
+
+    {#Crée une balise ouvrante <form>#}
+    {{ form_start(form) }}
+
+    {# Méthode 1 #}
+    {# {{ form_label(form.ref) }} Sort juste le label d'un champ #}
+    {# {{ form_widget(form.ref) }} Sort juste l'input de mon champ #}
+    {# {{ form_errors(form.ref) }} Sort juste les erreurs de mon champ #}
+
+    {# Méthode 2 #}
+    {# Fonction qui sort le label + le widget + les errors en une seule fois #}
+
+<div class="row">
+    <div class="col-md-6">
+        {{ form_row(form.ref) }}
+    </div>
+    <div class="col-md-6">
+        {{ form_row(form.title) }}
+    </div>
+</div>
+
+<br/>
+
+<div class="row">
+    <div class="col-md-3">
+        {{ form_row(form.summary) }}
+    </div>
+    <div class="col-md-3">
+        {{ form_row(form.description) }}
+    </div>
+    <div class="col-md-3">
+        {{ form_row(form.composition) }}
+    </div>
+    <div class="col-md-3">
+        {{ form_row(form.file) }}
+
+        {% if app.request.attributes.get('_route') == "store_backend_edit" %}
+            <img src="{{ asset('uploads/product/'~ product.imagepresentation ) }}"/>
+        {% else %}
+        {% endif %}
+
+    </div>
+</div>
+
+<br/>
+
+<div class="row">
+    <div class="col-md-3">
+        {{ form_row(form.price) }}
+    </div>
+    <div class="col-md-3">
+        {{ form_row(form.quantity) }}
+    </div>
+    <div class="col-md-3">
+        {{ form_row(form.taxe) }}
+    </div>
+    <div class="col-md-3">
+        {{ form_row(form.dateActive) }}
+    </div>
+</div>
+
+<br/>
+
+<hr/>
+
+<div class="row">
+    <div class="col-md-6">
+        {{ form_row(form.active) }}
+    </div>
+    <div class="col-md-6">
+        {{ form_row(form.cover) }}
+    </div>
+</div>
+
+<br/>
+
+<div class="row">
+    <div class="col-md-6">
+        {{ form_row(form.category) }}
+    </div>
+    <div class="col-md-6">
+        {{ form_row(form.cms) }}
+    </div>
+</div>
+
+<br/>
+
+<div class="row">
+    <div class="col-md-6">
+        {{ form_row(form.supplier) }}
+    </div>
+    <div class="col-md-6">
+        {{ form_row(form.tag) }}
+    </div>
+</div>
+
+<br/>
+
+{# Bouton envoyer #}
+    {{  form_widget(form.envoyer, {'attr': {'class': 'pull-right btn btn-lg btn-primary'}}) }}
+
+{# ATTENTION : token  à ne pas oublier -> clef de sécurité du formulaire #}
+    {{ form_widget(form._token) }}
+
+    {# Crée une balise fermante </form> #}
+    {{ form_end(form, {'render_rest': false}) }}

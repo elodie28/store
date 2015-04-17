@@ -5,6 +5,7 @@ store_backend_category_list: # Nom de la root -> Nom du namespace _ nom du bundl
       defaults: { _controller: StoreBackendBundle:Category:list } # NomduBundle:NomduController:Nomdel'Action
 
 
+
 # Page View a Category
 
 store_backend_category_view:
@@ -16,6 +17,23 @@ store_backend_category_view:
           _method: GET
 
 
+
+# Page New a Category
+
+store_backend_category_new: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
+      path:     /new # chemin vers l'URI
+      defaults: { _controller: StoreBackendBundle:Category:new } # NomduBundle:NomduController:Nomdel'Action
+
+
+
+# Page Edit a Category
+
+store_backend_category_edit:
+      path: /edit/{id}
+      defaults: { _controller: StoreBackendBundle:Category:edit }
+
+
+
 # Remove a Category
 
 store_backend_category_remove: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
@@ -23,8 +41,3 @@ store_backend_category_remove: # Nom de la route -> Nom du namespace _ nom du bu
       defaults: { _controller: StoreBackendBundle:Category:remove } # NomduBundle:NomduController:Nomdel'Action
 
 
-# Page New a Category
-
-store_backend_category_new: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
-      path:     /new # chemin vers l'URI
-      defaults: { _controller: StoreBackendBundle:Category:new } # NomduBundle:NomduController:Nomdel'Action

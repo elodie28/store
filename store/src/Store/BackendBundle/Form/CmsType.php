@@ -63,7 +63,12 @@ class CmsType extends AbstractType {
 
         $builder->add('dateActive', 'date', array(
             'label'    => 'Date active',
-            'pattern' => '{{ day }}-{{ month }}-{{ year }}',
+            //'pattern' => '{{ day }}-{{ month }}-{{ year }}',
+            'format' => 'dd/MM/yyyy',
+            'widget' => 'single_text',
+            'attr'  => array(
+                'class' => 'date form-control'
+            )
         ));
 
         $builder->add('video', null, array(
@@ -84,11 +89,6 @@ class CmsType extends AbstractType {
             )
         ));
 
-        $builder->add('envoyer', 'submit', array(
-            'attr'  => array(
-                'class' => 'btn btn-primary btn-sm'
-            )
-        ));
     }
 
 

@@ -16,6 +16,8 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class CMSController extends Controller {
 
+
+
     /**
      * Page liste des CMS
      * @return \Symfony\Component\HttpFoundation\Response
@@ -33,6 +35,8 @@ class CMSController extends Controller {
             'cms' => $cms
         ));
     }
+
+
 
     /**
      * * Page view d'un seul CMS
@@ -58,25 +62,6 @@ class CMSController extends Controller {
     }
 
 
-    /**
-     * Action de suppression
-     * @param $id
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
-    public function removeAction($id) {
-
-        // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
-        $em = $this->getDoctrine()->getManager();
-
-        // Je récupère 1 CMS avec la méthode find()
-        $cms = $em->getRepository('StoreBackendBundle:Cms')->find($id); // NomduBundle:Nomdel'entité
-
-        $em->remove($cms); // supprime le CMS
-        $em->flush(); // la fonction flush permet d'envoyer la requête en BDD
-
-        return $this->redirectToRoute('store_backend_cms_list'); // redirection vers la liste des CMS
-    }
-
 
     /**
      * Page création d'un CMS
@@ -96,11 +81,22 @@ class CMSController extends Controller {
 
         // Je crée un formulaire de CMS en l'associant avec mon CMS
         $form = $this->createForm(new CmsType(), $cms, array(
+            'validation_groups' => 'new',
             'attr' => array(
                 'method' => 'post',
                 'novalidate' => 'novalidate', //(pour virer la validation HTML5)
                 'action' => $this->generateUrl('store_backend_cms_new') // l'URL de la route new
                 // action de mon formulaire pointe vers cette même action de contrôleur
+            )
+        ));
+
+        // Je récupère le bouton submit du formulaire dans le fichier CmsType et je le place dans le contrôleur pour pouvoir le personnaliser
+        // J'utilise $form au lieu de $builder et j'ajoute un label pour personnaliser le texte du bouton
+        // Je n'aurai pas pu le personnaliser sans le mettre dans le contrôleur car tout le formulaire est dans une vue centrale (partielle)
+        $form->add('envoyer', 'submit', array(
+            'label' => 'Ajouter une nouvelle page CMS',
+            'attr'  => array(
+                'class' => 'btn btn-primary btn-sm'
             )
         ));
 
@@ -113,6 +109,12 @@ class CMSController extends Controller {
             $em->persist($cms); // J'enregistre mon objet cms dans Doctrine
             $em->flush(); // J'envoie ma requête d'insert à ma table cms
 
+            // Permet d'écrire un message flash avec pour clef "success" et un message de confirmation
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                'Votre page CMS a bien été créée'
+            );
+
             return $this->redirectToRoute('store_backend_cms_list'); // redirection selon la route
         }
 
@@ -120,6 +122,90 @@ class CMSController extends Controller {
         return $this->render('StoreBackendBundle:CMS:new.html.twig', array(
             'form' => $form->createView()
         ));
+    }
+
+
+
+    /**
+     * Page Édition d'une page CMS
+     * Je récupère l'objet Request qui contient toutes mes données en GET, POST ...
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function editAction(Request $request, $id) {
+
+        $em = $this->getDoctrine()->getManager();
+        $cms = $em->getRepository('StoreBackendBundle:Cms')->find($id);
+
+        // Je crée un formulaire de page CMS en l'associant avec ma page CMS
+        $form = $this->createForm(new CmsType(1), $cms, array(
+            'validation_groups' => 'edit',
+            'attr' => array(
+                'method' => 'post',
+                'novalidate' => 'novalidate',
+                'action' => $this->generateUrl('store_backend_cms_edit', array(
+                        'id' => $id
+                    ))
+            )
+        ));
+
+        // Je récupère le bouton submit du formulaire dans le fichier CmsType et je le place dans le contrôleur pour pouvoir le personnaliser
+        // J'utilise $form au lieu de $builder et j'ajoute un label pour personnaliser le texte du bouton
+        // Je n'aurai pas pu le personnaliser sans le mettre dans le contrôleur car tout le formulaire est dans une vue centrale (partielle)
+        $form->add('envoyer', 'submit', array(
+            'label' => 'Éditer la page CMS',
+            'attr'  => array(
+                'class' => 'btn btn-primary btn-sm'
+            )
+        ));
+
+        $form->handleRequest($request);
+
+        if($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($cms);
+            $em->flush();
+
+            // Permet d'écrire un message flash avec pour clef "success" et un message de confirmation
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                'Votre page CMS a bien été mise à jour'
+            );
+
+            return $this->redirectToRoute('store_backend_cms_list');
+        }
+
+        // createView() est toujours la méthode utilisée pour renvoyer la vue d'un formulaire
+        return $this->render('StoreBackendBundle:CMS:edit.html.twig', array(
+            'form' => $form->createView()
+        ));
+    }
+
+
+
+    /**
+     * Action de suppression
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function removeAction($id) {
+
+        // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
+        $em = $this->getDoctrine()->getManager();
+
+        // Je récupère 1 CMS avec la méthode find()
+        $cms = $em->getRepository('StoreBackendBundle:Cms')->find($id); // NomduBundle:Nomdel'entité
+
+        $em->remove($cms); // supprime le CMS
+        $em->flush(); // la fonction flush permet d'envoyer la requête en BDD
+
+        // Permet d'écrire un message flash avec pour clef "success" et un message de confirmation
+        $this->get('session')->getFlashBag()->add(
+            'success',
+            'Votre page CMS a bien été supprimée'
+        );
+
+        return $this->redirectToRoute('store_backend_cms_list'); // redirection vers la liste des CMS
     }
 
 }

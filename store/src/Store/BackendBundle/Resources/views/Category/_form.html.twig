@@ -1,0 +1,28 @@
+{#Crée une balise ouvrante <form>#}
+    {{ form_start(form) }}
+
+<div class="row">
+    <div class="col-md-6">
+        {{ form_row(form.title) }}
+    </div>
+    <div class="col-md-6">
+        {{ form_row(form.position) }}
+    </div>
+</div>
+
+<br/>
+
+<div class="row">
+    {{ form_row(form.description) }}
+</div>
+
+<br/>
+
+{# Bouton envoyer #}
+    {{  form_widget(form.envoyer, {'attr': {'class': 'pull-right btn btn-lg btn-primary'}}) }}
+
+{# ATTENTION : token  à ne pas oublier -> clef de sécurité du formulaire #}
+    {{ form_widget(form._token) }}
+
+    {# Crée une balise fermante </form> #}
+    {{ form_end(form, {'render_rest': false}) }}

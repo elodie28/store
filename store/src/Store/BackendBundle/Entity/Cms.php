@@ -5,13 +5,14 @@ namespace Store\BackendBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert; // user les contraintes pour pouvoir les utiliser dans les entités (création formulaire)
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity; // pour que le champ soit unique dans le formulaire, à lier avec @UniqueEntity dans la class Cms
+use Store\BackendBundle\Validator\Constraints as StoreAssert;
 
 /**
  * Cms
  *
  * @ORM\Table(name="cms", indexes={@ORM\Index(name="jeweler_id", columns={"jeweler_id"})})
  * @ORM\Entity(repositoryClass="Store\BackendBundle\Repository\CmsRepository")
- * @UniqueEntity(fields="title", message="Votre titre de CMS est déjà utilisé")
+ * @UniqueEntity(fields="title", message="Votre titre de CMS est déjà utilisé", groups = {"new"})
  */
 class Cms
 {
@@ -27,13 +28,15 @@ class Cms
     /**
      * @var string
      * @Assert\NotBlank(
-     *    message = "Le titre ne doit pas être vide"
+     *     message = "Le titre ne doit pas être vide",
+     *     groups = {"new", "edit"}
      * )
      * @Assert\Length(
      *     min = "5",
      *     max = "150",
      *     minMessage = "Votre titre doit faire au moins {{ limit }} caractères",
-     *     maxMessage = "Votre titre ne peut pas être plus long que {{ limit }} caractères"
+     *     maxMessage = "Votre titre ne peut pas être plus long que {{ limit }} caractères",
+     *     groups = {"new", "edit"}
      * )
      *
      * @ORM\Column(name="title", type="string", length=300, nullable=true)
@@ -43,13 +46,18 @@ class Cms
     /**
      * @var string
      * @Assert\NotBlank(
-     *    message = "Le résumé ne doit pas être vide"
+     *     message = "Le résumé ne doit pas être vide",
+     *     groups = {"new", "edit"}
      * )
      * @Assert\Length(
      *     min = "10",
      *     max = "150",
      *     minMessage = "Votre résumé doit faire au moins {{ limit }} caractères",
-     *     maxMessage = "Votre résumé ne peut pas être plus long que {{ limit }} caractères"
+     *     maxMessage = "Votre résumé ne peut pas être plus long que {{ limit }} caractères",
+     *     groups = {"new", "edit"}
+     * )
+     * @StoreAssert\StripTagLength(
+     *     groups = {"new", "edit"}
      * )
      *
      * @ORM\Column(name="summary", type="text", nullable=true)
@@ -59,13 +67,18 @@ class Cms
     /**
      * @var string
      * @Assert\NotBlank(
-     *    message = "La description ne doit pas être vide"
+     *     message = "La description ne doit pas être vide",
+     *     groups = {"new", "edit"}
      * )
      * @Assert\Length(
      *     min = "15",
      *     max = "150",
      *     minMessage = "Votre description doit faire au moins {{ limit }} caractères",
-     *     maxMessage = "Votre description ne peut pas être plus longue que {{ limit }} caractères"
+     *     maxMessage = "Votre description ne peut pas être plus longue que {{ limit }} caractères",
+     *     groups = {"new", "edit"}
+     * )
+     * @StoreAssert\StripTagLength(
+     *     groups = {"new", "edit"}
      * )
      *
      * @ORM\Column(name="description", type="text", nullable=true)
@@ -75,7 +88,8 @@ class Cms
     /**
      * @var string
      * @Assert\Url(
-          message = "Veuillez entrer une adresse URL valide"
+           message = "Veuillez entrer une adresse URL valide",
+     *     groups = {"new", "edit"}
      * )
      *
      * @ORM\Column(name="image", type="string", length=300, nullable=true)
@@ -85,7 +99,8 @@ class Cms
     /**
      * @var string
      * @Assert\Regex(pattern="/^<iframe src=.*>$/",
-     *     message = "Le format de la vidéo n'est pas valide"
+     *     message = "Le format de la vidéo n'est pas valide",
+     *     groups = {"new", "edit"}
      * )
      *
      * @ORM\Column(name="video", type="string", length=300, nullable=true)
@@ -95,7 +110,8 @@ class Cms
     /**
      * @var integer
      * @Assert\Choice(choices = {"0", "1", "2"},
-     *     message = "Choisissez un état valide"
+     *     message = "Choisissez un état valide",
+     *     groups = {"new", "edit"}
      * )
      *
      * @ORM\Column(name="state", type="integer", nullable=true)

@@ -28,6 +28,9 @@
 
         <div id="content-wrapper">
 
+            {# J'inclus ma vue des messages flash #}
+            {{ include('StoreBackendBundle:Partial:flashdatas.html.twig') }}
+
             {#Titre de la page#}
             <div class="page-header">
 
@@ -76,7 +79,13 @@
 
     <script type="text/javascript">
         init.push(function () {
-            // Javascript code here
+
+            // Utilisation du plugin datepicker (pour afficher les dates actives dans les formulaires)
+            $('.date').datepicker({ dateFormat: 'dd/mm/yy' });
+
+            // Utilisation du plugin select 2 (pour afficher les choix multiples dans les fomrulaires)
+            $("select[multiple]").select2();
+
         })
         window.PixelAdmin.start(init);
     </script>

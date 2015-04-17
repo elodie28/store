@@ -40,8 +40,8 @@
     <div class="col-md-3">
         {{ form_row(form.file) }}
 
-        {% if app.request.attributes.get('_route') == "store_backend_edit" %}
-            <img src="{{ asset('uploads/product/'~ product.imagepresentation ) }}"/>
+        {% if app.request.attributes.get('_route') == "store_backend_product_edit" %}
+            <img class="col-md-1" src="{{ asset('uploads/product/'~ product.imagepresentation ) }}"/>
         {% else %}
         {% endif %}
 

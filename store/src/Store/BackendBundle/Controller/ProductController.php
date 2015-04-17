@@ -181,6 +181,9 @@ class ProductController extends Controller {
         $form->handleRequest($request);
 
         if($form->isValid()) {
+
+            $product->upload();
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush();
@@ -196,7 +199,8 @@ class ProductController extends Controller {
 
         // createView() est toujours la méthode utilisée pour renvoyer la vue d'un formulaire
         return $this->render('StoreBackendBundle:Product:edit.html.twig', array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'product' => $product
         ));
     }
 

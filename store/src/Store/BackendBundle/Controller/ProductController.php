@@ -258,6 +258,8 @@ class ProductController extends Controller {
     }
 
 
+    
+
     /**
      * Action de désactivation d'un produit dans la page liste des produits
      * @param $id

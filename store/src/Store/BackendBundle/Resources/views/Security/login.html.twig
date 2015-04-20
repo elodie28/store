@@ -1,0 +1,65 @@
+{% extends "StoreBackendBundle::layout.html.twig" %}
+
+
+{% block titlepage %}
+
+    <i class="fa fa-power-off"></i> Authentification
+
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="row">
+
+        <div class="col-md-5">
+
+            {% if error is not empty %}
+                <div class="alert alert-danger alert-dark">
+                    <i class="fa fa-warning"></i> Mauvais Username / E-mail / Mot de passe
+                </div>
+            {% endif %}
+
+            <form action="{{ path('store_backend_security_login_check') }}" method="post" class="panel form-horizontal">
+
+                <div class="panel-heading">
+                    <span class="panel-title"><i class="fa fa-power-off"></i> Connectez-vous à votre compte </span>
+                </div>
+
+                <div class="panel-body">
+
+                    <div class="row form-group">
+
+                        <label class="col-sm-4 control-label"> Email | Username </label>
+
+                        <div class="col-sm-8">
+                            <input type="text" autocomplete="off" required="required"
+                                   name="_username" id="_username" class="form-control">
+                        </div>
+
+                    </div>
+
+                    <div class="row form-group">
+
+                        <label class="col-sm-4 control-label"> Password </label>
+
+                        <div class="col-sm-8">
+                            <input type="password" autocomplete="off" required="required"
+                                   name="_password" id="_password" class="form-control">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="panel-footer text-right">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-power-off"></i> Connexion à ma boutique </button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -16,6 +16,8 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class ProductController extends Controller {
 
+
+
     /**
      * Page liste des produits
      * @return \Symfony\Component\HttpFoundation\Response
@@ -34,6 +36,7 @@ class ProductController extends Controller {
             'products' => $products
         ));
     }
+
 
 
     /**
@@ -60,29 +63,9 @@ class ProductController extends Controller {
     }
 
 
-    /**
-     * Action de suppression
-     * @param $id
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
-    public function removeAction($id) {
-
-        // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
-        $em = $this->getDoctrine()->getManager();
-
-        // Je récupère 1 produit avec la méthode find()
-        $product = $em->getRepository('StoreBackendBundle:Product')->find($id); // NomduBundle:Nomdel'entité
-
-        $em->remove($product); // supprime le produit
-        $em->flush(); // la fonction flush permet d'envoyer la requête en BDD
-
-        return $this->redirectToRoute('store_backend_product_list'); // redirection vers la liste des produits
-
-    }
-
 
     /**
-     * Page création d'un produit
+     * Page Création d'un produit
      * Je récupère l'objet Request qui contient toutes mes données en GET, POST ...
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -103,6 +86,7 @@ class ProductController extends Controller {
 
         // Je crée un formulaire de produit en l'associant avec mon produit
         $form = $this->createForm(new ProductType(1), $product, array(
+            'validation_groups' => 'new',
             'attr' => array(
                 'method' => 'post',
                 'novalidate' => 'novalidate', //(pour enlever la validation HTML5)
@@ -111,14 +95,44 @@ class ProductController extends Controller {
             )
         ));
 
+        // Je récupère le bouton submit du formulaire dans le fichier ProductType et je le place dans le contrôleur pour pouvoir le personnaliser
+        // J'utilise $form au lieu de $builder et j'ajoute un label pour personnaliser le texte du bouton
+        // Je n'aurai pas pu le personnaliser sans le mettre dans le contrôleur car tout le formulaire est dans une vue centrale (partielle)
+        $form->add('envoyer', 'submit', array(
+            'label' => 'Ajouter un nouveau produit',
+            'attr'  => array(
+                'class' => 'btn btn-primary btn-sm'
+            )
+        ));
+
         // Je fusionne ma requête avec mon formulaire
         $form->handleRequest($request); // le formulaire lis la requête
 
         // Si la totalité de mon formulaire est valide
         if($form->isValid()) {
+
+            //J'upload mon fichier en faisant appel à la méthode upload si mon formulaire est valide
+            $product->upload();
+
             $em = $this->getDoctrine()->getManager(); // Je récupère le manager de Doctrine
             $em->persist($product); // J'enregistre mon objet product dans Doctrine
             $em->flush(); // J'envoie ma requête d'insert à ma table product
+
+            // Permet d'écrire un message flash avec pour clef "success" et un message de confirmation
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                'Votre produit a bien été créé'
+            );
+
+            // Je récupère la quantité du produit enregistré
+            $quantity = $product->getQuantity();
+
+            if($quantity == 1) {
+                $this->get('session')->getFlashBag()->add(
+                    'warning',
+                    "Ce bijou n'existe qu'en un seul exemplaire"
+                );
+            }
 
             return $this->redirectToRoute('store_backend_product_list'); // redirection selon la route
         }
@@ -140,10 +154,11 @@ class ProductController extends Controller {
     public function editAction(Request $request, $id) {
 
         $em = $this->getDoctrine()->getManager();
-        $product = $em->getRepository('StoreBackendBundle:Product')->find(1);
+        $product = $em->getRepository('StoreBackendBundle:Product')->find($id);
 
         // Je crée un formulaire de produit en l'associant avec mon produit
         $form = $this->createForm(new ProductType(1), $product, array(
+            'validation_groups' => 'edit',
             'attr' => array(
                 'method' => 'post',
                 'novalidate' => 'novalidate',
@@ -153,20 +168,166 @@ class ProductController extends Controller {
             )
         ));
 
+        // Je récupère le bouton submit du formulaire dans le fichier ProductType et je le place dans le contrôleur pour pouvoir le personnaliser
+        // J'utilise $form au lieu de $builder et j'ajoute un label pour personnaliser le texte du bouton
+        // Je n'aurai pas pu le personnaliser sans le mettre dans le contrôleur car tout le formulaire est dans une vue centrale (partielle)
+        $form->add('envoyer', 'submit', array(
+            'label' => 'Éditer le produit',
+            'attr'  => array(
+                'class' => 'btn btn-primary btn-sm'
+            )
+        ));
+
         $form->handleRequest($request);
 
         if($form->isValid()) {
+
+            $product->upload();
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush();
+
+            // Permet d'écrire un message flash avec pour clef "success" et un message de confirmation
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                'Votre produit a bien été mis à jour'
+            );
 
             return $this->redirectToRoute('store_backend_product_list');
         }
 
         // createView() est toujours la méthode utilisée pour renvoyer la vue d'un formulaire
         return $this->render('StoreBackendBundle:Product:edit.html.twig', array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'product' => $product
         ));
+    }
+
+
+
+    /**
+     * Action de suppression
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function removeAction($id) {
+
+        // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
+        $em = $this->getDoctrine()->getManager();
+
+        // Je récupère 1 produit avec la méthode find()
+        $product = $em->getRepository('StoreBackendBundle:Product')->find($id); // NomduBundle:Nomdel'entité
+
+        $em->remove($product); // supprime le produit
+        $em->flush(); // la fonction flush permet d'envoyer la requête en BDD
+
+        // Permet d'écrire un message flash avec pour clef "success" et un message de confirmation
+        $this->get('session')->getFlashBag()->add(
+            'success',
+            'Votre produit a bien été supprimé'
+        );
+
+        return $this->redirectToRoute('store_backend_product_list'); // redirection vers la liste des produits
+
+    }
+
+
+
+    /**
+     * Action d'activation d'un produit dans la page liste des produits
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function activateAction(Product $id, $action){
+
+        // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
+        $em = $this->getDoctrine()->getManager();
+
+        $id->setActive($action); // J'associe l'action activate à l'id de mon produit
+        $em->persist($id); // J'enregistre l'id du produit dans Doctrine
+        $em->flush(); // J'envoie ma requête  à ma table product
+
+        // Permet d'écrire un message flash avec pour clef "info" et un message de confirmation
+        $this->get('session')->getFlashBag()->add(
+            'info',
+            'Votre produit a bien été désactivé'
+        );
+
+        return $this->redirectToRoute('store_backend_product_list'); // redirection vers la liste des produits
+    }
+
+
+    /**
+     * Action de désactivation d'un produit dans la page liste des produits
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function desactivateAction(Product $id, $action){
+
+        // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
+        $em = $this->getDoctrine()->getManager();
+
+        $id->setActive($action); // J'associe l'action desactivate à l'id de mon produit
+        $em->persist($id); // J'enregistre l'id du produit dans Doctrine
+        $em->flush(); // J'envoie ma requête  à ma table product
+
+        // Permet d'écrire un message flash avec pour clef "info" et un message de confirmation
+        $this->get('session')->getFlashBag()->add(
+            'info',
+            'Votre produit a bien été activé'
+        );
+
+        return $this->redirectToRoute('store_backend_product_list'); // redirection vers la liste des produits
+    }
+
+
+
+    /**
+     * Action de mettre un produit en couverture dans la page liste des produits
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function coverAction(Product $id, $action){
+
+        // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
+        $em = $this->getDoctrine()->getManager();
+
+        $id->setCover($action); // J'associe l'action cover à l'id de mon produit
+        $em->persist($id); // J'enregistre l'id du produit dans Doctrine
+        $em->flush(); // J'envoie ma requête  à ma table product
+
+        // Permet d'écrire un message flash avec pour clef "info" et un message de confirmation
+        $this->get('session')->getFlashBag()->add(
+            'info',
+            'Vous avez bien retiré la mise en avant de votre produit'
+        );
+
+        return $this->redirectToRoute('store_backend_product_list'); // redirection vers la liste des produits
+    }
+
+
+    /**
+     * Action de retirer un produit mis en couverture dans la page liste des produits
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function nocoverAction(Product $id, $action){
+
+        // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
+        $em = $this->getDoctrine()->getManager();
+
+        $id->setCover($action); // J'associe l'action nocover à l'id de mon produit
+        $em->persist($id); // J'enregistre l'id du produit dans Doctrine
+        $em->flush(); // J'envoie ma requête  à ma table product
+
+        // Permet d'écrire un message flash avec pour clef "info" et un message de confirmation
+        $this->get('session')->getFlashBag()->add(
+            'info',
+            'Vous avez bien mis en avant votre produit'
+        );
+
+        return $this->redirectToRoute('store_backend_product_list'); // redirection vers la liste des produits
     }
 
 }

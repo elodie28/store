@@ -1,8 +1,27 @@
 {% extends "StoreBackendBundle::layout.html.twig" %}
 
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script>
+        init.push(function() {
+            $('[data-toggle="popover"]').popover({
+                trigger: "hover"
+            })
+        });
+    </script>
+
+{% endblock %}
+
+
+
 {% block titlepage %}
     <i class="menu-icon fa fa-th"></i> Liste des catégories
 {% endblock %}
+
+
 
 {% block content %}
 
@@ -23,6 +42,7 @@
             <tr>
                 <th>#</th>
                 <th>Titre</th>
+                <th>Image</th>
                 <th class="col-md-4">Description</th>
                 <th>Nombre de produits associés</th>
                 <th>État</th>
@@ -39,14 +59,27 @@
 
                 <td> {{ category.id }} </td>
                 <td> <a href="{{ path('store_backend_category_view', {'name' : category.title , 'id': category.id} ) }}"> {{ category.title }} </a> </td>
+                <td>
+                    {% if category.image != NULL %}
+                        <img src="{{ asset('uploads/category/'~ category.image )}}"/>
+                    {% else %}
+                    {% endif %}
+                </td>
                 <td> {{ category.description }} </td>
                 <td> <span class="badge badge-info"> {{ category.product|length }} </span> produits associés </td>
 
-                <td> {% if category.active == 0 %}
-                        <i class="fa fa-times"></i> Désactivée
-                    {% else %}
-                        <i class="fa fa-check"></i> Activée
-                    {% endif %}
+                <td>
+                {% if category.active == 1 %}
+                    <a href="{{ path('store_backend_category_activate', {'id': category.id, 'action' : 0} ) }}"
+                       data-container="body" data-toggle="popover" data-placement="top" data-content="Désactiver la catégorie" class="btn btn-success">
+                        <span class="fa fa-check"> </span>
+                    </a>
+                {% else %}
+                    <a href="{{ path('store_backend_category_desactivate', {'id': category.id, 'action' : 1} ) }}"
+                       data-container="body" data-toggle="popover" data-placement="top" data-content="Activer la catégorie" class="btn btn-danger">
+                        <span class="fa fa-times"> </span>
+                    </a>
+                 {% endif %}
                 </td>
 
                 <td>
@@ -54,7 +87,7 @@
                         <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-cogs"></i> Actions <i class="fa fa-caret-down"></i></button>
                         <ul class="dropdown-menu">
                             <li><a href="{{ path('store_backend_category_view', {'name': category.title , 'id': category.id} ) }}"> <i class="fa fa-search"></i> Voir</a></li>
-                            <li><a href="#"> <i class="fa fa-pencil"></i> Éditer</a></li>
+                            <li><a href="{{ path('store_backend_category_edit', {'id': category.id} ) }}"> <i class="fa fa-pencil"></i> Éditer</a></li>
                             <li><a href="{{ path('store_backend_category_remove', {'id': category.id} ) }}"> <i class="fa fa-times"></i> Supprimer</a></li>
                         </ul>
                     </div>

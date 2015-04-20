@@ -5,13 +5,14 @@ namespace Store\BackendBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert; // user les contraintes pour pouvoir les utiliser dans les entités (création formulaire)
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity; // pour que le champ soit unique dans le formulaire, à lier avec @UniqueEntity dans la class Cms
+use Store\BackendBundle\Validator\Constraints as StoreAssert;
 
 /**
  * Cms
  *
  * @ORM\Table(name="cms", indexes={@ORM\Index(name="jeweler_id", columns={"jeweler_id"})})
  * @ORM\Entity(repositoryClass="Store\BackendBundle\Repository\CmsRepository")
- * @UniqueEntity(fields="title", message="Votre titre de CMS est déjà utilisé")
+ * @UniqueEntity(fields="title", message="Votre titre de CMS est déjà utilisé", groups = {"new"})
  */
 class Cms
 {
@@ -27,13 +28,15 @@ class Cms
     /**
      * @var string
      * @Assert\NotBlank(
-     *    message = "Le titre ne doit pas être vide"
+     *     message = "Le titre ne doit pas être vide",
+     *     groups = {"new", "edit"}
      * )
      * @Assert\Length(
      *     min = "5",
      *     max = "150",
      *     minMessage = "Votre titre doit faire au moins {{ limit }} caractères",
-     *     maxMessage = "Votre titre ne peut pas être plus long que {{ limit }} caractères"
+     *     maxMessage = "Votre titre ne peut pas être plus long que {{ limit }} caractères",
+     *     groups = {"new", "edit"}
      * )
      *
      * @ORM\Column(name="title", type="string", length=300, nullable=true)
@@ -43,13 +46,11 @@ class Cms
     /**
      * @var string
      * @Assert\NotBlank(
-     *    message = "Le résumé ne doit pas être vide"
+     *     message = "Le résumé ne doit pas être vide",
+     *     groups = {"new", "edit"}
      * )
-     * @Assert\Length(
-     *     min = "10",
-     *     max = "150",
-     *     minMessage = "Votre résumé doit faire au moins {{ limit }} caractères",
-     *     maxMessage = "Votre résumé ne peut pas être plus long que {{ limit }} caractères"
+     * @StoreAssert\StripTagLength(
+     *     groups = {"new", "edit"}
      * )
      *
      * @ORM\Column(name="summary", type="text", nullable=true)
@@ -59,13 +60,11 @@ class Cms
     /**
      * @var string
      * @Assert\NotBlank(
-     *    message = "La description ne doit pas être vide"
+     *     message = "La description ne doit pas être vide",
+     *     groups = {"new", "edit"}
      * )
-     * @Assert\Length(
-     *     min = "15",
-     *     max = "150",
-     *     minMessage = "Votre description doit faire au moins {{ limit }} caractères",
-     *     maxMessage = "Votre description ne peut pas être plus longue que {{ limit }} caractères"
+     * @StoreAssert\StripTagLength(
+     *     groups = {"new", "edit"}
      * )
      *
      * @ORM\Column(name="description", type="text", nullable=true)
@@ -75,17 +74,35 @@ class Cms
     /**
      * @var string
      * @Assert\Url(
-          message = "Veuillez entrer une adresse URL valide"
+           message = "Veuillez entrer une adresse URL valide",
+     *     groups = {"new", "edit"}
      * )
      *
-     * @ORM\Column(name="image", type="string", length=300, nullable=true)
+     * @ORM\Column(name="image", type="string", nullable=true)
      */
     private $image;
 
     /**
+     * Attribut qui représentera mon fichier uploadé
+     * @Assert\Image(
+     *     minWidth = 50,
+     *     maxWidth = 3000,
+     *     minHeight = 50,
+     *     maxHeight = 2500,
+     *     minWidthMessage = "La largeur de l'image est trop petite",
+     *     maxWidthMessage = "La largeur de l'image est trop grande",
+     *     minHeightMessage = "La hauteur de l'image est trop petite",
+     *     maxHeightMessage = "La hauteur de l'image est trop grande",
+     *     groups = {"new", "edit"}
+     * )
+     */
+    protected $file;
+
+    /**
      * @var string
      * @Assert\Regex(pattern="/^<iframe src=.*>$/",
-     *     message = "Le format de la vidéo n'est pas valide"
+     *     message = "Le format de la vidéo n'est pas valide",
+     *     groups = {"new", "edit"}
      * )
      *
      * @ORM\Column(name="video", type="string", length=300, nullable=true)
@@ -95,7 +112,8 @@ class Cms
     /**
      * @var integer
      * @Assert\Choice(choices = {"0", "1", "2"},
-     *     message = "Choisissez un état valide"
+     *     message = "Choisissez un état valide",
+     *     groups = {"new", "edit"}
      * )
      *
      * @ORM\Column(name="state", type="integer", nullable=true)
@@ -487,6 +505,89 @@ class Cms
     {
         return $this->product;
     }
+
+
+
+    /**
+     * Retourne le chemin absolu de mon image
+     * @return null|string
+     */
+    public function getAbsolutePath()
+    {
+        return null === $this->image ? null : $this->getUploadRootDir().'/'.$this->image;
+    }
+
+    /**
+     * Retourne le chemin de l'image depuis le dossier web
+     * @return null|string
+     */
+    public function getWebPath()
+    {
+        return null === $this->image ? null : $this->getUploadDir().'/'.$this->image;
+    }
+
+    /**
+     * Retourne le chemin de l'image depuis l'entité
+     * @return string
+     */
+    protected function getUploadRootDir()
+    {
+        // le chemin absolu du répertoire où les documents uploadés doivent être sauvegardés
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    /**
+     * Retourne le dossier d'upload et le sous-dossier cms
+     * @return string
+     */
+    protected function getUploadDir()
+    {
+        // on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
+        // le document/image dans la vue.
+        return 'uploads/cms';
+    }
+
+
+
+    public function upload()
+    {
+        // la propriété « file » peut être vide si le champ n'est pas requis
+        if (null === $this->file) {
+            return;
+        }
+
+        // utilisez le nom de fichier original ici mais
+        // vous devriez « l'assainir » pour au moins éviter
+        // quelconques problèmes de sécurité
+
+        // On déplace le fichier uploadé dans le bon répertoire uploads/cms
+        $this->file->move($this->getUploadRootDir(), $this->file->getClientOriginalName());
+
+        // Je stocke le nom du fichier uploadé dans mon attribut image
+        $this->image = $this->file->getClientOriginalName();
+
+        // « nettoie » la propriété « file » comme vous n'en aurez plus besoin
+        $this->file = null;
+    }
+
+
+
+    /**
+     * @param mixed $file
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
 
 
     /**

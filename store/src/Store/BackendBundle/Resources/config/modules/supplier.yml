@@ -20,3 +20,17 @@ store_backend_supplier_view:
 store_backend_supplier_remove: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
       path:     /remove/{id} # chemin vers l'URI
       defaults: { _controller: StoreBackendBundle:Supplier:remove } # NomduBundle:NomduController:Nomdel'Action
+
+
+
+# Activate a Supplier
+
+store_backend_supplier_activate: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
+      path: /activate/{id}/{action} # chemin vers l'URI
+      defaults: { _controller: StoreBackendBundle:Supplier:activate } # NomduBundle:NomduController:Nomdel'Action
+
+# Desactivate a Supplier
+
+store_backend_supplier_desactivate: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
+      path: /desactivate/{id}/{action} # chemin vers l'URI
+      defaults: { _controller: StoreBackendBundle:Supplier:desactivate } # NomduBundle:NomduController:Nomdel'Action

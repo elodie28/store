@@ -1,10 +1,30 @@
 {% extends "StoreBackendBundle::layout.html.twig" %}
 
+
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script>
+        init.push(function() {
+            $('[data-toggle="popover"]').popover({
+                trigger: "hover"
+            })
+        });
+    </script>
+
+{% endblock %}
+
+
+
 {% block titlepage %}
 
     <i class="menu-icon fa fa-bookmark"></i> Liste des produits
 
 {% endblock %}
+
+
 
 {% block content %}
 
@@ -46,19 +66,41 @@
 
                 <td> {{ product.id }} </td>
                 <td> <a href="{{ path('store_backend_product_view', {'name' : product.title , 'id': product.id} ) }}"> {{ product.title }} </a> </td>
-                <td> {% for value in product.image %}
-                        <img src="{{ value.imageThumb }}"/>
-                     {% endfor %}</td>
+                <td>
+                    {% if product.imagepresentation != NULL %}
+                        <img src="{{ asset('uploads/product/'~ product.imagepresentation )}}"/>
+                    {% else %}
+                    {% endif %}
+                </td>
                 <td> {{ product.ref }} </td>
                 <td> {{ product.summary }} </td>
                 <td> {{ product.price }} €</td>
                 <td> {{ product.quantity }} quantités </td>
                 <td>
-                    {% if product.active == 0 %}
-                        <i class="fa fa-times"></i> Désactivé
-                    {% else %}
-                        <i class="fa fa-check"></i> Activé
-                    {% endif %}
+                {% if product.active == 1 %}
+                    <a href="{{ path('store_backend_product_activate', {'id': product.id, 'action' : 0} ) }}"
+                       data-container="body" data-toggle="popover" data-placement="top" data-content="Désactiver le produit" class="btn btn-success">
+                        <span class="fa fa-check"> </span>
+                    </a>
+                {% else %}
+                    <a href="{{ path('store_backend_product_desactivate', {'id': product.id, 'action' : 1} ) }}"
+                       data-container="body" data-toggle="popover" data-placement="top" data-content="Activer le produit" class="btn btn-danger">
+                        <span class="fa fa-times"> </span>
+                    </a>
+                {% endif %}
+
+                {% if product.cover == 1 %}
+                    <a href="{{ path('store_backend_product_cover', {'id': product.id, 'action' : 0} ) }}"
+                       data-container="body" data-toggle="popover" data-placement="bottom" data-content="Retirer la mise en avant du produit" class="btn btn-warning">
+                        <span class="fa fa-eye"> </span>
+                    </a>
+                {% else %}
+                    <a href="{{ path('store_backend_product_nocover', {'id': product.id, 'action' : 1} ) }}"
+                       data-container="body" data-toggle="popover" data-placement="bottom" data-content="Mettre en avant le produit" class="btn">
+                        <span class="fa fa-eye-slash"> </span>
+                    </a>
+                {% endif %}
+
                 </td>
                 <td> {{ product.dateCreated|date('d/m/Y') }} </td>
 

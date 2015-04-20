@@ -1,8 +1,28 @@
 {% extends "StoreBackendBundle::layout.html.twig" %}
 
-{% block titlepage %}
-    <i class="menu-icon fa fa-pencil"></i> Pages CMS
+
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script>
+        init.push(function() {
+            $('[data-toggle="popover"]').popover({
+                trigger: "hover"
+            })
+        });
+    </script>
+
 {% endblock %}
+
+
+
+{% block titlepage %}
+    <i class="menu-icon fa fa-pencil"></i> Liste des pages CMS
+{% endblock %}
+
+
 
 {% block content %}
 
@@ -22,6 +42,7 @@
             <tr>
                 <th>#</th>
                 <th>Titre</th>
+                <th>Image</th>
                 <th class="col-md-4">Résumé</th>
                 <th>État</th>
                 <th>Nombre de produits associés</th>
@@ -40,13 +61,27 @@
 
                 <td> {{ cms.id }} </td>
                 <td> <a href="{{ path('store_backend_cms_view', {'name' : cms.title , 'id': cms.id} ) }}"> {{ cms.title }} </td>
+
+                <td>
+                    {% if cms.image != NULL %}
+                        <img src="{{ asset('uploads/cms/'~ cms.image )}}"/>
+                    {% else %}
+                    {% endif %}
+                </td>
+
                 <td> {{ cms.summary }} </td>
 
                 <td>
-                    {% if cms.active == 0 %}
-                        <i class="fa fa-times"></i> Désactivé
+                    {% if cms.active == 1 %}
+                        <a href="{{ path('store_backend_cms_activate', {'id': cms.id, 'action' : 0} ) }}"
+                           data-container="body" data-toggle="popover" data-placement="top" data-content="Désactiver la page CMS" class="btn btn-success">
+                            <span class="fa fa-check"> </span>
+                        </a>
                     {% else %}
-                        <i class="fa fa-check"></i> Activé
+                        <a href="{{ path('store_backend_cms_desactivate', {'id': cms.id, 'action' : 1} ) }}"
+                           data-container="body" data-toggle="popover" data-placement="top" data-content="Activer la page CMS" class="btn btn-danger">
+                            <span class="fa fa-times"> </span>
+                        </a>
                     {% endif %}
                 </td>
 
@@ -59,7 +94,7 @@
                         <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-cogs"></i> Actions <i class="fa fa-caret-down"></i></button>
                         <ul class="dropdown-menu">
                             <li><a href="{{ path('store_backend_cms_view', {'name' : cms.title , 'id': cms.id} ) }}"> <i class="fa fa-search"></i> Voir</a></li>
-                            <li><a href="#"> <i class="fa fa-pencil"></i> Éditer</a></li>
+                            <li><a href="{{ path('store_backend_cms_edit', {'id': cms.id} ) }}"> <i class="fa fa-pencil"></i> Éditer</a></li>
                             <li><a href="{{ path('store_backend_cms_remove', {'id': cms.id} ) }}"> <i class="fa fa-times"></i> Supprimer</a></li>
                         </ul>
                     </div>

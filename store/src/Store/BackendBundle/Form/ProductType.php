@@ -26,6 +26,7 @@ class ProductType extends AbstractType {
     protected $user;
 
     /**
+     * On crée un constructeur pour récupérer des paramètres (ici l'utilisateur)
      * User param
      * @param int $user
      */
@@ -64,6 +65,16 @@ class ProductType extends AbstractType {
                 'class'       => 'form-control',
                 'placeholder' => 'AAXX',
                 'pattern'     => '[A-Z]{2}[0-9]{2,}'
+            )
+        ));
+
+        $builder->add('file', 'file', array(
+            'label'    => 'Image de présentation',
+            'required' => false,
+            'attr'     => array(
+                'class' => 'form-control',
+                'accept' => 'image/*',
+                'capture' => 'capture'
             )
         ));
 
@@ -151,7 +162,12 @@ class ProductType extends AbstractType {
 
         $builder->add('dateActive', 'date', array(
             'label' => 'Date active',
-            'pattern' => '{{ day }}-{{ month }}-{{ year }}',
+            //'pattern' => '{{ day }}-{{ month }}-{{ year }}',
+            'format' => 'dd/MM/yyyy',
+            'widget' => 'single_text',
+            'attr'  => array(
+                'class' => 'date form-control'
+            )
         ));
 
         $builder->add('active', null, array(
@@ -202,12 +218,6 @@ class ProductType extends AbstractType {
             'label' => 'Tag(s) associé(s) au produit',
             'attr'  => array(
                 'class' => 'form-control',
-            )
-        ));
-
-        $builder->add('envoyer', 'submit', array(
-            'attr'  => array(
-            'class' => 'btn btn-primary btn-sm'
             )
         ));
 

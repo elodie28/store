@@ -32,6 +32,24 @@ class CategoryType extends AbstractType {
             )
         ));
 
+        $builder->add('position', null, array(
+            'label'    => "Ordre d'affichage",
+            'required' => true,
+            'attr'     => array(
+                'class'       => 'form-control',
+            )
+        ));
+
+        $builder->add('file', 'file', array(
+            'label'    => 'Image de ma catégorie',
+            'required' => false,
+            'attr'     => array(
+                'class' => 'form-control',
+                'accept' => 'image/*',
+                'capture' => 'capture'
+            )
+        ));
+
         $builder->add('description', null, array(
             'label'    => 'Description de ma catégorie',
             'required' => true,
@@ -42,19 +60,6 @@ class CategoryType extends AbstractType {
             )
         ));
 
-        $builder->add('position', null, array(
-            'label'    => "Ordre d'affichage",
-            'required' => true,
-            'attr'     => array(
-                'class'       => 'form-control',
-            )
-        ));
-
-        $builder->add('envoyer', 'submit', array(
-            'attr'  => array(
-                'class' => 'btn btn-primary btn-sm'
-            )
-        ));
     }
 
 

@@ -1,0 +1,41 @@
+{% extends "StoreBackendBundle::layout.html.twig" %}
+
+
+{% block javascripts %}
+
+    {{ parent() }} {# on appelle la méthode parent pour éviter d'écraser #}
+
+    <script type="text/javascript">
+        init.push(function () {
+
+            $('textarea').summernote({
+                height: 200,
+                tabsize: 2,
+                codemirror: {
+                    theme: 'monokai'
+                }
+            });
+        });
+
+    </script>
+
+{% endblock %}
+
+
+{% block titlepage %}
+
+    <i class="fa fa-pencil"></i> Édition de la page CMS
+
+{% endblock %}
+
+
+{% block content %}
+
+
+    {# Le formulaire d'édition de la page CMS se situe dans une vue partielle ... #}
+    {# ... dans le fichier _form.html.twig dans le dossier CMS #}
+
+    {{ include('StoreBackendBundle:CMS:_form.html.twig') }}
+
+
+{% endblock %}

@@ -13,8 +13,8 @@ use Store\BackendBundle\Validator\Constraints as StoreAssert;
  *
  * @ORM\Table(name="product", indexes={@ORM\Index(name="jeweler_id", columns={"jeweler_id"})})
  * @ORM\Entity(repositoryClass="Store\BackendBundle\Repository\ProductRepository")
- * @UniqueEntity(fields="ref", message="Votre référence de bijou est déjà utilisée")
- * @UniqueEntity(fields="title", message="Votre titre de bijou est déjà utilisé")
+ * @UniqueEntity(fields="ref", message="Votre référence de bijou est déjà utilisée", groups = {"new"})
+ * @UniqueEntity(fields="title", message="Votre titre de bijou est déjà utilisé", groups = {"new"})
  *
  */
 class Product
@@ -31,10 +31,12 @@ class Product
     /**
      * @var string
      * @Assert\Regex(pattern="/[A-Z]{2}[0-9]{2,}/",
-     *     message = "Le format de la référence n'est pas valide"
+     *     message = "Le format de la référence n'est pas valide",
+     *     groups = {"new", "edit"}
      * )
      * @Assert\NotBlank(
-     *     message = "La référence ne doit pas être vide"
+     *     message = "La référence ne doit pas être vide",
+     *     groups={"new", "edit"}
      * )
      * @ORM\Column(name="ref", type="string", length=30, nullable=true)
      */
@@ -43,17 +45,41 @@ class Product
     /**
      * @var string
      * @Assert\NotBlank(
-     *     message = "Le titre ne doit pas être vide"
+     *     message = "Le titre ne doit pas être vide",
+     *     groups = {"new", "edit"}
      * )
      * @Assert\Length(
      *     min = "4",
      *     max = "150",
      *     minMessage = "Votre titre doit faire au moins {{ limit }} caractères",
-     *     maxMessage = "Votre titre ne peut pas être plus long que {{ limit }} caractères"
+     *     maxMessage = "Votre titre ne peut pas être plus long que {{ limit }} caractères",
+     *     groups = {"new", "edit"}
      * )
      * @ORM\Column(name="title", type="string", length=150, nullable=true)
      */
     private $title;
+
+    /**
+     * @var string
+     * @ORM\Column(name="imagepresentation", type="string", nullable=true)
+     */
+    private $imagepresentation;
+
+    /**
+     * Attribut qui représentera mon fichier uploadé
+     * @Assert\Image(
+     *     minWidth = 50,
+     *     maxWidth = 3000,
+     *     minHeight = 50,
+     *     maxHeight = 2500,
+     *     minWidthMessage = "La largeur de l'image est trop petite",
+     *     maxWidthMessage = "La largeur de l'image est trop grande",
+     *     minHeightMessage = "La hauteur de l'image est trop petite",
+     *     maxHeightMessage = "La hauteur de l'image est trop grande",
+     *     groups = {"new", "edit"}
+     * )
+     */
+    protected $file;
 
     /**
      *
@@ -65,9 +91,12 @@ class Product
     /**
      * @var string
      * @Assert\NotBlank(
-     *     message = "Le résumé ne doit pas être vide"
+     *     message = "Le résumé ne doit pas être vide",
+     *     groups = {"new", "edit"}
      * )
-     * @StoreAssert\StripTagLength
+     * @StoreAssert\StripTagLength(
+     *     groups = {"new", "edit"}
+     * )
      *
      * @ORM\Column(name="summary", type="text", nullable=true)
      */
@@ -76,9 +105,12 @@ class Product
     /**
      * @var string
      * @Assert\NotBlank(
-     *     message = "La description ne doit pas être vide"
+     *     message = "La description ne doit pas être vide",
+     *     groups = {"new", "edit"}
      * )
-     * @StoreAssert\StripTagLength
+     * @StoreAssert\StripTagLength(
+     *     groups = {"new", "edit"}
+     * )
      *
      * @ORM\Column(name="description", type="text", nullable=true)
      */
@@ -86,7 +118,9 @@ class Product
 
     /**
      * @var string
-     * @StoreAssert\StripTagLength
+     * @StoreAssert\StripTagLength(
+     *     groups = {"new", "edit"}
+     * )
      *
      * @ORM\Column(name="composition", type="text", nullable=true)
      */
@@ -95,13 +129,15 @@ class Product
     /**
      * @var float
      * @Assert\NotBlank(
-     *     message = "Le prix ne doit pas être vide"
+     *     message = "Le prix ne doit pas être vide",
+     *     groups = {"new", "edit"}
      * )
      * @Assert\Range(
-     *      min = 10,
-     *      max = 5000,
-     *      minMessage = "Votre bijou doit avoir la valeur de {{ limit }} € minimum",
-     *      maxMessage = "Votre bijou doit avoir la valeur de {{ limit }} € maximum"
+     *     min = 10,
+     *     max = 5000,
+     *     minMessage = "Votre bijou doit avoir la valeur de {{ limit }} € minimum",
+     *     maxMessage = "Votre bijou doit avoir la valeur de {{ limit }} € maximum",
+     *     groups = {"new", "edit"}
      * )
      *
      * @ORM\Column(name="price", type="float", precision=10, scale=0, nullable=true)
@@ -111,7 +147,8 @@ class Product
     /**
      * @var float
      * @Assert\Choice(choices = {"5,5", "19,6", "20"},
-     *     message = "Choisissez une taxe valide"
+     *     message = "Choisissez une taxe valide",
+     *     groups = {"new", "edit"}
      * )
      *
      * @ORM\Column(name="taxe", type="float", precision=10, scale=0, nullable=true)
@@ -121,13 +158,15 @@ class Product
     /**
      * @var integer
      * @Assert\NotBlank(
-     *     message = "La quantité ne doit pas être vide"
+     *     message = "La quantité ne doit pas être vide",
+     *     groups = {"new", "edit"}
      * )
      * @Assert\Range(
-     *      min = 1,
-     *      max = 200,
-     *      minMessage = "Votre bijou doit avoir une quantité minimum de {{ limit }} unités",
-     *      maxMessage = "Votre bijou doit avoir une quantité maximum de {{ limit }} unités"
+     *     min = 1,
+     *     max = 200,
+     *     minMessage = "Votre bijou doit avoir une quantité minimum de {{ limit }} unités",
+     *     maxMessage = "Votre bijou doit avoir une quantité maximum de {{ limit }} unités",
+     *     groups = {"new", "edit"}
      * )
      *
      * @ORM\Column(name="quantity", type="integer", nullable=true)
@@ -233,10 +272,11 @@ class Product
      * @var \Doctrine\Common\Collections\Collection
      *
      * @Assert\Count(
-     *      min = "1",
-     *      max = "10",
-     *      minMessage = "Vous devez spécifier au moins une catégorie",
-     *      maxMessage = "Vous ne pouvez pas spécifier plus de {{ limit }} catégories"
+     *     min = "1",
+     *     max = "10",
+     *     minMessage = "Vous devez spécifier au moins une catégorie",
+     *     maxMessage = "Vous ne pouvez pas spécifier plus de {{ limit }} catégories",
+     *     groups = {"new", "edit"}
      * )
      *
      * @ORM\ManyToMany(targetEntity="Category", inversedBy="product")
@@ -255,10 +295,11 @@ class Product
      * @var \Doctrine\Common\Collections\Collection
      *
      * @Assert\Count(
-     *      min = "1",
-     *      max = "10",
-     *      minMessage = "Vous devez spécifier au moins une page CMS",
-     *      maxMessage = "Vous ne pouvez pas spécifier plus de {{ limit }} pages CMS"
+     *     min = "1",
+     *     max = "10",
+     *     minMessage = "Vous devez spécifier au moins une page CMS",
+     *     maxMessage = "Vous ne pouvez pas spécifier plus de {{ limit }} pages CMS",
+     *     groups = {"new", "edit"}
      * )
      *
      * @ORM\ManyToMany(targetEntity="Cms", inversedBy="product")
@@ -305,6 +346,14 @@ class Product
 
     /**
      * @var \Doctrine\Common\Collections\Collection
+     *
+     * @Assert\Count(
+     *     min = "1",
+     *     max = "20",
+     *     minMessage = "Vous devez spécifier au moins un tag associé",
+     *     maxMessage = "Vous ne pouvez pas spécifier plus de {{ limit }} tags associés",
+     *     groups = {"edit"}
+     * )
      *
      * @ORM\ManyToMany(targetEntity="Tag", inversedBy="product")
      * @ORM\JoinTable(name="product_tag",
@@ -1027,6 +1076,110 @@ class Product
         return $this->image;
     }
 
+    /**
+     * Set imagepresentation
+     *
+     * @param string $imagepresentation
+     * @return Product
+     */
+    public function setImagepresentation($imagepresentation)
+    {
+        $this->imagepresentation = $imagepresentation;
+
+        return $this;
+    }
+
+    /**
+     * Get imagepresentation
+     *
+     * @return string
+     */
+    public function getImagepresentation()
+    {
+        return $this->imagepresentation;
+    }
+
+
+
+    /**
+     * Retourne le chemin absolu de mon image
+     * @return null|string
+     */
+    public function getAbsolutePath()
+    {
+        return null === $this->imagepresentation ? null : $this->getUploadRootDir().'/'.$this->imagepresentation;
+    }
+
+    /**
+     * Retourne le chemin de l'image depuis le dossier web
+     * @return null|string
+     */
+    public function getWebPath()
+    {
+        return null === $this->imagepresentation ? null : $this->getUploadDir().'/'.$this->imagepresentation;
+    }
+
+    /**
+     * Retourne le chemin de l'image depuis l'entité
+     * @return string
+     */
+    protected function getUploadRootDir()
+    {
+        // le chemin absolu du répertoire où les documents uploadés doivent être sauvegardés
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    /**
+     * Retourne le dossier d'upload et le sous-dossier product
+     * @return string
+     */
+    protected function getUploadDir()
+    {
+        // on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
+        // le document/image dans la vue.
+        return 'uploads/product';
+    }
+
+
+    public function upload()
+    {
+        // la propriété « file » peut être vide si le champ n'est pas requis
+        if (null === $this->file) {
+            return;
+        }
+
+        // utilisez le nom de fichier original ici mais
+        // vous devriez « l'assainir » pour au moins éviter
+        // quelconques problèmes de sécurité
+
+        // On déplace le fichier uploadé dans le bon répertoire uploads/product
+        $this->file->move($this->getUploadRootDir(), $this->file->getClientOriginalName());
+
+        // Je stocke le nom du fichier uploadé dans mon attribut imagepresentation
+        $this->imagepresentation = $this->file->getClientOriginalName();
+
+        // « nettoie » la propriété « file » comme vous n'en aurez plus besoin
+        $this->file = null;
+    }
+
+
+    /**
+     * @param mixed $file
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+
 
     /**
      * Retourne le titre
@@ -1035,6 +1188,5 @@ class Product
     public function __toString() {
         return $this->title;
     }
-
 
 }

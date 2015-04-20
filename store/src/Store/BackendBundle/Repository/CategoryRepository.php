@@ -51,7 +51,7 @@ class CategoryRepository extends EntityRepository {
          * Le formulaire ProductType attend un objet createQueryBuilder()
          * et non pas l'objet createQuery()
          */
-        $queryBuilder = $this->createQueryBuilder('c')
+        $queryBuilder = $this->createQueryBuilder('c') // 'c' est le paramètre directement sous forme d'alias
             ->where('c.jeweler = :user')
             ->orderBy('c.title', 'ASC')
             ->setParameter('user', $user);

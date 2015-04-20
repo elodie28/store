@@ -5,6 +5,7 @@ store_backend_product_list: # Nom de la route -> Nom du namespace _ nom du bundl
       defaults: { _controller: StoreBackendBundle:Product:list } # NomduBundle:NomduController:Nomdel'Action
 
 
+
 # Page View a Product
 
 store_backend_product_view:
@@ -16,11 +17,21 @@ store_backend_product_view:
         _method: GET
 
 
+
+# Page New a Product
+
+store_backend_product_new: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
+      path:     /new # chemin vers l'URI
+      defaults: { _controller: StoreBackendBundle:Product:new } # NomduBundle:NomduController:Nomdel'Action
+
+
+
 # Page Edit a Product
 
 store_backend_product_edit:
       path: /edit/{id}
       defaults: { _controller: StoreBackendBundle:Product:edit }
+
 
 
 # Remove a Product
@@ -30,8 +41,31 @@ store_backend_product_remove: # Nom de la route -> Nom du namespace _ nom du bun
       defaults: { _controller: StoreBackendBundle:Product:remove } # NomduBundle:NomduController:Nomdel'Action
 
 
-# Page New a Product
 
-store_backend_product_new: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
-      path:     /new # chemin vers l'URI
-      defaults: { _controller: StoreBackendBundle:Product:new } # NomduBundle:NomduController:Nomdel'Action
+# Activate a Product
+
+store_backend_product_activate: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
+      path: /activate/{id}/{action} # chemin vers l'URI
+      defaults: { _controller: StoreBackendBundle:Product:activate } # NomduBundle:NomduController:Nomdel'Action
+
+# Desactivate a Product
+
+store_backend_product_desactivate: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
+      path: /desactivate/{id}/{action} # chemin vers l'URI
+      defaults: { _controller: StoreBackendBundle:Product:desactivate } # NomduBundle:NomduController:Nomdel'Action
+
+
+
+# Put a Poduct on Cover page
+
+store_backend_product_cover: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
+      path: /cover/{id}/{action} # chemin vers l'URI
+      defaults: { _controller: StoreBackendBundle:Product:cover } # NomduBundle:NomduController:Nomdel'Action
+
+# Don't put a Product on Cover page
+
+store_backend_product_nocover: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
+      path: /nocover/{id}/{action} # chemin vers l'URI
+      defaults: { _controller: StoreBackendBundle:Product:nocover } # NomduBundle:NomduController:Nomdel'Action
+
+

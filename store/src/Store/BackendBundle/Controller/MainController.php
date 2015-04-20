@@ -54,6 +54,12 @@ class MainController extends Controller {
 
         $catpop = $em->getRepository('StoreBackendBundle:Category')->getCategoryWithProductsByUser(1);
 
+        $lastmess = $em->getRepository('StoreBackendBundle:Message')->getLastMessByUser(1);
+
+        $lastbusiness = $em->getRepository('StoreBackendBundle:Business')->getLastBusinessByUser(1);
+
+        $detailsjeweler = $em->getRepository('StoreBackendBundle:Jeweler')->getAllDetailsByUser(1);
+
         // Je retourne la vue index contenue dans le dossier Main de mon bundle StorebackendBundle
         return $this->render('StoreBackendBundle:Main:index.html.twig', array(
             'nbprod' => $nbprod,
@@ -71,7 +77,10 @@ class MainController extends Controller {
             'lastcomval' => $lastcomval,
             'lastcominact' => $lastcominact,
             'lastorders' => $lastorders,
-            'catpop' => $catpop
+            'catpop' => $catpop,
+            'lastmess' => $lastmess,
+            'lastbusiness' => $lastbusiness,
+            'detailsjeweler' => $detailsjeweler
         ));
     }
 }

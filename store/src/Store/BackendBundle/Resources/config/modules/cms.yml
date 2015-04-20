@@ -5,6 +5,7 @@ store_backend_cms_list: # Nom de la route -> Nom du namespace _ nom du bundle _ 
       defaults: { _controller: StoreBackendBundle:CMS:list } # NomduBundle:NomduController:Nomdel'Action
 
 
+
 # Page View a CMS
 
 store_backend_cms_view:
@@ -15,6 +16,23 @@ store_backend_cms_view:
         _method: GET
 
 
+
+# Page New a CMS
+
+store_backend_cms_new: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
+      path:     /new # chemin vers l'URI
+      defaults: { _controller: StoreBackendBundle:CMS:new } # NomduBundle:NomduController:Nomdel'Action
+
+
+
+# Page Edit a Product
+
+store_backend_cms_edit:
+      path: /edit/{id}
+      defaults: { _controller: StoreBackendBundle:CMS:edit }
+
+
+
 # Remove a CMS
 
 store_backend_cms_remove: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
@@ -22,8 +40,15 @@ store_backend_cms_remove: # Nom de la route -> Nom du namespace _ nom du bundle 
       defaults: { _controller: StoreBackendBundle:CMS:remove } # NomduBundle:NomduController:Nomdel'Action
 
 
-# Page New a CMS
 
-store_backend_cms_new: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
-      path:     /new # chemin vers l'URI
-      defaults: { _controller: StoreBackendBundle:CMS:new } # NomduBundle:NomduController:Nomdel'Action
+# Activate a CMS
+
+store_backend_cms_activate: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
+      path: /activate/{id}/{action} # chemin vers l'URI
+      defaults: { _controller: StoreBackendBundle:CMS:activate } # NomduBundle:NomduController:Nomdel'Action
+
+# Desactivate a CMS
+
+store_backend_cms_desactivate: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
+      path: /desactivate/{id}/{action} # chemin vers l'URI
+      defaults: { _controller: StoreBackendBundle:CMS:desactivate } # NomduBundle:NomduController:Nomdel'Action

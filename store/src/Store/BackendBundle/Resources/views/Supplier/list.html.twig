@@ -1,10 +1,30 @@
 {% extends "StoreBackendBundle::layout.html.twig" %}
 
+
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script>
+        init.push(function() {
+            $('[data-toggle="popover"]').popover({
+                trigger: "hover"
+            })
+        });
+    </script>
+
+{% endblock %}
+
+
+
 {% block titlepage %}
 
     <i class="menu-icon fa fa-truck"></i> Liste des fournisseurs
 
 {% endblock %}
+
+
 
 {% block content %}
 
@@ -38,10 +58,16 @@
                 <td> <img src="{{ supplier.image }}"/> </td>
                 <td> {{ supplier.dateCreated|date('d/m/Y') }} </td>
                 <td>
-                    {% if supplier.active == 0 %}
-                        <i class="fa fa-times"></i> Désactivé
+                    {% if supplier.active == 1 %}
+                        <a href="{{ path('store_backend_supplier_activate', {'id': supplier.id, 'action' : 0} ) }}"
+                           data-container="body" data-toggle="popover" data-placement="top" data-content="Désactiver le fournisseur" class="btn btn-success">
+                            <span class="fa fa-check"> </span>
+                        </a>
                     {% else %}
-                        <i class="fa fa-check"></i> Activé
+                        <a href="{{ path('store_backend_supplier_desactivate', {'id': supplier.id, 'action' : 1} ) }}"
+                           data-container="body" data-toggle="popover" data-placement="top" data-content="Activer le fournisseur" class="btn btn-danger">
+                            <span class="fa fa-times"> </span>
+                        </a>
                     {% endif %}
                 </td>
                 <td> <span class="badge badge-info"> {{ supplier.product|length }} </span> produits associés </td>

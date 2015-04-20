@@ -232,4 +232,102 @@ class ProductController extends Controller {
 
     }
 
+
+
+    /**
+     * Action d'activation d'un produit dans la page liste des produits
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function activateAction(Product $id, $action){
+
+        // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
+        $em = $this->getDoctrine()->getManager();
+
+        $id->setActive($action); // J'associe l'action activate à l'id de mon produit
+        $em->persist($id); // J'enregistre l'id du produit dans Doctrine
+        $em->flush(); // J'envoie ma requête  à ma table product
+
+        // Permet d'écrire un message flash avec pour clef "info" et un message de confirmation
+        $this->get('session')->getFlashBag()->add(
+            'info',
+            'Votre produit a bien été désactivé'
+        );
+
+        return $this->redirectToRoute('store_backend_product_list'); // redirection vers la liste des produits
+    }
+
+
+    /**
+     * Action de désactivation d'un produit dans la page liste des produits
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function desactivateAction(Product $id, $action){
+
+        // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
+        $em = $this->getDoctrine()->getManager();
+
+        $id->setActive($action); // J'associe l'action desactivate à l'id de mon produit
+        $em->persist($id); // J'enregistre l'id du produit dans Doctrine
+        $em->flush(); // J'envoie ma requête  à ma table product
+
+        // Permet d'écrire un message flash avec pour clef "info" et un message de confirmation
+        $this->get('session')->getFlashBag()->add(
+            'info',
+            'Votre produit a bien été activé'
+        );
+
+        return $this->redirectToRoute('store_backend_product_list'); // redirection vers la liste des produits
+    }
+
+
+
+    /**
+     * Action de mettre un produit en couverture dans la page liste des produits
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function coverAction(Product $id, $action){
+
+        // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
+        $em = $this->getDoctrine()->getManager();
+
+        $id->setCover($action); // J'associe l'action cover à l'id de mon produit
+        $em->persist($id); // J'enregistre l'id du produit dans Doctrine
+        $em->flush(); // J'envoie ma requête  à ma table product
+
+        // Permet d'écrire un message flash avec pour clef "info" et un message de confirmation
+        $this->get('session')->getFlashBag()->add(
+            'info',
+            'Vous avez bien retiré la mise en avant de votre produit'
+        );
+
+        return $this->redirectToRoute('store_backend_product_list'); // redirection vers la liste des produits
+    }
+
+
+    /**
+     * Action de retirer un produit mis en couverture dans la page liste des produits
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function nocoverAction(Product $id, $action){
+
+        // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
+        $em = $this->getDoctrine()->getManager();
+
+        $id->setCover($action); // J'associe l'action nocover à l'id de mon produit
+        $em->persist($id); // J'enregistre l'id du produit dans Doctrine
+        $em->flush(); // J'envoie ma requête  à ma table product
+
+        // Permet d'écrire un message flash avec pour clef "info" et un message de confirmation
+        $this->get('session')->getFlashBag()->add(
+            'info',
+            'Vous avez bien mis en avant votre produit'
+        );
+
+        return $this->redirectToRoute('store_backend_product_list'); // redirection vers la liste des produits
+    }
+
 }

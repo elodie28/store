@@ -13,7 +13,18 @@
 <br/>
 
 <div class="row">
-    {{ form_row(form.description) }}
+    <div class="col-md-6">
+        {{ form_row(form.file) }}
+
+        {#{% if app.request.attributes.get('_route') == "store_backend_category_edit" %}
+            <img src="{{ asset('uploads/category/'~ category.image ) }}"/>
+        {% else %}
+        {% endif %}#}
+
+    </div>
+    <div class="col-md-6">
+        {{ form_row(form.description) }}
+    </div>
 </div>
 
 <br/>

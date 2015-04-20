@@ -38,3 +38,17 @@ store_backend_cms_edit:
 store_backend_cms_remove: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
       path:     /remove/{id} # chemin vers l'URI
       defaults: { _controller: StoreBackendBundle:CMS:remove } # NomduBundle:NomduController:Nomdel'Action
+
+
+
+# Activate a CMS
+
+store_backend_cms_activate: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
+      path: /activate/{id}/{action} # chemin vers l'URI
+      defaults: { _controller: StoreBackendBundle:CMS:activate } # NomduBundle:NomduController:Nomdel'Action
+
+# Desactivate a CMS
+
+store_backend_cms_desactivate: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
+      path: /desactivate/{id}/{action} # chemin vers l'URI
+      defaults: { _controller: StoreBackendBundle:CMS:desactivate } # NomduBundle:NomduController:Nomdel'Action

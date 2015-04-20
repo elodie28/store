@@ -68,9 +68,9 @@ class Product
     /**
      * Attribut qui représentera mon fichier uploadé
      * @Assert\Image(
-     *     minWidth = 100,
+     *     minWidth = 50,
      *     maxWidth = 3000,
-     *     minHeight = 100,
+     *     minHeight = 50,
      *     maxHeight = 2500,
      *     minWidthMessage = "La largeur de l'image est trop petite",
      *     maxWidthMessage = "La largeur de l'image est trop grande",

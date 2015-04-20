@@ -1,52 +1,105 @@
 # you can read more about security in the related section of the documentation
 # http://symfony.com/doc/current/book/security.html
+
+
+
 security:
+
+
+
+    ###
+    # L'encodage du mot de passe : il est par défaut en plaintext (texte en dur)
+    ###
     # http://symfony.com/doc/current/book/security.html#encoding-the-user-s-password
     encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
+        Symfony\Component\Security\Core\User\User:
+          algorithm: sha1
+          iterations: 1
+          encode_as_base64: false
+    #encoders:
+        # l'encodage se fera au niveau de l'entité Jeweler
+#        Store\BackendBundle\Entity\Jeweler:
+#          algorithm: sha512
+#          iterations: 10
+#          encode_as_base64: true
 
+
+
+    ###
+    # Rôles des utilisateurs qui vont se connecter avec l'authentification
+    # Les utilisateurs seront de rôle "ROLE_JEWELER"
+    ###
     # http://symfony.com/doc/current/book/security.html#hierarchical-roles
     role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_JEWELER: ROLE_JEWELER # Rôle des bijoutiers quand ils se connecteront
 
+
+
+    ###
+    # Fournisseurs d'authentification
+    # Il est par défaut en mémoire ici : définit en dur
+    # J'ai créé un utilisateur en mémoire avec le login: admin
+    # et le mot de passe adminpass et le rôle ROLE_JEWELER
+    ###
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
         in_memory:
             memory:
                 users:
-                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
-                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+                    admin: { password: 74913f5cd5f61ec0bcfdb775414c2fb3d161b620, roles: [ 'ROLE_JEWELER' ] }
+                    elodie: { password: 490502010760bf06cd1b76dd66e5b6488e52770f, roles: [ 'ROLE_USER' ] }
+#    providers:
+#        store_backend:
+#            entity: { class: StoreBackendBundle:Jeweler }
 
+
+
+    ###
+    # Zones de sécurité d'authentification (firewall)
+    ###
     # the main part of the security, where you can set up firewalls
     # for specific sections of your app
     firewalls:
-        # disables authentication for assets and the profiler, adapt it according to your needs
-        dev:
-            pattern:  ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-        # the login page has to be accessible for everybody
-        demo_login:
-            pattern:  ^/demo/secured/login$
-            security: false
 
+        ###
+        # 1er pare-feu d'authentification
+        # 1ère zone sécurisée pour notre back-office
+        ###
         # secures part of the application
-        demo_secured_area:
-            pattern:    ^/demo/secured/
+        store_backend:
+            pattern:    ^/administration # l'URI en REGEX derrière mon pare-feu
+
             # it's important to notice that in this case _demo_security_check and _demo_login
             # are route names and that they are specified in the AcmeDemoBundle
+
             form_login:
-                check_path: _demo_security_check
-                login_path: _demo_login
+                # le chemin vers la page de login
+                login_path: store_backend_security_login
+                # le chemin vers la vérification du login
+                check_path: store_backend_security_login_check
+
+                # le chemin de redirection après l'authentification
+                target_path_parameter: store_backend_index
+                default_target_path: /administration/dashboard
+
             logout:
-                path:   _demo_logout
-                target: _demo
+                # le chemin vers la déconnexion
+                path:   store_backend_security_logout
+                # l'URI de redirection après déconnexion
+                target: /login
+
             #anonymous: ~
             #http_basic:
             #    realm: "Secured Demo Area"
 
+
+
+    ###
+    # La liaison entre le firewall et le/les rôles
+    # Le rôle ROLE_JEWELER sera lié à notre firewall store_backend
+    ###
     # with these settings you can restrict or allow access for different parts
     # of your application based on roles, ip, host or methods
     # http://symfony.com/doc/current/cookbook/security/access_control.html
     access_control:
-        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        - { path: ^/administration, roles: [ROLE_JEWELER, ROLE_USER] }

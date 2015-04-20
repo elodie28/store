@@ -105,6 +105,10 @@ class CategoryController extends Controller {
 
         // Si la totalité de mon formulaire est valide
         if($form->isValid()) {
+
+            //J'upload mon fichier en faisant appel à la méthode upload si mon formulaire est valide
+            $category->upload();
+
             $em = $this->getDoctrine()->getManager(); // Je récupère le manager de Doctrine
             $em->persist($category); // J'enregistre mon objet product dans Doctrine
             $em->flush(); // J'envoie ma requête d'insert à ma table category
@@ -162,6 +166,10 @@ class CategoryController extends Controller {
         $form->handleRequest($request);
 
         if($form->isValid()) {
+
+            //J'upload mon fichier en faisant appel à la méthode upload si mon formulaire est valide
+            $category->upload();
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($category);
             $em->flush();
@@ -206,7 +214,54 @@ class CategoryController extends Controller {
         );
 
         return $this->redirectToRoute('store_backend_category_list'); // redirection vers la liste des catégories
+    }
 
+
+
+    /**
+     * Action d'activation d'une catégorie dans la page liste des catégories
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function activateAction(Category $id, $action){
+
+        // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
+        $em = $this->getDoctrine()->getManager();
+
+        $id->setActive($action); // J'associe l'action activate à l'id de ma catégorie
+        $em->persist($id); // J'enregistre l'id de la catégorie dans Doctrine
+        $em->flush(); // J'envoie ma requête  à ma table category
+
+        // Permet d'écrire un message flash avec pour clef "info" et un message de confirmation
+        $this->get('session')->getFlashBag()->add(
+            'info',
+            'Votre catégorie a bien été désactivée'
+        );
+
+        return $this->redirectToRoute('store_backend_category_list'); // redirection vers la liste des catégories
+    }
+
+    /**
+     * Action de désactivation d'une catégorie dans la page liste des catégories
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function desactivateAction(Category $id, $action){
+
+        // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
+        $em = $this->getDoctrine()->getManager();
+
+        $id->setActive($action); // J'associe l'action desactivate à l'id de ma catégorie
+        $em->persist($id); // J'enregistre l'id de la catégorie dans Doctrine
+        $em->flush(); // J'envoie ma requête  à ma table product
+
+        // Permet d'écrire un message flash avec pour clef "info" et un message de confirmation
+        $this->get('session')->getFlashBag()->add(
+            'info',
+            'Votre catégorie a bien été activée'
+        );
+
+        return $this->redirectToRoute('store_backend_category_list'); // redirection vers la liste des catégories
     }
 
 }

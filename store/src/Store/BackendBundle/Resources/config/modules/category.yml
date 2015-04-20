@@ -41,3 +41,17 @@ store_backend_category_remove: # Nom de la route -> Nom du namespace _ nom du bu
       defaults: { _controller: StoreBackendBundle:Category:remove } # NomduBundle:NomduController:Nomdel'Action
 
 
+
+# Activate a Category
+
+store_backend_category_activate: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
+      path: /activate/{id}/{action} # chemin vers l'URI
+      defaults: { _controller: StoreBackendBundle:Category:activate } # NomduBundle:NomduController:Nomdel'Action
+
+# Desactivate a Category
+
+store_backend_category_desactivate: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
+      path: /desactivate/{id}/{action} # chemin vers l'URI
+      defaults: { _controller: StoreBackendBundle:Category:desactivate } # NomduBundle:NomduController:Nomdel'Action
+
+

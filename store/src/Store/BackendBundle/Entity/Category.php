@@ -45,6 +45,29 @@ class Category
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="image", type="string", nullable=true)
+     */
+    private $image;
+
+    /**
+     * Attribut qui représentera mon fichier uploadé
+     * @Assert\Image(
+     *     minWidth = 50,
+     *     maxWidth = 3000,
+     *     minHeight = 50,
+     *     maxHeight = 2500,
+     *     minWidthMessage = "La largeur de l'image est trop petite",
+     *     maxWidthMessage = "La largeur de l'image est trop grande",
+     *     minHeightMessage = "La hauteur de l'image est trop petite",
+     *     maxHeightMessage = "La hauteur de l'image est trop grande",
+     *     groups = {"new", "edit"}
+     * )
+     */
+    protected $file;
+
+    /**
+     * @var string
      * @Assert\NotBlank(
      *     message = "La description ne doit pas être vide",
      *     groups = {"new", "edit"}
@@ -267,10 +290,118 @@ class Category
 
 
     /**
+     * Set image
+     *
+     * @param string $image
+     * @return Category
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+
+    /**
+     * Retourne le chemin absolu de mon image
+     * @return null|string
+     */
+    public function getAbsolutePath()
+    {
+        return null === $this->image ? null : $this->getUploadRootDir().'/'.$this->image;
+    }
+
+    /**
+     * Retourne le chemin de l'image depuis le dossier web
+     * @return null|string
+     */
+    public function getWebPath()
+    {
+        return null === $this->image ? null : $this->getUploadDir().'/'.$this->image;
+    }
+
+    /**
+     * Retourne le chemin de l'image depuis l'entité
+     * @return string
+     */
+    protected function getUploadRootDir()
+    {
+        // le chemin absolu du répertoire où les documents uploadés doivent être sauvegardés
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    /**
+     * Retourne le dossier d'upload et le sous-dossier category
+     * @return string
+     */
+    protected function getUploadDir()
+    {
+        // on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
+        // le document/image dans la vue.
+        return 'uploads/category';
+    }
+
+
+
+    public function upload()
+    {
+        // la propriété « file » peut être vide si le champ n'est pas requis
+        if (null === $this->file) {
+            return;
+        }
+
+        // utilisez le nom de fichier original ici mais
+        // vous devriez « l'assainir » pour au moins éviter
+        // quelconques problèmes de sécurité
+
+        // On déplace le fichier uploadé dans le bon répertoire uploads/category
+        $this->file->move($this->getUploadRootDir(), $this->file->getClientOriginalName());
+
+        // Je stocke le nom du fichier uploadé dans mon attribut image
+        $this->image = $this->file->getClientOriginalName();
+
+        // « nettoie » la propriété « file » comme vous n'en aurez plus besoin
+        $this->file = null;
+    }
+
+
+
+    /**
+     * @param mixed $file
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+
+
+    /**
      * Retourne le titre
      * @return string
      */
     public function __toString() {
         return $this->title;
     }
+
+
 }

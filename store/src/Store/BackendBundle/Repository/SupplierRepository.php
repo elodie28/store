@@ -29,8 +29,7 @@ class SupplierRepository extends EntityRepository {
                 " SELECT s
                   FROM StoreBackendBundle:Supplier s
                   JOIN s.product p
-                  WHERE p.jeweler = :user
-                  GROUP BY p.jeweler"
+                  WHERE p.jeweler = :user"
             )
             ->setParameter('user', $user); /* 'valeur de la variable nommée :user (nom arbitraire)', $valeur du paramètre  */
 

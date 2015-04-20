@@ -105,6 +105,10 @@ class CMSController extends Controller {
 
         // Si la totalité de mon formulaire est valide
         if($form->isValid()) {
+
+            //J'upload mon fichier en faisant appel à la méthode upload si mon formulaire est valide
+            $cms->upload();
+
             $em = $this->getDoctrine()->getManager(); // Je récupère le manager de Doctrine
             $em->persist($cms); // J'enregistre mon objet cms dans Doctrine
             $em->flush(); // J'envoie ma requête d'insert à ma table cms
@@ -162,6 +166,10 @@ class CMSController extends Controller {
         $form->handleRequest($request);
 
         if($form->isValid()) {
+
+            //J'upload mon fichier en faisant appel à la méthode upload si mon formulaire est valide
+            $cms->upload();
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($cms);
             $em->flush();
@@ -206,6 +214,54 @@ class CMSController extends Controller {
         );
 
         return $this->redirectToRoute('store_backend_cms_list'); // redirection vers la liste des CMS
+    }
+
+
+
+    /**
+     * Action d'activation d'une page CMS dans la page liste des CMS
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function activateAction(Cms $id, $action){
+
+        // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
+        $em = $this->getDoctrine()->getManager();
+
+        $id->setActive($action); // J'associe l'action activate à l'id de ma page CMS
+        $em->persist($id); // J'enregistre l'id de la page CMS dans Doctrine
+        $em->flush(); // J'envoie ma requête  à ma table cms
+
+        // Permet d'écrire un message flash avec pour clef "info" et un message de confirmation
+        $this->get('session')->getFlashBag()->add(
+            'info',
+            'Votre page CMS a bien été désactivée'
+        );
+
+        return $this->redirectToRoute('store_backend_cms_list'); // redirection vers la liste des pages CMS
+    }
+
+    /**
+     * Action de désactivation d'une page CMS dans la page liste des CMS
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function desactivateAction(Cms $id, $action){
+
+        // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
+        $em = $this->getDoctrine()->getManager();
+
+        $id->setActive($action); // J'associe l'action desactivate à l'id de ma page CMS
+        $em->persist($id); // J'enregistre l'id de la page CMS dans Doctrine
+        $em->flush(); // J'envoie ma requête  à ma table cms
+
+        // Permet d'écrire un message flash avec pour clef "info" et un message de confirmation
+        $this->get('session')->getFlashBag()->add(
+            'info',
+            'Votre page CMS a bien été activée'
+        );
+
+        return $this->redirectToRoute('store_backend_cms_list'); // redirection vers la liste des pages CMS
     }
 
 }

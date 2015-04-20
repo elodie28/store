@@ -336,9 +336,17 @@
         <div class="col-md-6">
 
             <div class="panel panel-info widget-support-tickets" id="dashboard-support-tickets">
+
                 <div class="panel-heading">
+
                     <span class="panel-title"><i class="panel-title-icon fa fa-shopping-cart"></i>5 Dernières Commandes</span>
+
+                    <div class="panel-heading-controls">
+                        <div class="panel-heading-text"><a href="#">{{ nborder.nb|default('0') }} commandes</a></div>
+                    </div>
+
                 </div> <!-- / .panel-heading -->
+
                 <div class="panel-body tab-content-padding">
                     <!-- Panel padding, without vertical padding -->
                     <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 300px;"><div class="panel-padding no-padding-vr" style="overflow: hidden; width: auto; height: 300px;">
@@ -346,10 +354,12 @@
                         {% for value in  lastorders %}
                             <div class="ticket">
 
-                                {% if value.state == 1 %}
-                                    <span class="label label-warning ticket-label">Acceptée</span>
+                                {% if value.state == 0 %}
+                                    <span class="label label-warning ticket-label">En attente de paiement</span>
+                                {% elseif value.state == 1 %}
+                                    <span class="label label-info ticket-label">En cours</span>
                                 {% elseif value.state == 2 %}
-                                    <span class="label label-success ticket-label">Livrée</span>
+                                    <span class="label label-success ticket-label">Envoyée</span>
                                 {% else %}
                                     <span class="label label-danger ticket-label">Annulée</span>
                                 {% endif %}
@@ -407,6 +417,118 @@
             </div>
 
         </div>
+
+        <div class="col-md-6">
+
+            <div class="panel panel-info widget-tasks">
+
+                <div class="panel-heading">
+                    <span class="panel-title"><i class="panel-title-icon fa fa-comments"></i>Messages récents</span>
+                </div> <!-- / .panel-heading -->
+
+                <div class="panel-body ui-sortable">
+
+                    {% for value in lastmess %}
+
+                        <div class="task">
+
+                            <span class="label label-warning pull-right">
+                                {% if value.state == 0 %}
+                                    <span class="label label-danger pull-right"> Non lu </span>
+                                {% else %}
+                                    <span class="label label-info pull-right"> Lu </span>
+                                {% endif %}
+                            </span>
+
+                            <div class="fa fa-arrows-v task-sort-icon"></div>
+                            <a href="#" class="task-title">{{ value.content }}<span> {{ value.dateCreated|date('d/m/Y') }} </span></a>
+                        </div> <!-- / .task -->
+
+                    {% endfor %}
+
+                </div> <!-- / .panel-body -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <div class="panel panel-info widget-followers">
+
+                <div class="panel-heading">
+                    <span class="panel-title"><i class="panel-title-icon fa fa-euro"></i>Promotions & Réductions</span>
+                </div> <!-- / .panel-heading -->
+
+                <div class="panel-body">
+
+                    {% for value in lastbusiness %}
+
+                        <div class="follower">
+
+                       {% for values in value.product %}
+
+                            <img src="{{ asset('uploads/product/'~ values.imagepresentation )}}" alt="" class="follower-avatar">
+
+                            <div class="body">
+
+                                <div class="follower-controls">
+                                    {% if value.type == 0 %}
+                                        <a href="#" class="btn btn-sm btn-success"><i class="fa fa-check"></i><span>&nbsp;&nbsp;{{ value.message }}</span></a>
+                                    {% else %}
+                                        <a href="#" class="btn btn-sm btn-info"><i class="fa fa-check"></i><span>&nbsp;&nbsp;{{ value.message }}</span></a>
+                                    {% endif %}
+                                </div>
+
+                                <a href="#" class="follower-name"> {{ values.title }} </a> <span class="badge badge-info"> {{ value.amount }} €</span> <br>
+
+                                {% if value.type == 0 %}
+                                    <a href="#" class="follower-username">Promotion</a>
+                                {% else %}
+                                    <a href="#" class="follower-username">Réduction</a>
+                                {% endif %}
+
+                            </div>
+
+                       {% endfor %}
+
+                        </div>
+
+                    {% endfor %}
+
+                </div> <!-- / .panel-body -->
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="panel panel-info panel-body-colorful widget-profile widget-profile-centered">
+
+                <div class="panel-heading">
+                    <img src="{{ detailsjeweler.image }}" alt="" class="widget-profile-avatar">
+                    <div class="widget-profile-header">
+                        <span>{{ detailsjeweler.title }}</span><br>
+                        <a href="https://twitter.com/test">{{ detailsjeweler.description }}</a>
+                    </div>
+                </div> <!-- / .panel-heading -->
+
+                <div class="panel-body">
+                    <div class="widget-profile-text" style="padding: 0;">
+                        <p> <i class="fa fa-phone"></i> </p>
+                        <p><i class="fa fa-mail-forward"></i> </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
 
 

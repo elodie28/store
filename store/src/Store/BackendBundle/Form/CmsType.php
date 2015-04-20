@@ -61,6 +61,16 @@ class CmsType extends AbstractType {
             )
         ));
 
+        $builder->add('file', 'file', array(
+            'label'    => 'Image de présentation de ma page CMS',
+            'required' => false,
+            'attr'     => array(
+                'class' => 'form-control',
+                'accept' => 'image/*',
+                'capture' => 'capture'
+            )
+        ));
+
         $builder->add('dateActive', 'date', array(
             'label'    => 'Date active',
             //'pattern' => '{{ day }}-{{ month }}-{{ year }}',

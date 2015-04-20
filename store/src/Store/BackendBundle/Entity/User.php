@@ -100,12 +100,22 @@ class User
     private $product;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="string", nullable=true)
+     */
+    private $photo;
+
+
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->product = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
 
 
     /**
@@ -358,6 +368,29 @@ class User
         return $this->product;
     }
 
+    /**
+     * Set photo
+     *
+     * @param string $photo
+     * @return User
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Get photo
+     *
+     * @return string
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
 
     /**
      * Retourne le prénom et le nom
@@ -366,4 +399,6 @@ class User
     public function __toString() {
         return $this->firstname." ".$this->lastname;
     }
+
+
 }

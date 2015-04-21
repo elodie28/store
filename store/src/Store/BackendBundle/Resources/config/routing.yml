@@ -34,3 +34,8 @@ store_backend_cms: #nom du jeu de root
 store_backend_suppliers: #nom du jeu de root
     resource: "@StoreBackendBundle/Resources/config/modules/supplier.yml"
     prefix:   /suppliers
+
+# Page Slider
+store_backend_slider: #nom du jeu de root
+    resource: "@StoreBackendBundle/Resources/config/modules/slider.yml"
+    prefix:   /slides

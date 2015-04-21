@@ -27,8 +27,11 @@ class CMSController extends Controller {
         // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
         $em = $this->getDoctrine()->getManager();
 
-        // Je récupère tous les CMS du jeweler numéro 1
-        $cms = $em->getRepository('StoreBackendBundle:Cms')->getCmsByUser(1); // NomduBundle:Nomdel'entité
+        // récupérer l'utilisateur courant connecté (à la place du 1 dans getCmsByUser(1))
+        $user = $this->getUser();
+
+        // Je récupère tous les CMS du jeweler connecté
+        $cms = $em->getRepository('StoreBackendBundle:Cms')->getCmsByUser($user); // NomduBundle:Nomdel'entité
 
         // Je retourne la vue List contenue dans le dossier CMS de mon bundle StorebackendBundle
         return $this->render('StoreBackendBundle:CMS:list.html.twig', array(
@@ -75,12 +78,15 @@ class CMSController extends Controller {
         // À chaque fois que je crée un objet d'une classe, je dois user la classe
         $cms = new Cms();
 
-        $em = $this->getDoctrine()->getManager(); // Je récupère le manager de Doctrine
-        $jeweler = $em->getRepository('StoreBackendBundle:Jeweler')->find(1); // Je récupère le jeweler numéro 1
-        $cms->setJeweler($jeweler); // J'associe mon jeweler à mon CMS
+        // récupérer l'utilisateur courant connecté (à la place du 1 dans find(1))
+        $user = $this->getUser();
+
+//        $jeweler = $em->getRepository('StoreBackendBundle:Jeweler')->find(1); // Je récupère le jeweler numéro 1
+
+        $cms->setJeweler($user); // J'associe ma page CMS à l'utilisateur jeweler connecté
 
         // Je crée un formulaire de CMS en l'associant avec mon CMS
-        $form = $this->createForm(new CmsType(), $cms, array(
+        $form = $this->createForm(new CmsType($user), $cms, array(
             'validation_groups' => 'new',
             'attr' => array(
                 'method' => 'post',
@@ -105,6 +111,8 @@ class CMSController extends Controller {
 
         // Si la totalité de mon formulaire est valide
         if($form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager(); // Je récupère le manager de Doctrine
 
             //J'upload mon fichier en faisant appel à la méthode upload si mon formulaire est valide
             $cms->upload();

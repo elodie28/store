@@ -184,6 +184,19 @@ class Jeweler implements AdvancedUserInterface, \Serializable {
      */
     private $dateCreated;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Groups", inversedBy="jeweler")
+     * @ORM\JoinTable(name="jeweler_groups",
+     *   joinColumns={
+     *      @ORM\JoinColumn(name="jeweler_id", referencedColumnName="id"),
+     *   },
+     *   inverseJoinColumns={
+     *      @ORM\JoinColumn(name="groups_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $groups;
+
 
 
     /**
@@ -728,6 +741,9 @@ class Jeweler implements AdvancedUserInterface, \Serializable {
 
 
     /**
+     * Verification is Account is not expired
+     * Si le compte n'est pas expiré
+     *
      * Checks whether the user's account has expired.
      *
      * Internally, if this method returns false, the authentication system
@@ -737,9 +753,16 @@ class Jeweler implements AdvancedUserInterface, \Serializable {
      *
      * @see AccountExpiredException
      */
-    public function isAccountNonExpired()
-    {
-        return $this->accountnonexpired;
+    public function isAccountNonExpired() {
+
+        $datecreated = $this->dateCreated;
+        $dateoldyear = new \DateTime('-1 year');
+
+        if($datecreated < $dateoldyear) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -754,7 +777,7 @@ class Jeweler implements AdvancedUserInterface, \Serializable {
      */
     public function isAccountNonLocked()
     {
-        return $this->accountnonlocked;
+        return $this->accountnonlocked; // on retourne le champ de notre BDD
     }
 
     /**
@@ -769,7 +792,7 @@ class Jeweler implements AdvancedUserInterface, \Serializable {
      */
     public function isCredentialsNonExpired()
     {
-        return $this->credentialsExpired;
+        return $this->credentialsExpired; // on retourne le champ de notre BDD
     }
 
     /**
@@ -784,7 +807,7 @@ class Jeweler implements AdvancedUserInterface, \Serializable {
      */
     public function isEnabled()
     {
-        return $this->enabled;
+        return $this->enabled; // on retourne le champ de notre BDD
     }
 
     /**
@@ -843,7 +866,10 @@ class Jeweler implements AdvancedUserInterface, \Serializable {
      */
     public function getRoles()
     {
-        return array('ROLE_JEWELER'); // pour récupérer le rôle du jeweler
+//        return array('ROLE_JEWELER'); // pour récupérer le rôle du jeweler
+        // je retourne mon attribut groups en tableau :
+        // ArrayCollection => Array
+        return $this->groups->toArray();
     }
 
     /**
@@ -859,13 +885,57 @@ class Jeweler implements AdvancedUserInterface, \Serializable {
 
 
 
-
     /**
      * La méthode __toString() convertit un objet jeweler en chaîne de caractères
      * @return string
      */
     public function __toString() {
         return $this->title;
+    }
+
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->groups = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+
+
+    /**
+     * Add groups
+     *
+     * @param \Store\BackendBundle\Entity\Groups $groups
+     * @return Jeweler
+     */
+    public function addGroup(\Store\BackendBundle\Entity\Groups $groups)
+    {
+        $this->groups[] = $groups;
+
+        return $this;
+    }
+
+    /**
+     * Remove groups
+     *
+     * @param \Store\BackendBundle\Entity\Groups $groups
+     */
+    public function removeGroup(\Store\BackendBundle\Entity\Groups $groups)
+    {
+        $this->groups->removeElement($groups);
+    }
+
+    /**
+     * Get groups
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGroups()
+    {
+        return $this->groups;
     }
 
 

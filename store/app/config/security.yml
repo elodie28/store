@@ -11,17 +11,17 @@ security:
     # L'encodage du mot de passe : il est par défaut en plaintext (texte en dur)
     ###
     # http://symfony.com/doc/current/book/security.html#encoding-the-user-s-password
+#    encoders:
+#        Symfony\Component\Security\Core\User\User:
+#          algorithm: sha1
+#          iterations: 1
+#          encode_as_base64: false
     encoders:
-        Symfony\Component\Security\Core\User\User:
-          algorithm: sha1
-          iterations: 1
-          encode_as_base64: false
-    #encoders:
         # l'encodage se fera au niveau de l'entité Jeweler
-#        Store\BackendBundle\Entity\Jeweler:
-#          algorithm: sha512
-#          iterations: 10
-#          encode_as_base64: true
+        Store\BackendBundle\Entity\Jeweler:
+          algorithm: sha512
+          iterations: 10
+          encode_as_base64: true
 
 
 
@@ -31,7 +31,9 @@ security:
     ###
     # http://symfony.com/doc/current/book/security.html#hierarchical-roles
     role_hierarchy:
-        ROLE_JEWELER: ROLE_JEWELER # Rôle des bijoutiers quand ils se connecteront
+       ROLE_JEWELER: ROLE_JEWELER # Rôle des bijoutiers quand ils se connecteront
+       ROLE_USER: [ROLE_USER, ROLE_JEWELER] # Rôle des utilisateurs quand ils se connecteront, héritent de JEWELER
+       ROLE_ADMIN: [ROLE_ADMIN, ROLE_USER] # Rôle des ADMIN, héritent de USER et et donc de JEWELER
 
 
 
@@ -42,15 +44,16 @@ security:
     # et le mot de passe adminpass et le rôle ROLE_JEWELER
     ###
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
-    providers:
-        in_memory:
-            memory:
-                users:
-                    admin: { password: 74913f5cd5f61ec0bcfdb775414c2fb3d161b620, roles: [ 'ROLE_JEWELER' ] }
-                    elodie: { password: 490502010760bf06cd1b76dd66e5b6488e52770f, roles: [ 'ROLE_USER' ] }
 #    providers:
-#        store_backend:
-#            entity: { class: StoreBackendBundle:Jeweler }
+#        in_memory:
+#            memory:
+#                users:
+#                    admin: { password: 74913f5cd5f61ec0bcfdb775414c2fb3d161b620, roles: [ 'ROLE_JEWELER' ] }
+#                    elodie: { password: 490502010760bf06cd1b76dd66e5b6488e52770f, roles: [ 'ROLE_USER' ] }
+    providers:
+        store_backend:
+            entity: { class: StoreBackendBundle:Jeweler }
+
 
 
 
@@ -66,7 +69,7 @@ security:
         # 1ère zone sécurisée pour notre back-office
         ###
         # secures part of the application
-        store_backend:
+        store_backend: # namespace_nomdubundle
             pattern:    ^/administration # l'URI en REGEX derrière mon pare-feu
 
             # it's important to notice that in this case _demo_security_check and _demo_login
@@ -102,4 +105,5 @@ security:
     # of your application based on roles, ip, host or methods
     # http://symfony.com/doc/current/cookbook/security/access_control.html
     access_control:
-        - { path: ^/administration, roles: [ROLE_JEWELER, ROLE_USER] }
+        - { path: ^/administration, roles: ROLE_JEWELER }
+#        - { path: ^/administration, roles: [ROLE_JEWELER, ROLE_USER] }

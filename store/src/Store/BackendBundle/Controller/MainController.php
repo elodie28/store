@@ -20,45 +20,48 @@ class MainController extends Controller {
         // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
         $em = $this->getDoctrine()->getManager();
 
+        // récupérer l'utilisateur courant connecté (à la place du 1 dans (1))
+        $user = $this->getUser();
+
         // Je récupère le nombre de produits de mon bijoutier numéro 1
         // Je fais appel à mon repository ProductRepository et à la fonction getCountByUser(1)
-        $nbprod = $em->getRepository('StoreBackendBundle:Product')->getCountByUser(1); // NomduBundle:Nomdel'entité
+        $nbprod = $em->getRepository('StoreBackendBundle:Product')->getCountByUser($user); // NomduBundle:Nomdel'entité
 
-        $nbcat = $em->getRepository('StoreBackendBundle:Category')->getCountByUser(1);
+        $nbcat = $em->getRepository('StoreBackendBundle:Category')->getCountByUser($user);
 
-        $nbpage = $em->getRepository('StoreBackendBundle:Cms')->getCountByUser(1);
+        $nbpage = $em->getRepository('StoreBackendBundle:Cms')->getCountByUser($user);
 
-        $nbcom = $em->getRepository('StoreBackendBundle:Comment')->getCountByUser(1);
+        $nbcom = $em->getRepository('StoreBackendBundle:Comment')->getCountByUser($user);
 
-        $nbsup = $em->getRepository('StoreBackendBundle:Supplier')->getCountByUser(1);
+        $nbsup = $em->getRepository('StoreBackendBundle:Supplier')->getCountByUser($user);
 
-        $nborder = $em->getRepository('StoreBackendBundle:Orders')->getCountByUser(1);
+        $nborder = $em->getRepository('StoreBackendBundle:Orders')->getCountByUser($user);
 
-        $totalorder = $em->getRepository('StoreBackendBundle:Orders')->getTotalByUser(1);
+        $totalorder = $em->getRepository('StoreBackendBundle:Orders')->getTotalByUser($user);
 
-        $nbcomact = $em->getRepository('StoreBackendBundle:Comment')->getCountActByUser(1);
+        $nbcomact = $em->getRepository('StoreBackendBundle:Comment')->getCountActByUser($user);
 
-        $nbcomval = $em->getRepository('StoreBackendBundle:Comment')->getCountValByUser(1);
+        $nbcomval = $em->getRepository('StoreBackendBundle:Comment')->getCountValByUser($user);
 
-        $nbcominact = $em->getRepository('StoreBackendBundle:Comment')->getCountInactByUser(1);
+        $nbcominact = $em->getRepository('StoreBackendBundle:Comment')->getCountInactByUser($user);
 
-        $nblikes = $em->getRepository('StoreBackendBundle:Product')->getCountLikesByUser(1);
+        $nblikes = $em->getRepository('StoreBackendBundle:Product')->getCountLikesByUser($user);
 
-        $lastcomact = $em->getRepository('StoreBackendBundle:Comment')->getLastCommentsActByUser(1);
+        $lastcomact = $em->getRepository('StoreBackendBundle:Comment')->getLastCommentsActByUser($user);
 
-        $lastcomval = $em->getRepository('StoreBackendBundle:Comment')->getLastCommentsValByUser(1);
+        $lastcomval = $em->getRepository('StoreBackendBundle:Comment')->getLastCommentsValByUser($user);
 
-        $lastcominact = $em->getRepository('StoreBackendBundle:Comment')->getLastCommentsInactByUser(1);
+        $lastcominact = $em->getRepository('StoreBackendBundle:Comment')->getLastCommentsInactByUser($user);
 
-        $lastorders = $em->getRepository('StoreBackendBundle:Orders')->getLastOrdersByUser(1);
+        $lastorders = $em->getRepository('StoreBackendBundle:Orders')->getLastOrdersByUser($user);
 
-        $catpop = $em->getRepository('StoreBackendBundle:Category')->getCategoryWithProductsByUser(1);
+        $catpop = $em->getRepository('StoreBackendBundle:Category')->getCategoryWithProductsByUser($user);
 
-        $lastmess = $em->getRepository('StoreBackendBundle:Message')->getLastMessByUser(1);
+        $lastmess = $em->getRepository('StoreBackendBundle:Message')->getLastMessByUser($user);
 
-        $lastbusiness = $em->getRepository('StoreBackendBundle:Business')->getLastBusinessByUser(1);
+        $lastbusiness = $em->getRepository('StoreBackendBundle:Business')->getLastBusinessByUser($user);
 
-        $detailsjeweler = $em->getRepository('StoreBackendBundle:Jeweler')->getAllDetailsByUser(1);
+        $detailsjeweler = $em->getRepository('StoreBackendBundle:Jeweler')->getAllDetailsByUser($user);
 
         // Je retourne la vue index contenue dans le dossier Main de mon bundle StorebackendBundle
         return $this->render('StoreBackendBundle:Main:index.html.twig', array(

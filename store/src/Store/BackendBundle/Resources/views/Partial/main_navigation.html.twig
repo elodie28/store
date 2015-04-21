@@ -49,8 +49,11 @@
             <a href="{{ path('store_backend_cms_list') }}"> <i class="menu-icon fa  fa-pencil"></i> CMS </a>
         </li>
         <li class="{% if app.request.attributes.get('_route') == "store_backend_supplier_list" %} active {% endif %}">
-            <a href="{{ path('store_backend_supplier_list') }}"> <i class="menu-icon fa  fa-truck"></i> Fournisseurs </a>
+            <a href="{{ path('store_backend_supplier_list') }}"> <i class="menu-icon fa fa-truck"></i> Fournisseurs </a>
         </li>
+        {#<li class="{% if app.request.attributes.get('_route') == "store_backend_slider_list" %} active {% endif %}">#}
+        {#<a href="{{ path('store_backend_slider_list') }}"> #} <i class="menu-icon fa-video-camera"></i> Slider </a>
+    {#</li>#}
 
     </ul>
     <!-- / .navbar-nav -->

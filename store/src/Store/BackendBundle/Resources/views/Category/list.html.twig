@@ -40,13 +40,13 @@
             <thead>
 
             <tr>
-                <th>#</th>
-                <th>Titre</th>
-                <th>Image</th>
-                <th class="col-md-4">Description</th>
-                <th>Nombre de produits associés</th>
-                <th>État</th>
-                <th>Actions</th>
+                <th class="text-center">ID</th>
+                <th class="text-center">Titre</th>
+                <th class="text-center">Image</th>
+                <th class="col-md-4 text-center">Description</th>
+                <th class="text-center">Nombre de produits associés</th>
+                <th class="text-center">État</th>
+                <th class="text-center">Actions</th>
             </tr>
 
             </thead>
@@ -57,18 +57,22 @@
 
             <tr>
 
-                <td> {{ category.id }} </td>
-                <td> <a href="{{ path('store_backend_category_view', {'name' : category.title , 'id': category.id} ) }}"> {{ category.title }} </a> </td>
-                <td>
+                <td class="text-center"> {{ category.id }} </td>
+
+                <td class="text-center"> <a href="{{ path('store_backend_category_view', {'name' : category.title , 'id': category.id} ) }}"> {{ category.title }} </a> </td>
+
+                <td class="text-center">
                     {% if category.image != NULL %}
                         <img src="{{ asset('uploads/category/'~ category.image )}}"/>
                     {% else %}
                     {% endif %}
                 </td>
-                <td> {{ category.description }} </td>
-                <td> <span class="badge badge-info"> {{ category.product|length }} </span> produits associés </td>
 
-                <td>
+                <td class="text-justify"> {{ category.description }} </td>
+
+                <td class="text-center"> <span class="badge badge-info"> {{ category.product|length }} </span> produits associés </td>
+
+                <td class="text-center">
                 {% if category.active == 1 %}
                     <a href="{{ path('store_backend_category_activate', {'id': category.id, 'action' : 0} ) }}"
                        data-container="body" data-toggle="popover" data-placement="top" data-content="Désactiver la catégorie" class="btn btn-success">
@@ -82,7 +86,7 @@
                  {% endif %}
                 </td>
 
-                <td>
+                <td class="text-center">
                     <div class="btn-group">
                         <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-cogs"></i> Actions <i class="fa fa-caret-down"></i></button>
                         <ul class="dropdown-menu">

@@ -1,0 +1,58 @@
+{% extends "StoreBackendBundle::layout.html.twig" %}
+
+
+{% block titlepage %}
+
+    <i class="fa fa-power-off"></i> S'inscrire
+
+{% endblock %}
+
+
+{% block content %}
+
+
+    {{ form_start(form) }}
+
+
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_row(form.title) }}
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="row">
+        <div class="col-md-3">
+            {{ form_row(form.email) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_row(form.username) }}
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="row">
+        <div class="col-md-3">
+            {{ form_row(form.password.mdp) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_row(form.password.mdp_conf) }}
+        </div>
+    </div>
+
+    <br/>
+
+
+    {# Bouton envoyer #}
+    {{  form_widget(form.envoyer, {'attr': {'class': 'pull-left btn btn-lg btn-primary'}}) }}
+
+    {# ATTENTION : token  à ne pas oublier -> clef de sécurité du formulaire #}
+    {{ form_widget(form._token) }}
+
+    {# Crée une balise fermante </form> #}
+    {{ form_end(form, {'render_rest': false}) }}
+
+
+{% endblock %}

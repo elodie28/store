@@ -27,8 +27,11 @@ class CategoryController extends Controller {
         // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
         $em = $this->getDoctrine()->getManager();
 
-        // Je récupère toutes les catégories du jeweler numéro 1
-        $categories = $em->getRepository('StoreBackendBundle:Category')->getCategoryByUser(1); // NomduBundle:Nomdel'entité
+        // récupérer l'utilisateur courant connecté (à la place du 1 dans getCategoryByUser(1))
+        $user = $this->getUser();
+
+        // Je récupère toutes les catégories du jeweler connecté
+        $categories = $em->getRepository('StoreBackendBundle:Category')->getCategoryByUser($user); // NomduBundle:Nomdel'entité
 
         // Je retourne la vue List contenue dans le dossier Category de mon bundle StorebackendBundle
         return $this->render('StoreBackendBundle:Category:list.html.twig', array(
@@ -75,12 +78,15 @@ class CategoryController extends Controller {
         // À chaque fois que je crée un objet d'une classe, je dois user la classe
         $category = new Category();
 
-        $em = $this->getDoctrine()->getManager(); // Je récupère le manager de Doctrine
-        $jeweler = $em->getRepository('StoreBackendBundle:Jeweler')->find(1); // Je récupère le jeweler numéro 1
-        $category->setJeweler($jeweler); // J'associe mon jeweler à ma catégorie
+        // récupérer l'utilisateur courant connecté (à la place du 1 dans find(1))
+        $user = $this->getUser();
+
+//        $jeweler = $em->getRepository('StoreBackendBundle:Jeweler')->find(1); // Je récupère le jeweler numéro 1
+
+        $category->setJeweler($user); // J'associe ma catégorie à l'utilisateur jeweler connecté
 
         // Je crée un formulaire de catégorie en l'associant avec ma catégorie
-        $form = $this->createForm(new CategoryType(), $category, array(
+        $form = $this->createForm(new CategoryType($user), $category, array(
             'validation_groups' => 'new',
             'attr' => array(
                 'method' => 'post',
@@ -105,6 +111,8 @@ class CategoryController extends Controller {
 
         // Si la totalité de mon formulaire est valide
         if($form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager(); // Je récupère le manager de Doctrine
 
             //J'upload mon fichier en faisant appel à la méthode upload si mon formulaire est valide
             $category->upload();

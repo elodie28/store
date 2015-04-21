@@ -10,6 +10,14 @@ app:
 
 
 
+# Subscribe Jeweler Backend
+
+store_backend_security_subscribe:
+    path: /subscribe
+    defaults: { _controller: StoreBackendBundle:Security:subscribe }
+
+
+
 # Login Backend
 
 store_backend_security_login:

@@ -27,8 +27,11 @@ class ProductController extends Controller {
         // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
         $em = $this->getDoctrine()->getManager();
 
-        // Je récupère tous les produits du jeweler numéro 1
-        $products = $em->getRepository('StoreBackendBundle:Product')->getProductByUser(1); // NomduBundle:Nomdel'entité
+        // récupérer l'utilisateur courant connecté (à la place du 1 dans getProductByUser(1))
+        $user = $this->getUser();
+
+        // Je récupère tous les produits du jeweler connecté
+        $products = $em->getRepository('StoreBackendBundle:Product')->getProductByUser($user); // NomduBundle:Nomdel'entité
         // = requête : SELECT * FROM product
 
         // Je retourne la vue List contenue dans le dossier Product de mon bundle StorebackendBundle
@@ -76,16 +79,19 @@ class ProductController extends Controller {
         // À chaque fois que je crée un objet d'une classe, je dois user la classe
         $product = new Product();
 
-        $em = $this->getDoctrine()->getManager(); // Je récupère le manager de Doctrine
-        $jeweler = $em->getRepository('StoreBackendBundle:Jeweler')->find(1); // Je récupère le jeweler numéro 1
-        $product->setJeweler($jeweler); // J'associe mon jeweler à mon produit
+        // récupérer l'utilisateur courant connecté (à la place du 1 dans find(1))
+        $user = $this->getUser();
+
+//        $jeweler = $em->getRepository('StoreBackendBundle:Jeweler')->find($user); // Je récupère le jeweler connecté
+
+        $product->setJeweler($user); // J'associe mon produit à l'utilisateur jeweler connecté
 
         // J'initialise la quantité et le prix de mon produit sauf si l'initialisation se fait dans le constructeur
         // $product->setQuantity(0);
         // $product->setPrice(0);
 
         // Je crée un formulaire de produit en l'associant avec mon produit
-        $form = $this->createForm(new ProductType(1), $product, array(
+        $form = $this->createForm(new ProductType($user), $product, array(
             'validation_groups' => 'new',
             'attr' => array(
                 'method' => 'post',
@@ -110,6 +116,8 @@ class ProductController extends Controller {
 
         // Si la totalité de mon formulaire est valide
         if($form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager(); // Je récupère le manager de Doctrine
 
             //J'upload mon fichier en faisant appel à la méthode upload si mon formulaire est valide
             $product->upload();

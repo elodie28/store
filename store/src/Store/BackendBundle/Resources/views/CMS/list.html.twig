@@ -40,15 +40,15 @@
             <thead>
 
             <tr>
-                <th>#</th>
-                <th>Titre</th>
-                <th>Image</th>
-                <th class="col-md-4">Résumé</th>
-                <th>Activation</th>
-                <th>État</th>
-                <th>Nombre de produits associés</th>
-                <th>Date de création</th>
-                <th>Actions</th>
+                <th class="text-center">ID</th>
+                <th class="text-center">Titre</th>
+                <th class="text-center">Image</th>
+                <th class="col-md-4 text-center">Résumé</th>
+                <th class="text-center">Activation</th>
+                <th class="text-center">État</th>
+                <th class="text-center">Nombre de produits associés</th>
+                <th class="text-center">Date de création</th>
+                <th class="text-center">Actions</th>
             </tr>
 
             </thead>
@@ -60,20 +60,20 @@
 
             <tr>
 
-                <td> {{ cms.id }} </td>
+                <td class="text-center"> {{ cms.id }} </td>
 
-                <td> <a href="{{ path('store_backend_cms_view', {'name' : cms.title , 'id': cms.id} ) }}"> {{ cms.title }} </td>
+                <td class="text-center"> <a href="{{ path('store_backend_cms_view', {'name' : cms.title , 'id': cms.id} ) }}"> {{ cms.title }} </td>
 
-                <td>
+                <td class="text-center">
                     {% if cms.image != NULL %}
                         <img src="{{ asset('uploads/cms/'~ cms.image )}}"/>
                     {% else %}
                     {% endif %}
                 </td>
 
-                <td> {{ cms.summary }} </td>
+                <td class="text-justify"> {{ cms.summary }} </td>
 
-                <td>
+                <td class="text-center">
                     {% if cms.active == 1 %}
                         <a href="{{ path('store_backend_cms_activate', {'id': cms.id, 'action' : 0} ) }}"
                            data-container="body" data-toggle="popover" data-placement="top" data-content="Désactiver la page CMS" class="btn btn-success">
@@ -87,7 +87,7 @@
                     {% endif %}
                 </td>
 
-                <td>
+                <td class="text-center">
                     {% if cms.state == 2 %}
                         <a href="{{ path('store_backend_cms_state', {"id" : cms.id, "action": 2 }) }}" class="btn btn-success">Lu</a>
                         <a href="{{ path('store_backend_cms_state', {"id" : cms.id, "action": 1 }) }}" class="btn btn-default">En cours de lecture</a>
@@ -104,11 +104,11 @@
                     {% endif %}
                 </td>
 
-                <td> <span class="badge badge-info"> {{ cms.product|length }} </span> produits associés </td>
+                <td class="text-center"> <span class="badge badge-info"> {{ cms.product|length }} </span> produits associés </td>
 
-                <td> {{ cms.dateCreated|date('d/m/Y') }} </td>
+                <td class="text-center"> {{ cms.dateCreated|date('d/m/Y') }} </td>
 
-                <td>
+                <td class="text-center">
                     <div class="btn-group">
                         <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-cogs"></i> Actions <i class="fa fa-caret-down"></i></button>
                         <ul class="dropdown-menu">

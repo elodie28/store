@@ -264,4 +264,29 @@ class CMSController extends Controller {
         return $this->redirectToRoute('store_backend_cms_list'); // redirection vers la liste des pages CMS
     }
 
+
+    /**
+     * Action de changement d'état (lue, en cours, non lue) d'un page CMS dans la page liste des CMS
+     * @param Cms $id
+     * @param $action
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function stateAction(Cms $id, $action){
+
+        // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
+        $em = $this->getDoctrine()->getManager();
+
+        $id->setState($action); // J'associe l'action state à l'id de ma page CMS
+        $em->persist($id); // J'enregistre l'id de la page CMS dans Doctrine
+        $em->flush(); // J'envoie ma requête  à ma table cms
+
+        // Permet d'écrire un message flash avec pour clef "info" et un message de confirmation
+        $this->get('session')->getFlashBag()->add(
+            'info',
+            'Le statut de votre page CMS a bien été modifiée'
+        );
+
+        return $this->redirectToRoute('store_backend_cms_list'); // redirection vers la liste des pages CMS
+    }
+
 }

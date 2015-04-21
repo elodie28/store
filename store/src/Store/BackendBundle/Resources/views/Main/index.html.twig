@@ -244,7 +244,7 @@
                     {% for value in lastcomact %}
 
                         <div class="comment">
-                            <img src="assets/demo/avatars/5.jpg" alt="" class="comment-avatar">
+                            <img src="{{ value.user.photo }}" alt="" class="comment-avatar">
                             <div class="comment-body">
                                 <div class="comment-by">
                                     <a href="#" title="">{{ value.user.firstname ~ " " ~ value.user.lastname }}</a> a commenté sur <a href="#" title="">{{ value.product.title }}</a>
@@ -275,7 +275,7 @@
                     {% for value in lastcomval %}
 
                         <div class="comment">
-                            <img src="assets/demo/avatars/5.jpg" alt="" class="comment-avatar">
+                            <img src="{{ value.user.photo }}" alt="" class="comment-avatar">
                             <div class="comment-body">
                                 <div class="comment-by">
                                     <a href="#" title="">{{ value.user.firstname ~ " " ~ value.user.lastname }}</a> a commenté sur <a href="#" title="">{{ value.product.title }}</a>
@@ -306,7 +306,7 @@
                     {% for value in lastcominact %}
 
                         <div class="comment">
-                            <img src="assets/demo/avatars/5.jpg" alt="" class="comment-avatar">
+                            <img src="{{ value.user.photo }}" alt="" class="comment-avatar">
                             <div class="comment-body">
                                 <div class="comment-by">
                                     <a href="#" title="">{{ value.user.firstname ~ " " ~ value.user.lastname }}</a> a commenté sur <a href="#" title="">{{ value.product.title }}</a>

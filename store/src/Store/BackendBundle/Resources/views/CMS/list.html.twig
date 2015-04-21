@@ -44,6 +44,7 @@
                 <th>Titre</th>
                 <th>Image</th>
                 <th class="col-md-4">Résumé</th>
+                <th>Activation</th>
                 <th>État</th>
                 <th>Nombre de produits associés</th>
                 <th>Date de création</th>
@@ -60,6 +61,7 @@
             <tr>
 
                 <td> {{ cms.id }} </td>
+
                 <td> <a href="{{ path('store_backend_cms_view', {'name' : cms.title , 'id': cms.id} ) }}"> {{ cms.title }} </td>
 
                 <td>
@@ -82,6 +84,23 @@
                            data-container="body" data-toggle="popover" data-placement="top" data-content="Activer la page CMS" class="btn btn-danger">
                             <span class="fa fa-times"> </span>
                         </a>
+                    {% endif %}
+                </td>
+
+                <td>
+                    {% if cms.state == 2 %}
+                        <a href="{{ path('store_backend_cms_state', {"id" : cms.id, "action": 2 }) }}" class="btn btn-success">Lu</a>
+                        <a href="{{ path('store_backend_cms_state', {"id" : cms.id, "action": 1 }) }}" class="btn btn-default">En cours de lecture</a>
+                        <a href="{{ path('store_backend_cms_state', {"id" : cms.id, "action": 0 }) }}" class="btn btn-default">Non lu</a>
+                    {% elseif cms.state == 1 %}
+                        <a href="{{ path('store_backend_cms_state', {"id" : cms.id, "action": 2 }) }}" class="btn btn-default">Lu</a>
+                        <a href="{{ path('store_backend_cms_state', {"id" : cms.id, "action": 1 }) }}" class="btn btn-warning">En cours de lecture</a>
+                        <a href="{{ path('store_backend_cms_state', {"id" : cms.id, "action": 0 }) }}" class="btn btn-default">Non lu</a>
+                    {% else %}
+                        <a href="{{ path('store_backend_cms_state', {"id" : cms.id, "action": 2 }) }}" class="btn btn-default">Lu</a>
+                        <a href="{{ path('store_backend_cms_state', {"id" : cms.id, "action": 1 }) }}" class="btn btn-default">En cours de lecture</a>
+                        <a href="{{ path('store_backend_cms_state', {"id" : cms.id, "action": 0 }) }}" class="btn btn-danger">Non lu</a>
+
                     {% endif %}
                 </td>
 

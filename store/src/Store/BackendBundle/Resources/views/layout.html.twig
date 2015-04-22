@@ -20,11 +20,17 @@
 
     <div id="main-wrapper">
 
-        {#Inclusion de ma vue partielle main navigation#}
-        {{ include('StoreBackendBundle:Partial:main_navigation.html.twig') }}
+        {# Si l'utilisateur est connecté, alors on affiche la barre de navigation et la barre du menu #}
+        {# alors l'utilisateur est accessible depuis Twig #}
+        {% if app.user.id is defined %}
+            {# Inclusion de ma vue partielle main navigation #}
+            {{ include('StoreBackendBundle:Partial:main_navigation.html.twig') }}
+        {% endif %}
 
-        {#Inclusion de ma vue partielle main menu#}
-        {{ include('StoreBackendBundle:Partial:main_menu.html.twig') }}
+        {% if app.user.id is defined %}
+            {# Inclusion de ma vue partielle main menu #}
+            {{ include('StoreBackendBundle:Partial:main_menu.html.twig') }}
+        {% endif %}
 
         <div id="content-wrapper">
 
@@ -83,7 +89,7 @@
             // Utilisation du plugin datepicker (pour afficher les dates actives dans les formulaires)
             $('.date').datepicker({ dateFormat: 'dd/mm/yy' });
 
-            // Utilisation du plugin select 2 (pour afficher les choix multiples dans les fomrulaires)
+            // Utilisation du plugin select 2 (pour afficher les choix multiples dans les formulaires)
             $("select[multiple]").select2();
 
             // Pour enlever les messages d'alert info au bout de 3 secondes

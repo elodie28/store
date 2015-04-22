@@ -20,7 +20,7 @@ security:
         # l'encodage se fera au niveau de l'entité Jeweler
         Store\BackendBundle\Entity\Jeweler:
           algorithm: sha512
-          iterations: 10
+          iterations: 10 #Minima pour le sha512 afin qu'il soit performant
           encode_as_base64: true
 
 
@@ -31,10 +31,10 @@ security:
     ###
     # http://symfony.com/doc/current/book/security.html#hierarchical-roles
     role_hierarchy:
-       ROLE_JEWELER: ROLE_JEWELER # Rôle des bijoutiers quand ils se connecteront
-       ROLE_USER: [ROLE_USER, ROLE_JEWELER] # Rôle des utilisateurs quand ils se connecteront, héritent de JEWELER
+       ROLE_JEWELER: [ROLE_ADMIN, ROLE_EDITOR, ROLE_COMMERCIAL] # Rôle des bijoutiers quand ils se connecteront
        ROLE_ADMIN: [ROLE_ADMIN, ROLE_USER] # Rôle des ADMIN, héritent de USER et et donc de JEWELER
-
+       ROLE_EDITOR: [ROLE_EDITOR]
+       ROLE_COMMERCIAL: [ROLE_COMMERCIAL]
 
 
     ###
@@ -105,5 +105,5 @@ security:
     # of your application based on roles, ip, host or methods
     # http://symfony.com/doc/current/cookbook/security/access_control.html
     access_control:
-        - { path: ^/administration, roles: ROLE_JEWELER }
-#        - { path: ^/administration, roles: [ROLE_JEWELER, ROLE_USER] }
+        - { path: ^/administration/products, roles: [ROLE_COMMERCIAL] }
+        - { path: ^/administration, roles: [ROLE_JEWELER, ROLE_EDITOR, ROLE_COMMERCIAL] }

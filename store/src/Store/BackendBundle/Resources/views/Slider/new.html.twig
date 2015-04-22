@@ -1,0 +1,44 @@
+{% extends "StoreBackendBundle::layout.html.twig" %}
+
+{# Fonction form_theme pour appliquer notre thème du formulaire #}
+{% form_theme form 'StoreBackendBundle:Partial:form.html.twig' %}
+
+
+
+{% block javascripts %}
+
+    {{ parent() }} {# on appelle la méthode parent pour éviter d'écraser #}
+
+    <script type="text/javascript">
+
+        init.push(function () {
+
+            $('textarea').markdown({ iconlibrary: 'fa'});
+
+            $('file').pixelFileInput({ placeholder: 'Aucun fichier sélectionné...' });
+
+        });
+
+    </script>
+
+{% endblock %}
+
+
+
+{% block titlepage %}
+
+    <i class="fa fa-plus"></i> Création d'un nouveau slide
+
+{% endblock %}
+
+
+{% block content %}
+
+
+    {# Le formulaire de création d'un nouveau slide se situe dans une vue partielle ... #}
+    {# ... dans le fichier _form.html.twig dans le dossier Slider #}
+
+    {{ include('StoreBackendBundle:Slider:_form.html.twig') }}
+
+
+{% endblock %}

@@ -1,9 +1,26 @@
 {% extends "StoreBackendBundle::layout.html.twig" %}
 
 
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script>
+        init.push(function() {
+            $('[data-toggle="popover"]').popover({
+                trigger: "hover"
+            })
+        });
+    </script>
+
+{% endblock %}
+
+
+
 {% block titlepage %}
 
-    <i class="menu-icon fa fa-video-camera"></i> Liste des Slides
+    <i class="menu-icon fa fa-video-camera"></i> Liste des slides
 
 {% endblock %}
 
@@ -13,7 +30,7 @@
 
 
     <div class="row">
-        <a href="" class="pull-right btn btn-primary btn-lg btn-rounded">
+        <a href="{{ path('store_backend_slider_new') }}" class="pull-right btn btn-primary btn-lg btn-rounded">
             <i class="fa fa-plus"></i> Ajouter un Slide
         </a>
     </div>
@@ -28,40 +45,72 @@
             <tr>
                 <th class="text-center">ID</th>
                 <th class="text-center">Slide</th>
-                <th class="text-center">Caption</th>
+                <th class="text-center">Légende</th>
                 <th class="text-center">Produit associé</th>
-                <th class="text-center">Activation</th>
                 <th class="text-center">Position</th>
+                <th class="text-center">Activation</th>
                 <th class="text-center">Actions</th>
             </tr>
 
             </thead>
 
-            {% for value in slides %}
+            <tbody>
 
-            <tr>
+                {% for value in slides %}
 
-                <td class="text-center"> {{ value.id }} </td>
-                <td></td>
-                <td class="text-center"> {{ value.caption }} </td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <tr>
 
-                <td class="text-center">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-cogs"></i> Actions <i class="fa fa-caret-down"></i></button>
-                        <ul class="dropdown-menu">
-                            <li><a href=""> <i class="fa fa-search"></i> Voir</a></li>
-                            <li><a href=""> <i class="fa fa-pencil"></i> Éditer</a></li>
-                            <li><a href=""> <i class="fa fa-times"></i> Supprimer</a></li>
-                        </ul>
-                    </div>
-                </td>
+                    <td class="text-center"> {{ value.id }} </td>
 
-            </tr>
+                    <td class="text-center">
+                        {% if value.image != NULL %}
+                            <img src="{{ asset('uploads/slider/'~ value.image )}}"/>
+                        {% else %}
+                        {% endif %}
+                    </td>
 
-            {% endfor %}
+                    <td class="text-center"> {{ value.caption }} </td>
+
+                    <td class="text-center">
+
+                    {% for values in value.product %}
+
+                        <a href="{{ path('store_backend_product_view', {'name' : values.title , 'id': values.id} ) }}"> {{ values.title }} </a>
+
+                    {% endfor %}
+
+                    </td>
+
+                    <td class="text-center"> {{ value.position }} </td>
+
+                    <td class="text-center">
+                        {% if value.active == 1 %}
+                            <a href="{{ path('store_backend_slider_activate', {'id': value.id, 'action' : 0} ) }}"
+                               data-container="body" data-toggle="popover" data-placement="bottom" data-content="Désactiver le slide" class="btn btn-success">
+                                <span class="fa fa-check"> </span>
+                            </a>
+                        {% else %}
+                            <a href="{{ path('store_backend_slider_desactivate', {'id': value.id, 'action' : 1} ) }}"
+                               data-container="body" data-toggle="popover" data-placement="bottom" data-content="Activer le slide" class="btn btn-danger">
+                                <span class="fa fa-times"> </span>
+                            </a>
+                        {% endif %}
+                    </td>
+
+                    <td class="text-center">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-cogs"></i> Actions <i class="fa fa-caret-down"></i></button>
+                            <ul class="dropdown-menu text-left">
+                                <li><a href="{{ path('store_backend_slider_view', {'name' : value.caption , 'id': value.id} ) }}"> <i class="fa fa-search"></i> Voir</a></li>
+                                <li><a href="{{ path('store_backend_slider_edit', {'id': value.id} ) }}"> <i class="fa fa-pencil"></i> Éditer</a></li>
+                                <li><a href="{{ path('store_backend_slider_remove', {'id': value.id} ) }}"> <i class="fa fa-times"></i> Supprimer</a></li>
+                            </ul>
+                        </div>
+                    </td>
+
+                </tr>
+
+                {% endfor %}
 
             </tbody>
 

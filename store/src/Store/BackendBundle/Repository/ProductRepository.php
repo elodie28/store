@@ -17,18 +17,45 @@ class ProductRepository extends EntityRepository {
      */
     public function getProductByUser($user = null) { // (paramètre facultatif)
 
-        $query = $this->getEntityManager()
-            /* alias */
-            /* nom du bundle : nom de l'entité  alias */
-            /* alias . nom de l'attribut de l'entité du FROM = : nom d'une variable nommée (nom arbitraire) */
-            ->createQuery(
-            " SELECT p
-              FROM StoreBackendBundle:Product p
-              WHERE p.jeweler = :user"
-            )
-            ->setParameter('user', $user); /* 'valeur de la variable nommée :user (nom arbitraire)', $valeur du paramètre  */
+//        $query = $this->getEntityManager()
+//            /* alias */
+//            /* nom du bundle : nom de l'entité  alias */
+//            /* alias . nom de l'attribut de l'entité du FROM = : nom d'une variable nommée (nom arbitraire) */
+//            ->createQuery(
+//            " SELECT p
+//              FROM StoreBackendBundle:Product p
+//              WHERE p.jeweler = :user"
+//            )
+//            ->setParameter('user', $user); /* 'valeur de la variable nommée :user (nom arbitraire)', $valeur du paramètre  */
+
+        /**
+         * J'appelle la méthode getProductByUserBuilder()
+         * qui me retourne un objet QueryBuilder
+         * Je le transforme ensuite en objet Query
+         */
+        $query = $this->getProductByUserBuilder($user)->getQuery();
 
         return $query->getResult();
+    }
+
+
+    /**
+     * DQL Syntax with Form
+     * @param $user
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    public function getProductByUserBuilder($user) {
+
+        /**
+         * Le formulaire SliderType attend un objet createQueryBuilder()
+         * et non pas l'objet createQuery()
+         */
+        $queryBuilder = $this->createQueryBuilder('p') // 'p' est le paramètre directement sous forme d'alias
+            ->where('p.jeweler = :user')
+            ->orderBy('p.title', 'ASC')
+            ->setParameter('user', $user);
+
+        return $queryBuilder;
     }
 
 

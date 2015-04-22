@@ -1,0 +1,5 @@
+# Page List of Sliders
+
+store_backend_slider_list: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
+      path:     /list # chemin vers l'URI
+      defaults: { _controller: StoreBackendBundle:Slider:list } # NomduBundle:NomduController:Nomdel'Action

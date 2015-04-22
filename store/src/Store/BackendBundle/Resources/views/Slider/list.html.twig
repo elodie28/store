@@ -1,0 +1,72 @@
+{% extends "StoreBackendBundle::layout.html.twig" %}
+
+
+{% block titlepage %}
+
+    <i class="menu-icon fa fa-video-camera"></i> Liste des Slides
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+    <div class="row">
+        <a href="" class="pull-right btn btn-primary btn-lg btn-rounded">
+            <i class="fa fa-plus"></i> Ajouter un Slide
+        </a>
+    </div>
+    <hr/>
+
+    <div class="table-info">
+
+        <table class="table table-bordered">
+
+            <thead>
+
+            <tr>
+                <th class="text-center">ID</th>
+                <th class="text-center">Slide</th>
+                <th class="text-center">Caption</th>
+                <th class="text-center">Produit associé</th>
+                <th class="text-center">Activation</th>
+                <th class="text-center">Position</th>
+                <th class="text-center">Actions</th>
+            </tr>
+
+            </thead>
+
+            {% for value in slides %}
+
+            <tr>
+
+                <td class="text-center"> {{ value.id }} </td>
+                <td></td>
+                <td class="text-center"> {{ value.caption }} </td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+                <td class="text-center">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-cogs"></i> Actions <i class="fa fa-caret-down"></i></button>
+                        <ul class="dropdown-menu">
+                            <li><a href=""> <i class="fa fa-search"></i> Voir</a></li>
+                            <li><a href=""> <i class="fa fa-pencil"></i> Éditer</a></li>
+                            <li><a href=""> <i class="fa fa-times"></i> Supprimer</a></li>
+                        </ul>
+                    </div>
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+{% endblock %}

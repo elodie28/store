@@ -1,0 +1,24 @@
+{% extends "StoreBackendBundle::layout.html.twig" %}
+
+{# Fonction form_theme pour appliquer notre thème du formulaire #}
+{% form_theme form 'StoreBackendBundle:Partial:form.html.twig' %}
+
+
+
+{% block titlepage %}
+
+    <i class="fa fa-pencil"></i> Édition du slide
+
+{% endblock %}
+
+
+{% block content %}
+
+
+    {# Le formulaire d'édition du slide se situe dans une vue partielle ... #}
+    {# ... dans le fichier _form.html.twig dans le dossier Slider #}
+
+    {{ include('StoreBackendBundle:Slider:_form.html.twig') }}
+
+
+{% endblock %}

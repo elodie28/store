@@ -8,6 +8,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Store\BackendBundle\Form\ProductType;
 use Store\BackendBundle\Entity\Product;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+
+// pour restreindre l'accès de cette page pour le rôle ROLE_COMMERCIAL (à lier avec l'annotation @Security pour la function listAction)
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 
 /**
@@ -17,12 +21,17 @@ use Symfony\Component\HttpFoundation\Request;
 class ProductController extends Controller {
 
 
-
     /**
      * Page liste des produits
      * @return \Symfony\Component\HttpFoundation\Response
+     * @Security("has_role('ROLE_COMMERCIAL')")
      */
     public function listAction() {
+
+//        // Méthode n° 1 : si on veut restreindre l'accès au niveau de la méthode de contrôleur
+//        if (false === $this->get('security.context')->isGranted('ROLE_COMMERCIAL')) {
+//            throw new AccessDeniedException("Accès interdit pour ce type de contenu");
+//        }
 
         // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
         $em = $this->getDoctrine()->getManager();
@@ -78,6 +87,7 @@ class ProductController extends Controller {
         // Je crée un nouvel objet entité Product
         // À chaque fois que je crée un objet d'une classe, je dois user la classe
         $product = new Product();
+
 
         // récupérer l'utilisateur courant connecté (à la place du 1 dans find(1))
         $user = $this->getUser();

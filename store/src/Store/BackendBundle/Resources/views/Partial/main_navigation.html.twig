@@ -33,27 +33,46 @@
         <li class="{% if app.request.attributes.get('_route') == "store_backend_index" %} active {% endif %}">
             <a href="{{ path('store_backend_index') }}"> <i class="menu-icon fa fa-home"></i> Home </a>
         </li>
-        <li>
-            <i class="menu-icon fa fa-user"></i> Ma boutique
+
+        <li class="{% if app.request.attributes.get('_route') == "store_backend_jeweler_myaccount" %} active {% endif %}">
+            <a href="{{ path('store_backend_jeweler_myaccount') }}"> <i class="menu-icon fa fa-user"></i> Ma boutique </a>
         </li>
+
+        {% if is_granted('ROLE_COMMERCIAL') %}
         <li class="{% if app.request.attributes.get('_route') == "store_backend_product_list" %} active {% endif %}">
             <a href="{{ path('store_backend_product_list') }}"> <i class="menu-icon fa fa-bookmark"></i> Produits </a>
         </li>
+        {% endif %}
+
+        {% if is_granted('ROLE_COMMERCIAL') %}
         <li class="{% if app.request.attributes.get('_route') == "store_backend_category_list" %} active {% endif %}">
             <a href="{{ path('store_backend_category_list') }}"> <i class="menu-icon fa fa-th"></i> Categories </a>
         </li>
-        <li>
-            <i class="menu-icon fa  fa-shopping-cart"></i> Commandes
+        {% endif %}
+
+        {% if is_granted('ROLE_COMMERCIAL') %}
+        <li class="{% if app.request.attributes.get('_route') == "store_backend_order_list" %} active {% endif %}">
+            <a href="{{ path('store_backend_order_list') }}"> <i class="menu-icon fa fa-shopping-cart"></i> Commandes </a>
         </li>
+        {% endif %}
+
+        {% if is_granted('ROLE_EDITOR') %}
         <li class="{% if app.request.attributes.get('_route') == "store_backend_cms_list" %} active {% endif %}">
             <a href="{{ path('store_backend_cms_list') }}"> <i class="menu-icon fa  fa-pencil"></i> CMS </a>
         </li>
+        {% endif %}
+
+        {% if is_granted('ROLE_COMMERCIAL') %}
         <li class="{% if app.request.attributes.get('_route') == "store_backend_supplier_list" %} active {% endif %}">
             <a href="{{ path('store_backend_supplier_list') }}"> <i class="menu-icon fa fa-truck"></i> Fournisseurs </a>
         </li>
+        {% endif %}
+
+        {% if is_granted('ROLE_COMMERCIAL') %}
         <li class="{% if app.request.attributes.get('_route') == "store_backend_slider_list" %} active {% endif %}">
-        <a href="{{ path('store_backend_slider_list') }}"> <i class="menu-icon fa-video-camera"></i> Slider </a>
+            <a href="{{ path('store_backend_slider_list') }}"> <i class="menu-icon fa fa-video-camera"></i> Diaporama </a>
         </li>
+        {% endif %}
 
     </ul>
     <!-- / .navbar-nav -->
@@ -302,8 +321,8 @@
 
     <li class="dropdown">
         <a href="#" class="dropdown-toggle user-menu" data-toggle="dropdown">
-            <img src="assets/demo/avatars/1.jpg" alt="">
-            <span>John Doe</span>
+            <img src="{{ app.user.image }}" alt="">
+            <span>{{ app.user.username }}</span>
         </a>
         <ul class="dropdown-menu">
             <li><a href="#"><span class="label label-warning pull-right">New</span>Profile</a></li>

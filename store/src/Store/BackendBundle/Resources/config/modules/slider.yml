@@ -3,3 +3,48 @@
 store_backend_slider_list: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
       path:     /list # chemin vers l'URI
       defaults: { _controller: StoreBackendBundle:Slider:list } # NomduBundle:NomduController:Nomdel'Action
+
+
+# Page View a Slider
+
+store_backend_slider_view:
+      path: /view/{id}/{name} # id = argument (ou variable)
+      defaults: { _controller: StoreBackendBundle:Slider:view }
+      requirements:
+        id: \d+
+        _method: GET
+
+
+# Page New a Slider
+
+store_backend_slider_new: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
+      path:     /new # chemin vers l'URI
+      defaults: { _controller: StoreBackendBundle:Slider:new } # NomduBundle:NomduController:Nomdel'Action
+
+
+# Page Edit a Slider
+
+store_backend_slider_edit:
+      path: /edit/{id}
+      defaults: { _controller: StoreBackendBundle:Slider:edit }
+
+
+# Remove a Slider
+
+store_backend_slider_remove: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
+      path:     /remove/{id} # chemin vers l'URI
+      defaults: { _controller: StoreBackendBundle:Slider:remove } # NomduBundle:NomduController:Nomdel'Action
+
+
+
+# Activate a Slide
+
+store_backend_slider_activate: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
+      path: /activate/{id}/{action} # chemin vers l'URI
+      defaults: { _controller: StoreBackendBundle:Slider:activate } # NomduBundle:NomduController:Nomdel'Action
+
+# Desactivate a Slide
+
+store_backend_slider_desactivate: # Nom de la route -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
+      path: /desactivate/{id}/{action} # chemin vers l'URI
+      defaults: { _controller: StoreBackendBundle:Slider:desactivate } # NomduBundle:NomduController:Nomdel'Action

@@ -7,11 +7,18 @@ use Symfony\Component\Security\Core\Role\Role;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity; // pour que le champ soit unique dans le formulaire, à lier avec @UniqueEntity dans la class Jeweler
+use Symfony\Component\Validator\Constraints as Assert; // user les contraintes pour pouvoir les utiliser dans les entités (création formulaire)
+
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+
 /**
  * Jeweler
  * Use AdvancedUserInterface
  * @ORM\Table(name="jeweler", uniqueConstraints={@ORM\UniqueConstraint(name="email", columns={"email"})})
  * @ORM\Entity(repositoryClass="Store\BackendBundle\Repository\JewelerRepository")
+ * @UniqueEntity(fields="username", message="Votre nom d'utilisateur est déjà utilisé", groups = {"subscribe"})
+ * @UniqueEntity(fields="email", message="Votre e-mail est déjà utilisé", groups = {"subscribe"})
  */
 class Jeweler implements AdvancedUserInterface, \Serializable {
     /**
@@ -26,19 +33,56 @@ class Jeweler implements AdvancedUserInterface, \Serializable {
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", length=300, nullable=true)
+     * @Assert\NotBlank(
+     *    message = "Le username ne doit pas être vide",
+     *    groups = {"subscribe"}
+     * )
+     *
+     * @Assert\Length(
+     *     min = "3",
+     *     max = "50",
+     *     minMessage = "Votre username doit faire au moins {{ limit }} caractères",
+     *     maxMessage = "Votre username ne peut pas être plus long que {{ limit }} caractères",
+     *     groups = {"subscribe"}
+     * )
+     *
+     * @ORM\Column(name="username", type="string", length=150, nullable=true)
      */
     private $username;
 
     /**
      * @var string
      *
+     * @Assert\NotBlank(
+     *    message = "L'e-mail ne doit pas être vide",
+     *    groups = {"subscribe"}
+     * )
+     *
+     * @Assert\Email(
+     *     message = "{{ value }} n'est pas un e-mail valide.",
+     *     checkMX = true,
+     *     groups = {"subscribe"}
+     * )
+     *
      * @ORM\Column(name="email", type="string", length=150, nullable=true)
      */
-    private $email;
+    private $email; // checkMX (vérifie l'extension -> .com, .fr ...)
 
     /**
      * @var string
+     *
+     * @Assert\NotBlank(
+     *    message = "Le mot de passe ne doit pas être vide",
+     *    groups = {"subscribe"}
+     * )
+     *
+     * @Assert\Length(
+     *     min = "6",
+     *     max = "50",
+     *     minMessage = "Votre mot de passe doit faire au moins {{ limit }} caractères",
+     *     maxMessage = "Votre mot de passe ne peut pas être plus long que {{ limit }} caractères",
+     *     groups = {"subscribe"}
+     * )
      *
      * @ORM\Column(name="password", type="string", length=300, nullable=true)
      */
@@ -900,6 +944,15 @@ class Jeweler implements AdvancedUserInterface, \Serializable {
      */
     public function __construct()
     {
+        $this->dateCreated = new \DateTime('now');
+        $this->type = 1;
+        $this->enabled = 1;
+        $this->accountnonexpired = 1;
+        $this->accountnonlocked = 1;
+        $this->credentialsExpired = 1;
+        $this->locked = 0;
+        $this->expired = 0;
+        $this->salt = md5(uniqid(null, true));
         $this->groups = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -936,6 +989,33 @@ class Jeweler implements AdvancedUserInterface, \Serializable {
     public function getGroups()
     {
         return $this->groups;
+    }
+
+
+
+    /**
+     * @Assert\Callback(groups={"subscribe"})
+     * @param ExecutionContextInterface $context
+     */
+    public function validate(ExecutionContextInterface $context) {
+
+        if (($this->getUsername() == $this->getPassword())) {
+            $context->addViolationAt(
+                'username',
+                "Votre nom d'utilisateur ne doit pas être identique à votre mot de passe",
+                array(),
+                null
+            );
+        }
+
+        if (($this->getUsername() == $this->getEmail())) {
+            $context->addViolationAt(
+                'email',
+                'Votre e-mail ne doit pas être identique à votre username',
+                array(),
+                null
+            );
+        }
     }
 
 

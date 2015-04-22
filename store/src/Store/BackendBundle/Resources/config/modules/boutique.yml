@@ -1,0 +1,5 @@
+# Page List of Boutiques
+
+store_backend_jeweler_myaccount: # Nom de la root -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
+      path:     /list # chemin vers l'URI
+      defaults: { _controller: StoreBackendBundle:Boutique:list } # NomduBundle:NomduController:Nomdel'Action

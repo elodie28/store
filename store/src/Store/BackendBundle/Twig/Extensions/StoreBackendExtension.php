@@ -24,6 +24,7 @@ class StoreBackendExtension extends \Twig_Extension {
             // - 2ème argument est le nom de la fonction que je vais créer
             new \Twig_SimpleFilter('state', array($this, 'state')),
             new \Twig_SimpleFilter('active', array($this, 'active'))
+
         );
     }
 

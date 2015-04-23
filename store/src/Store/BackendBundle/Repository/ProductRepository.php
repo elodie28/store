@@ -199,7 +199,9 @@ class ProductRepository extends EntityRepository {
      */
     public function getCountProductCmsByUser($user = null) {
 
+
         // Compte le nombre de produits (bijoux) liés à une page CMS pour 1 bijoutier (graphique dashboard n°3)
+
         $query = $this->getEntityManager()
 
             ->createQuery(

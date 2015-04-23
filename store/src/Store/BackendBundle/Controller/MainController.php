@@ -37,6 +37,18 @@ class MainController extends Controller {
 
         $nborder = $em->getRepository('StoreBackendBundle:Orders')->getCountByUser($user);
 
+
+
+        // Graphique du nombre de commandes des 6 derniers mois
+        $nborderbymonth[] = $em->getRepository('StoreBackendBundle:Orders')->getOrderGraphByUser($user, new \DateTime('now'));
+        $nborderbymonth[] = $em->getRepository('StoreBackendBundle:Orders')->getOrderGraphByUser($user, new \DateTime('-1 month'));
+        $nborderbymonth[] = $em->getRepository('StoreBackendBundle:Orders')->getOrderGraphByUser($user, new \DateTime('-2 month'));
+        $nborderbymonth[] = $em->getRepository('StoreBackendBundle:Orders')->getOrderGraphByUser($user, new \DateTime('-3 month'));
+        $nborderbymonth[] = $em->getRepository('StoreBackendBundle:Orders')->getOrderGraphByUser($user, new \DateTime('-4 month'));
+        $nborderbymonth[] = $em->getRepository('StoreBackendBundle:Orders')->getOrderGraphByUser($user, new \DateTime('-5 month'));
+
+
+
         $totalorder = $em->getRepository('StoreBackendBundle:Orders')->getTotalByUser($user);
 
         $nbcomact = $em->getRepository('StoreBackendBundle:Comment')->getCountActByUser($user);
@@ -46,6 +58,12 @@ class MainController extends Controller {
         $nbcominact = $em->getRepository('StoreBackendBundle:Comment')->getCountInactByUser($user);
 
         $nblikes = $em->getRepository('StoreBackendBundle:Product')->getCountLikesByUser($user);
+
+        $nbproductcompleted = $em->getRepository('StoreBackendBundle:Product')->getCountProductCompletedByUser($user);
+
+        $nbproductreferenced = $em->getRepository('StoreBackendBundle:Product')->getCountProductReferencedByUser($user);
+
+        $nbproductcms = $em->getRepository('StoreBackendBundle:Product')->getCountProductCmsByUser($user);
 
         $lastcomact = $em->getRepository('StoreBackendBundle:Comment')->getLastCommentsActByUser($user);
 
@@ -63,6 +81,8 @@ class MainController extends Controller {
 
         $detailsjeweler = $em->getRepository('StoreBackendBundle:Jeweler')->getAllDetailsByUser($user);
 
+
+
         // Je retourne la vue index contenue dans le dossier Main de mon bundle StorebackendBundle
         return $this->render('StoreBackendBundle:Main:index.html.twig', array(
             'nbprod' => $nbprod,
@@ -71,11 +91,15 @@ class MainController extends Controller {
             'nbcom' => $nbcom,
             'nbsup' => $nbsup,
             'nborder' => $nborder,
+            'nborderbymonth' => $nborderbymonth,
             'totalorder' => $totalorder,
             'nbcomact' => $nbcomact,
             'nbcomval' => $nbcomval,
             'nbcominact' => $nbcominact,
             'nblikes' => $nblikes,
+            'nbproductcompleted' => $nbproductcompleted,
+            'nbproductreferenced' => $nbproductreferenced,
+            'nbproductcms' => $nbproductcms,
             'lastcomact' => $lastcomact,
             'lastcomval' => $lastcomval,
             'lastcominact' => $lastcominact,

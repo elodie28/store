@@ -129,7 +129,7 @@ class JewelerMeta
     /**
      * @var \Jeweler
      *
-     * @ORM\ManyToOne(targetEntity="Jeweler")
+     * @ORM\OneToOne(targetEntity="Jeweler", inversedBy="meta")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="jeweler_id", referencedColumnName="id")
      * })

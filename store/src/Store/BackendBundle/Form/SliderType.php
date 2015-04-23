@@ -42,7 +42,7 @@ class SliderType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
 
         $builder->add('caption', null, array(
-            'label'    => 'Légende du slide',
+            'label'    => 'Légende de mon slide',
             'required' => true,
             'attr'     => array(
                 'class'       => 'form-control',
@@ -62,7 +62,7 @@ class SliderType extends AbstractType {
         ));
 
         $builder->add('product', 'entity', array(
-            'label' => 'Produit associé au slide',
+            'label' => 'Produit associé à mon slide',
             'attr'  => array(
                 'class' => 'form-control'
             ),
@@ -77,7 +77,7 @@ class SliderType extends AbstractType {
         ));
 
         $builder->add('position', null, array(
-            'label'    => "Ordre d'affichage de votre slide",
+            'label'    => "Ordre d'affichage de mon slide",
             'required' => true,
             'attr'     => array(
                 'class'       => 'form-control',
@@ -85,7 +85,7 @@ class SliderType extends AbstractType {
         ));
 
         $builder->add('active', null, array(
-            'label' => 'Slide activé ?',
+            'label' => 'Activer mon slide ?',
             'attr'  => array(
                 'class' => 'checkbox'
             )

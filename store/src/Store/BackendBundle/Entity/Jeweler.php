@@ -242,6 +242,13 @@ class Jeweler implements AdvancedUserInterface, \Serializable {
     private $groups;
 
 
+    /**
+     * @var \Jeweler
+     *
+     * @ORM\OneToOne(targetEntity="JewelerMeta", mappedBy="jeweler")
+     */
+    private $meta;
+
 
     /**
      * Get id
@@ -782,6 +789,29 @@ class Jeweler implements AdvancedUserInterface, \Serializable {
         return $this->dateCreated;
     }
 
+    /**
+     * Set meta
+     *
+     * @param \Store\BackendBundle\Entity\JewelerMeta $meta
+     * @return Jeweler
+     */
+    public function setMeta(\Store\BackendBundle\Entity\JewelerMeta $meta = null)
+    {
+        $this->meta = $meta;
+
+        return $this;
+    }
+
+    /**
+     * Get meta
+     *
+     * @return \Store\BackendBundle\Entity\JewelerMeta
+     */
+    public function getMeta()
+    {
+        return $this->meta;
+    }
+
 
 
     /**
@@ -1017,6 +1047,5 @@ class Jeweler implements AdvancedUserInterface, \Serializable {
             );
         }
     }
-
 
 }

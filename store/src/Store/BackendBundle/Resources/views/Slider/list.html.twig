@@ -71,15 +71,7 @@
 
                     <td class="text-center"> {{ value.caption }} </td>
 
-                    <td class="text-center">
-
-                    {% for values in value.product %}
-
-                        <a href="{{ path('store_backend_product_view', {'name' : values.title , 'id': values.id} ) }}"> {{ values.title }} </a>
-
-                    {% endfor %}
-
-                    </td>
+                    <td class="text-center">  {{ value.product.title }} </td>
 
                     <td class="text-center"> {{ value.position }} </td>
 

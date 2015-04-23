@@ -5,6 +5,24 @@
 
 
 
+{% block javascripts %}
+
+    {{ parent() }} {# on appelle la méthode parent pour éviter d'écraser #}
+
+    <script type="text/javascript">
+
+        init.push(function () {
+
+            $('textarea').markdown({ iconlibrary: 'fa'});
+
+        });
+
+    </script>
+
+{% endblock %}
+
+
+
 {% block titlepage %}
 
     <i class="fa fa-pencil"></i> Édition du slide

@@ -110,6 +110,36 @@ class ProductRepository extends EntityRepository {
     }
 
 
+
+    /**
+     * SELECT COUNT(product.id)
+     * FROM `product`
+     * INNER JOIN product_cms
+     * ON product.id = product_cms.product_id
+     * INNER JOIN cms
+     * ON product_cms.cms_id = cms.id
+     * WHERE cms.id = 1
+     * @param null $user
+     */
+    public function getCountProductCmsByUser($user = null) {
+
+        // Compte le nombre de produits (bijoux) liés à une page CMS pour 1 bijoutier (graphique dashboard)
+        $query = $this->getEntityManager()
+
+            ->createQuery(
+                " SELECT COUNT(p) AS nb
+                  FROM StoreBackendBundle:Product p
+                  JOIN p.cms cms
+                  WHERE cms.jeweler = :user
+                  AND p.jeweler = :user"
+            )
+            ->setParameter('user', $user);
+
+        // retourne 1 résultat ou null (correspond au row dans CodeIgniter)
+        return $query->getOneOrNullResult();
+    }
+
+
 }
 
 

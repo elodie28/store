@@ -75,7 +75,7 @@ class CmsRepository extends EntityRepository {
         $query = $this->getEntityManager()
 
             ->createQuery(
-                " SELECT count(cms) AS nb
+                " SELECT COUNT(cms) AS nb
                   FROM StoreBackendBundle:Cms cms
                   WHERE cms.jeweler = :user"
             )
@@ -84,5 +84,6 @@ class CmsRepository extends EntityRepository {
         // retourne 1 résultat ou null (correspond au row dans CodeIgniter)
         return $query->getOneOrNullResult();
     }
+
 
 }

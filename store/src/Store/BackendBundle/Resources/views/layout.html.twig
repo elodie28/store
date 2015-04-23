@@ -97,6 +97,9 @@
             // Pour enlever les messages d'alert success au bout de 3 secondes
             $('div.alert-success').delay(3000).slideUp('fast');
 
+            // Utilisation du plugin pixelFileInput pour tous les champs de type file (upload d'image dans les formulaires)
+            $('input[type=file]').pixelFileInput({ placeholder: 'Aucun fichier sélectionné ...' });
+
         })
         window.PixelAdmin.start(init);
     </script>

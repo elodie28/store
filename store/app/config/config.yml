@@ -65,7 +65,14 @@ doctrine:
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
-        auto_mapping: true
+        entity_managers:
+          default:
+            auto_mapping: true
+            dql:
+              datetime_functions:
+                  month: Store\BackendBundle\Doctrine\Extensions\Month
+                  year: Store\BackendBundle\Doctrine\Extensions\Year
+                  date_format : Store\BackendBundle\Doctrine\Extensions\DateFormat
 
 # Swiftmailer Configuration
 swiftmailer:

@@ -23,61 +23,64 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="_form.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Slider/_form.html.twig">
+      <file leaf-file-name="OrderRepository.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Repository/OrderRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="0" selection-start="503" selection-end="503" vertical-scroll-proportion="-19.333334" vertical-offset="0" max-vertical-offset="810">
+            <state line="82" column="70" selection-start="2237" selection-end="2237" vertical-scroll-proportion="-54.666668" vertical-offset="0" max-vertical-offset="2340">
+              <folding>
+                <marker date="1429801661732" expanded="true" signature="571:685" placeholder="SELECT count..StoreBackendBundle..." />
+                <marker date="1429801661732" expanded="true" signature="1234:1355" placeholder="SELECT SUM(o..StoreBackendBundle..." />
+                <marker date="1429801661732" expanded="true" signature="2184:2435" placeholder="SELECT COUNT..StoreBackendBundle..." />
+                <marker date="1429801661732" expanded="true" signature="3054:3189" placeholder="SELECT o FRO..StoreBackendBundle..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainController.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Controller/MainController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="47" column="23" selection-start="2156" selection-end="2171" vertical-scroll-proportion="-8.888889" vertical-offset="606" max-vertical-offset="2052">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SliderType.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Form/SliderType.php">
+      <file leaf-file-name="index.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Main/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="73" column="57" selection-start="2112" selection-end="2112" vertical-scroll-proportion="-21.37037" vertical-offset="737" max-vertical-offset="2484">
+            <state line="413" column="0" selection-start="20527" selection-end="21235" vertical-scroll-proportion="-10.0" vertical-offset="7164" max-vertical-offset="10836">
               <folding>
-                <element signature="e#44#84#0" expanded="true" />
+                <element signature="e#5200#5222#0" expanded="true" />
+                <element signature="e#14498#14571#0" expanded="true" />
+                <element signature="e#14613#14666#0" expanded="true" />
+                <element signature="e#16221#16294#0" expanded="true" />
+                <element signature="e#16336#16389#0" expanded="true" />
+                <element signature="e#17946#18019#0" expanded="true" />
+                <element signature="e#18061#18114#0" expanded="true" />
+                <element signature="e#20156#20229#0" expanded="true" />
+                <element signature="e#20271#20324#0" expanded="true" />
+                <element signature="e#21722#22010#0" expanded="true" />
+                <element signature="e#22045#22315#0" expanded="true" />
+                <element signature="e#27704#27723#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SliderController.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Controller/SliderController.php">
+      <file leaf-file-name="services.yml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/store/app/config/services.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="148" column="63" selection-start="5670" selection-end="5676" vertical-scroll-proportion="-8.962963" vertical-offset="2422" max-vertical-offset="3726">
-              <folding>
-                <element signature="e#183#221#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="new.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Slider/new.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="14" selection-start="0" selection-end="553" vertical-scroll-proportion="-15.333333" vertical-offset="0" max-vertical-offset="522">
+            <state line="14" column="17" selection-start="507" selection-end="507" vertical-scroll-proportion="0.32684824" vertical-offset="0" max-vertical-offset="771">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Slider.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Entity/Slider.php">
+      <file leaf-file-name="StoreBackendExtension.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Twig/Extensions/StoreBackendExtension.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="86" column="20" selection-start="2514" selection-end="2514" vertical-scroll-proportion="0.23214285" vertical-offset="1340" max-vertical-offset="5994">
-              <folding>
-                <element signature="e#46#78#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Slider/list.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="90" selection-start="2251" selection-end="2251" vertical-scroll-proportion="-14.703704" vertical-offset="791" max-vertical-offset="1566">
+            <state line="55" column="22" selection-start="1230" selection-end="1230" vertical-scroll-proportion="-13.555555" vertical-offset="624" max-vertical-offset="1368">
               <folding />
             </state>
           </provider>
@@ -93,19 +96,9 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Repository/MessageRepository.php" />
-        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Entity/Message.php" />
-        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Entity/Business.php" />
-        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Repository/BusinessRepository.php" />
-        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Entity/Product.php" />
-        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Validator/Constraints/StripTagLengthValidator.php" />
-        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Form/CategoryType.php" />
-        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Category/_form.html.twig" />
-        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/CMS/_form.html.twig" />
         <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Form/CmsType.php" />
         <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Entity/Cms.php" />
         <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Repository/SupplierRepository.php" />
-        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Main/index.html.twig" />
         <option value="$PROJECT_DIR$/store/app/config/parameters.yml" />
         <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Product/list.html.twig" />
         <option value="$PROJECT_DIR$/store/vendor/symfony/symfony/src/Symfony/Component/Security/Core/User/UserChecker.php" />
@@ -117,42 +110,52 @@
         <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Controller/CategoryController.php" />
         <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Controller/CMSController.php" />
         <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/config/modules/category.yml" />
-        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Controller/MainController.php" />
         <option value="$PROJECT_DIR$/store/app/config/routing.yml" />
         <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Security/login.html.twig" />
         <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Product/_form.html.twig" />
         <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Security/subscribe.html.twig" />
         <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Entity/Category.php" />
         <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Controller/SecurityController.php" />
-        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Entity/Jeweler.php" />
         <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Form/JewelerSubscribeType.php" />
         <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/config/modules/order.yml" />
         <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/config/routing.yml" />
         <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/config/modules/boutique.yml" />
         <option value="$PROJECT_DIR$/store/app/config/security.yml" />
-        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/layout.html.twig" />
         <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Partial/main_menu.html.twig" />
         <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Partial/main_navigation.html.twig" />
         <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/config/modules/slider.yml" />
         <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Slider/view.html.twig" />
-        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Slider/new.html.twig" />
-        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Repository/ProductRepository.php" />
         <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Slider/_form.html.twig" />
-        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Slider/list.html.twig" />
-        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Form/SliderType.php" />
         <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Controller/ProductController.php" />
         <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Controller/SliderController.php" />
-        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Slider/edit.html.twig" />
         <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Entity/Slider.php" />
+        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Slider/list.html.twig" />
+        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Form/SliderType.php" />
+        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Slider/edit.html.twig" />
+        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Slider/new.html.twig" />
+        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/layout.html.twig" />
+        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Entity/JewelerMeta.php" />
+        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Entity/Jeweler.php" />
+        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Repository/CmsRepository.php" />
+        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Repository/ProductRepository.php" />
+        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Doctrine/Extensions/Month.php" />
+        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Doctrine/Extensions/Year.php" />
+        <option value="$PROJECT_DIR$/store/app/config/config.yml" />
+        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Doctrine/Extensions/DateFormat.php" />
+        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Controller/MainController.php" />
+        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Repository/OrderRepository.php" />
+        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Main/index.html.twig" />
+        <option value="$PROJECT_DIR$/store/app/config/services.yml" />
+        <option value="$PROJECT_DIR$/store/src/Store/BackendBundle/Twig/Extensions/StoreBackendExtension.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="65" />
-    <option name="y" value="24" />
-    <option name="width" value="1855" />
-    <option name="height" value="1056" />
+    <option name="x" value="-19" />
+    <option name="y" value="87" />
+    <option name="width" value="1794" />
+    <option name="height" value="902" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -340,571 +343,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Validator" />
+              <option name="myItemId" value="Twig" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Constraints" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackendBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackendBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Supplier" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackendBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Slider" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackendBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Security" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackendBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Product" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackendBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Partial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackendBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackendBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CMS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackendBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Category" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackendBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackendBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackendBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackendBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Repository" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackendBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Form" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackendBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Entity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackendBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controller" />
+              <option name="myItemId" value="Extensions" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -971,6 +414,54 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="store" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="store" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="store" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cache" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="store" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="store" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="store" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cache" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dev" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1026,11 +517,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
+    <frame x="-19" y="87" width="1794" height="902" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21563342" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22296543" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930845" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1066,333 +557,132 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Controller/StaticsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1152" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Entity/Groups.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="141" column="26" selection-start="2562" selection-end="2566" vertical-scroll-proportion="2.895939" vertical-offset="256" max-vertical-offset="2718">
-          <folding>
-            <element signature="e#46#78#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Repository/JewelerRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="101" column="30" selection-start="3332" selection-end="3332" vertical-scroll-proportion="1.4847716" vertical-offset="648" max-vertical-offset="2214" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Security/login.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="0" selection-start="1914" selection-end="1928" vertical-scroll-proportion="0.8912189" vertical-offset="472" max-vertical-offset="1260" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/store/app/config/routing.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="68" selection-start="337" selection-end="337" vertical-scroll-proportion="0.35337424" vertical-offset="0" max-vertical-offset="815" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/StoreBackendBundle.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="815">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Entity/Jeweler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="31" selection-start="2823" selection-end="2832" vertical-scroll-proportion="-14.185185" vertical-offset="1111" max-vertical-offset="18504">
-          <folding>
-            <element signature="e#46#78#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Controller/SecurityController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="45" selection-start="1826" selection-end="1835" vertical-scroll-proportion="-6.5185184" vertical-offset="868" max-vertical-offset="2214">
-          <folding>
-            <element signature="e#50#89#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Security/subscribe.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="9" selection-start="774" selection-end="774" vertical-scroll-proportion="0.5517693" vertical-offset="371" max-vertical-offset="1134">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Form/JewelerSubscribeType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="72" selection-start="1902" selection-end="1902" vertical-scroll-proportion="5.4814816" vertical-offset="1174" max-vertical-offset="2286">
-          <folding>
-            <element signature="e#44#84#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/config/modules/order.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="55" selection-start="251" selection-end="251" vertical-scroll-proportion="0.08834356" vertical-offset="0" max-vertical-offset="815">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/config/modules/boutique.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="17" selection-start="181" selection-end="185" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Controller/MainController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="78" selection-start="649" selection-end="649" vertical-scroll-proportion="0.007614213" vertical-offset="390" max-vertical-offset="1746">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/config/routing.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="23" selection-start="603" selection-end="603" vertical-scroll-proportion="0.46380368" vertical-offset="0" max-vertical-offset="1044">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Partial/main_navigation.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="323" column="39" selection-start="14212" selection-end="14212" vertical-scroll-proportion="0.31134564" vertical-offset="5578" max-vertical-offset="6336">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/store/app/config/security.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="89" selection-start="3937" selection-end="3937" vertical-scroll-proportion="0.88957053" vertical-offset="1219" max-vertical-offset="2052">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/layout.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="60" selection-start="956" selection-end="956" vertical-scroll-proportion="0.5341936" vertical-offset="0" max-vertical-offset="1962">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Partial/main_menu.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="39" selection-start="1132" selection-end="1132" vertical-scroll-proportion="0.39483872" vertical-offset="324" max-vertical-offset="4428">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/config/modules/product.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="20" selection-start="562" selection-end="562" vertical-scroll-proportion="0.35337424" vertical-offset="0" max-vertical-offset="1386">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/config/modules/category.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="116" selection-start="597" selection-end="2050" vertical-scroll-proportion="0.801227" vertical-offset="319" max-vertical-offset="1134">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/config/modules/cms.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1188">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1188" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/config/modules/supplier.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="551" selection-end="551" vertical-scroll-proportion="0.35337424" vertical-offset="0" max-vertical-offset="815">
-          <folding />
-        </state>
+        <state line="16" column="0" selection-start="551" selection-end="551" vertical-scroll-proportion="0.35337424" vertical-offset="0" max-vertical-offset="815" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Slider/view.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="57" selection-start="135" selection-end="135" vertical-scroll-proportion="0.1142132" vertical-offset="0" max-vertical-offset="788">
-          <folding />
-        </state>
+        <state line="5" column="57" selection-start="135" selection-end="135" vertical-scroll-proportion="0.1142132" vertical-offset="0" max-vertical-offset="788" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Product/view.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="0" selection-start="842" selection-end="856" vertical-scroll-proportion="0.79949236" vertical-offset="0" max-vertical-offset="788">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Product/_form.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="26" selection-start="208" selection-end="270" vertical-scroll-proportion="0.18274112" vertical-offset="0" max-vertical-offset="2106">
-          <folding />
-        </state>
+        <state line="35" column="0" selection-start="842" selection-end="856" vertical-scroll-proportion="0.79949236" vertical-offset="0" max-vertical-offset="788" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Controller/SupplierController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="77" selection-start="897" selection-end="897" vertical-scroll-proportion="0.6369594" vertical-offset="0" max-vertical-offset="2214">
-          <folding />
-        </state>
+        <state line="28" column="77" selection-start="897" selection-end="897" vertical-scroll-proportion="0.6369594" vertical-offset="0" max-vertical-offset="2214" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/config/modules/slider.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="24" selection-start="562" selection-end="586" vertical-scroll-proportion="0.20490797" vertical-offset="175" max-vertical-offset="990">
-          <folding />
-        </state>
+        <state line="19" column="24" selection-start="562" selection-end="586" vertical-scroll-proportion="0.20490797" vertical-offset="175" max-vertical-offset="990" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Category/_form.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="0" selection-start="637" selection-end="957" vertical-scroll-proportion="0.7287025" vertical-offset="2" max-vertical-offset="792">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Controller/CMSController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="90" selection-start="2938" selection-end="2938" vertical-scroll-proportion="0.0" vertical-offset="1476" max-vertical-offset="5436">
-          <folding />
-        </state>
+        <state line="31" column="0" selection-start="637" selection-end="957" vertical-scroll-proportion="0.7287025" vertical-offset="2" max-vertical-offset="792" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Category/list.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="21" selection-start="1531" selection-end="1778" vertical-scroll-proportion="0.696" vertical-offset="702" max-vertical-offset="2070">
-          <folding />
-        </state>
+        <state line="68" column="21" selection-start="1531" selection-end="1778" vertical-scroll-proportion="0.696" vertical-offset="702" max-vertical-offset="2070" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Product/new.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="14" selection-start="0" selection-end="992" vertical-scroll-proportion="0.8629442" vertical-offset="94" max-vertical-offset="882">
-          <folding />
-        </state>
+        <state line="43" column="14" selection-start="0" selection-end="992" vertical-scroll-proportion="0.8629442" vertical-offset="94" max-vertical-offset="882" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Repository/CategoryRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="5" selection-start="1196" selection-end="1196" vertical-scroll-proportion="-0.14213198" vertical-offset="814" max-vertical-offset="2196">
-          <folding>
-            <marker date="1429258709335" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..StoreBackendBundle..." />
-            <marker date="1429258709335" expanded="true" signature="-1:-1" placeholder="SELECT c FRO..StoreBackendBundle..." />
-          </folding>
-        </state>
+        <state line="39" column="5" selection-start="1196" selection-end="1196" vertical-scroll-proportion="-0.14213198" vertical-offset="814" max-vertical-offset="2196" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Form/CategoryType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="63" selection-start="135" selection-end="253" vertical-scroll-proportion="0.18274112" vertical-offset="0" max-vertical-offset="1908">
-          <folding>
-            <element signature="e#44#84#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Repository/ProductRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="15" selection-start="776" selection-end="776" vertical-scroll-proportion="0.5482234" vertical-offset="54" max-vertical-offset="2178">
-          <folding>
-            <marker date="1429715251888" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..StoreBackendBundle..." />
-            <marker date="1429715251888" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..StoreBackendBundle..." />
-          </folding>
-        </state>
+        <state line="8" column="63" selection-start="135" selection-end="253" vertical-scroll-proportion="0.18274112" vertical-offset="0" max-vertical-offset="1908" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Repository/SliderRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.16497461" vertical-offset="130" max-vertical-offset="918">
-          <folding>
-            <marker date="1429689976211" expanded="true" signature="-1:-1" placeholder="SELECT sl FR..StoreBackendBundle..." />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.16497461" vertical-offset="130" max-vertical-offset="918" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Entity/Cart.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-2.0558376" vertical-offset="1620" max-vertical-offset="2592">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-2.0558376" vertical-offset="1620" max-vertical-offset="2592" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Entity/Business.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="73" selection-start="1555" selection-end="1570" vertical-scroll-proportion="0.52538073" vertical-offset="972" max-vertical-offset="5004">
-          <folding />
-        </state>
+        <state line="77" column="73" selection-start="1555" selection-end="1570" vertical-scroll-proportion="0.52538073" vertical-offset="972" max-vertical-offset="5004" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Controller/CategoryController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="32" selection-start="4552" selection-end="4673" vertical-scroll-proportion="-0.28309307" vertical-offset="2268" max-vertical-offset="4986">
-          <folding />
-        </state>
+        <state line="117" column="32" selection-start="4552" selection-end="4673" vertical-scroll-proportion="-0.28309307" vertical-offset="2268" max-vertical-offset="4986" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Product/list.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="122" column="102" selection-start="4817" selection-end="4878" vertical-scroll-proportion="0.544" vertical-offset="1788" max-vertical-offset="2592">
+        <state line="122" column="102" selection-start="4817" selection-end="4878" vertical-scroll-proportion="0.544" vertical-offset="1788" max-vertical-offset="2592" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Entity/Category.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="127" column="76" selection-start="3575" selection-end="3643" vertical-scroll-proportion="-12.666667" vertical-offset="1890" max-vertical-offset="7380" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Form/ProductType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="237" column="5" selection-start="7804" selection-end="7804" vertical-scroll-proportion="-49.851852" vertical-offset="2920" max-vertical-offset="4788" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Controller/ProductController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="177" column="51" selection-start="7157" selection-end="7157" vertical-scroll-proportion="-10.0" vertical-offset="2916" max-vertical-offset="6426" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Product/edit.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="14" selection-start="0" selection-end="981" vertical-scroll-proportion="-24.25926" vertical-offset="119" max-vertical-offset="882" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Controller/SliderController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="226" column="0" selection-start="5670" selection-end="5676" vertical-scroll-proportion="-8.962963" vertical-offset="3772" max-vertical-offset="5076">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Entity/Slider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="91" column="7" selection-start="2630" selection-end="2630" vertical-scroll-proportion="0.13422818" vertical-offset="1538" max-vertical-offset="6192">
+          <folding>
+            <element signature="e#46#78#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Slider/list.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="90" selection-start="2251" selection-end="2251" vertical-scroll-proportion="-14.703704" vertical-offset="791" max-vertical-offset="1566">
+        <state line="73" column="54" selection-start="1736" selection-end="1736" vertical-scroll-proportion="-48.666668" vertical-offset="0" max-vertical-offset="2124">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Entity/Product.php">
+    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Form/SliderType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="385" column="29" selection-start="11120" selection-end="11245" vertical-scroll-proportion="0.456" vertical-offset="6588" max-vertical-offset="21564">
-          <folding>
-            <element signature="e#46#78#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Entity/Category.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="76" selection-start="3575" selection-end="3643" vertical-scroll-proportion="-12.666667" vertical-offset="1890" max-vertical-offset="7380">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Form/ProductType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="237" column="5" selection-start="7804" selection-end="7804" vertical-scroll-proportion="-49.851852" vertical-offset="2920" max-vertical-offset="4788">
-          <folding>
-            <element signature="e#44#84#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Controller/ProductController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="177" column="51" selection-start="7157" selection-end="7157" vertical-scroll-proportion="-10.0" vertical-offset="2916" max-vertical-offset="6426">
-          <folding>
-            <element signature="e#183#240#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Product/edit.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="14" selection-start="0" selection-end="981" vertical-scroll-proportion="-24.25926" vertical-offset="119" max-vertical-offset="882">
+        <state line="87" column="41" selection-start="2562" selection-end="2562" vertical-scroll-proportion="-33.296295" vertical-offset="559" max-vertical-offset="2376">
           <folding />
         </state>
       </provider>
@@ -1400,48 +690,231 @@
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Slider/_form.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="0" selection-start="503" selection-end="503" vertical-scroll-proportion="-19.333334" vertical-offset="0" max-vertical-offset="810">
+          <folding>
+            <marker date="1429716569460" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1429716569460" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1429716569460" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1429716569460" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1429716569460" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1429716569460" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1429716569460" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Product/_form.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="6" selection-start="774" selection-end="774" vertical-scroll-proportion="0.59366757" vertical-offset="0" max-vertical-offset="2106">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Slider/new.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="14" selection-start="0" selection-end="553" vertical-scroll-proportion="-15.333333" vertical-offset="0" max-vertical-offset="522">
+        <state line="16" column="0" selection-start="420" selection-end="420" vertical-scroll-proportion="-6.740741" vertical-offset="106" max-vertical-offset="864">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/layout.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="99" column="123" selection-start="4363" selection-end="4363" vertical-scroll-proportion="0.68590605" vertical-offset="1271" max-vertical-offset="2016">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Slider/edit.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="14" selection-start="531" selection-end="531" vertical-scroll-proportion="0.542595" vertical-offset="0" max-vertical-offset="763">
+        <state line="15" column="57" selection-start="419" selection-end="419" vertical-scroll-proportion="0.35620052" vertical-offset="0" max-vertical-offset="846">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Form/SliderType.php">
+    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Entity/JewelerMeta.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="57" selection-start="2112" selection-end="2112" vertical-scroll-proportion="-21.37037" vertical-offset="737" max-vertical-offset="2484">
+        <state line="136" column="21" selection-start="2733" selection-end="2733" vertical-scroll-proportion="0.67741936" vertical-offset="1944" max-vertical-offset="9594">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Entity/Jeweler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="791" column="7" selection-start="15169" selection-end="15169" vertical-scroll-proportion="-180.0" vertical-offset="3834" max-vertical-offset="18882">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Repository/JewelerRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="33" selection-start="921" selection-end="921" vertical-scroll-proportion="-15.333333" vertical-offset="108" max-vertical-offset="2142">
           <folding>
-            <element signature="e#44#84#0" expanded="true" />
+            <marker date="1429625442374" expanded="true" signature="-1:-1" placeholder="SELECT j FRO..StoreBackendBundle..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Controller/SliderController.php">
+    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/CMS/list.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="148" column="63" selection-start="5670" selection-end="5676" vertical-scroll-proportion="-8.962963" vertical-offset="2422" max-vertical-offset="3726">
+        <state line="106" column="97" selection-start="4424" selection-end="4448" vertical-scroll-proportion="-14.407408" vertical-offset="1519" max-vertical-offset="2466">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Controller/CMSController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="85" column="90" selection-start="2938" selection-end="2938" vertical-scroll-proportion="1.983871" vertical-offset="0" max-vertical-offset="5436">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Entity/Cms.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="160" column="43" selection-start="4298" selection-end="4305" vertical-scroll-proportion="-4.1754384" vertical-offset="2588" max-vertical-offset="10872">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Entity/Product.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="385" column="29" selection-start="11120" selection-end="11245" vertical-scroll-proportion="-2.7108433" vertical-offset="6705" max-vertical-offset="21564">
           <folding>
-            <element signature="e#183#221#0" expanded="true" />
+            <element signature="e#46#78#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Entity/Slider.php">
+    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Repository/CmsRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="20" selection-start="2514" selection-end="2514" vertical-scroll-proportion="0.23214285" vertical-offset="1340" max-vertical-offset="5994">
+        <state line="86" column="0" selection-start="2345" selection-end="2345" vertical-scroll-proportion="-41.333332" vertical-offset="432" max-vertical-offset="1692">
           <folding>
-            <element signature="e#46#78#0" expanded="true" />
+            <marker date="1429784664476" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..StoreBackendBundle..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Repository/ProductRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="129" column="39" selection-start="3667" selection-end="3667" vertical-scroll-proportion="-16.88889" vertical-offset="1866" max-vertical-offset="2718">
+          <folding>
+            <marker date="1429787376908" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..StoreBackendBundle..." />
+            <marker date="1429787376908" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..StoreBackendBundle..." />
+            <marker date="1429787376908" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..StoreBackendBundle..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/app/cache/prod/classes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6976" column="15" selection-start="206481" selection-end="206481" vertical-scroll-proportion="-4554.6665" vertical-offset="0" max-vertical-offset="140040">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/vendor/doctrine/common/lib/Doctrine/Common/Lexer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="15" selection-start="1428" selection-end="1428" vertical-scroll-proportion="-12.0" vertical-offset="0" max-vertical-offset="486">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/vendor/doctrine/orm/lib/Doctrine/ORM/Query/Lexer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="6" selection-start="1239" selection-end="1239" vertical-scroll-proportion="0.31451613" vertical-offset="0" max-vertical-offset="3546">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/app/cache/dev/classes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6603" column="15" selection-start="194763" selection-end="194763" vertical-scroll-proportion="0.024623804" vertical-offset="116370" max-vertical-offset="133452">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Doctrine/Extensions/Month.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="0" selection-start="387" selection-end="387" vertical-scroll-proportion="-14.666667" vertical-offset="0" max-vertical-offset="1206">
+          <folding>
+            <element signature="e#59#109#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Doctrine/Extensions/Year.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="0" selection-start="299" selection-end="299" vertical-scroll-proportion="3.3333333" vertical-offset="378" max-vertical-offset="1224">
+          <folding>
+            <element signature="e#59#109#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Doctrine/Extensions/DateFormat.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="86" selection-start="567" selection-end="567" vertical-scroll-proportion="-20.666666" vertical-offset="0" max-vertical-offset="1386">
+          <folding>
+            <element signature="e#59#109#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/app/config/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="23" selection-start="2256" selection-end="2256" vertical-scroll-proportion="1.0466926" vertical-offset="525" max-vertical-offset="1602">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Repository/OrderRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="82" column="70" selection-start="2237" selection-end="2237" vertical-scroll-proportion="-54.666668" vertical-offset="0" max-vertical-offset="2340">
+          <folding>
+            <marker date="1429801661732" expanded="true" signature="571:685" placeholder="SELECT count..StoreBackendBundle..." />
+            <marker date="1429801661732" expanded="true" signature="1234:1355" placeholder="SELECT SUM(o..StoreBackendBundle..." />
+            <marker date="1429801661732" expanded="true" signature="2184:2435" placeholder="SELECT COUNT..StoreBackendBundle..." />
+            <marker date="1429801661732" expanded="true" signature="3054:3189" placeholder="SELECT o FRO..StoreBackendBundle..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Main/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="413" column="0" selection-start="20527" selection-end="21235" vertical-scroll-proportion="-10.0" vertical-offset="7164" max-vertical-offset="10836">
+          <folding>
+            <element signature="e#5200#5222#0" expanded="true" />
+            <element signature="e#14498#14571#0" expanded="true" />
+            <element signature="e#14613#14666#0" expanded="true" />
+            <element signature="e#16221#16294#0" expanded="true" />
+            <element signature="e#16336#16389#0" expanded="true" />
+            <element signature="e#17946#18019#0" expanded="true" />
+            <element signature="e#18061#18114#0" expanded="true" />
+            <element signature="e#20156#20229#0" expanded="true" />
+            <element signature="e#20271#20324#0" expanded="true" />
+            <element signature="e#21722#22010#0" expanded="true" />
+            <element signature="e#22045#22315#0" expanded="true" />
+            <element signature="e#27704#27723#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Controller/MainController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="23" selection-start="2156" selection-end="2171" vertical-scroll-proportion="-8.888889" vertical-offset="606" max-vertical-offset="2052">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Twig/Extensions/StoreBackendExtension.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="22" selection-start="1230" selection-end="1230" vertical-scroll-proportion="-13.555555" vertical-offset="624" max-vertical-offset="1368">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/app/config/services.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="17" selection-start="507" selection-end="507" vertical-scroll-proportion="0.32684824" vertical-offset="0" max-vertical-offset="771">
+          <folding />
         </state>
       </provider>
     </entry>

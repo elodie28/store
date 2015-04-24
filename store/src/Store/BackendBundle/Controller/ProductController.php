@@ -142,6 +142,8 @@ class ProductController extends Controller {
                 'Votre produit a bien été créé'
             );
 
+
+
             // Je récupère la quantité du produit enregistré
             $quantity = $product->getQuantity();
 
@@ -151,6 +153,17 @@ class ProductController extends Controller {
                     "Ce bijou n'existe qu'en un seul exemplaire"
                 );
             }
+
+            // Si ma quantité de produits est inférieure à 5
+            if($quantity < 5) {
+
+                // $this->get() => accède au conteneur de services
+                // La méthode notify() sera exécutée avec un message d'alerte concernant la quantité restante de produits
+                $this->get('store.backend.notification')
+                    ->notify('Attention, votre produit ' . $product->getTitle() . ' est bientôt épuisé', 'danger');
+            }
+
+
 
             return $this->redirectToRoute('store_backend_product_list'); // redirection selon la route
         }
@@ -205,6 +218,19 @@ class ProductController extends Controller {
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush();
+
+
+
+            // Si ma quantité de produits est inférieure à 5
+            if($product->getQuantity() < 5) {
+
+            // $this->get() => accède au conteneur de services
+            // La méthode notify() sera exécutée avec un message d'alerte concernant la quantité restante de produits
+            $this->get('store.backend.notification')
+                 ->notify('Attention, votre produit ' . $product->getTitle() . ' est bientôt épuisé', 'danger');
+            }
+
+
 
             // Permet d'écrire un message flash avec pour clef "success" et un message de confirmation
             $this->get('session')->getFlashBag()->add(

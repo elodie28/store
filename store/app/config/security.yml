@@ -72,6 +72,13 @@ security:
         store_backend: # namespace_nomdubundle
             pattern:    ^/administration # l'URI en REGEX derrière mon pare-feu
 
+            # cookie : encrypter le contenu du cookie
+            remember_me:
+                key:      "%secret%"
+                lifetime: 3156000 # 365 jours en secondes
+                path:     /
+                domain:   ~ # Prend la valeur par défaut du domaine courant
+
             # it's important to notice that in this case _demo_security_check and _demo_login
             # are route names and that they are specified in the AcmeDemoBundle
 

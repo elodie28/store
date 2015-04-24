@@ -17,6 +17,15 @@ class MainController extends Controller {
      */
     public function indexAction() {
 
+
+
+        // $this->get() => accède au conteneur de services
+        // et récupère le service store.backend.email
+        // $mail = $this->get('store.backend.email');
+        // $mail->send(); // appel de la méthode send() pour envoyer un e-mail
+
+
+
         // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
         $em = $this->getDoctrine()->getManager();
 

@@ -37,6 +37,22 @@
             {# J'inclus ma vue des messages flash #}
             {{ include('StoreBackendBundle:Partial:flashdatas.html.twig') }}
 
+
+
+            {%  if app.session.get('alert') is not empty %}
+
+                <div class="alert alert-dark alert-{{ app.session.get('alert').criticity }}">
+
+                    {# app.session permet de récupérer la session en Twig #}
+                    {# La méthode .get() récupère la valeur selon une clef en session #}
+                    {{ app.session.get('alert').message }}
+
+                </div>
+
+            {%  endif %}
+
+
+
             {#Titre de la page#}
             <div class="page-header">
 

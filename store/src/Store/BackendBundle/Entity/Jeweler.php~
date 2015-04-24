@@ -229,6 +229,13 @@ class Jeweler implements AdvancedUserInterface, \Serializable {
     private $dateCreated;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_auth", type="datetime", nullable=true)
+     */
+    protected $dateAuth;
+
+    /**
      * @ORM\ManyToMany(targetEntity="Groups", inversedBy="jeweler")
      * @ORM\JoinTable(name="jeweler_groups",
      *   joinColumns={
@@ -789,6 +796,29 @@ class Jeweler implements AdvancedUserInterface, \Serializable {
         return $this->dateCreated;
     }
 
+    /**
+     * Set meta
+     *
+     * @param \Store\BackendBundle\Entity\JewelerMeta $meta
+     * @return Jeweler
+     */
+    public function setMeta(\Store\BackendBundle\Entity\JewelerMeta $meta = null)
+    {
+        $this->meta = $meta;
+
+        return $this;
+    }
+
+    /**
+     * Get meta
+     *
+     * @return \Store\BackendBundle\Entity\JewelerMeta
+     */
+    public function getMeta()
+    {
+        return $this->meta;
+    }
+
 
 
     /**
@@ -1024,6 +1054,5 @@ class Jeweler implements AdvancedUserInterface, \Serializable {
             );
         }
     }
-
 
 }

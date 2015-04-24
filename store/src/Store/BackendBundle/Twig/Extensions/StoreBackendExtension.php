@@ -23,6 +23,8 @@ class StoreBackendExtension extends \Twig_Extension {
             // - 1er argument est le nom du filtre en TWIG
             // - 2ème argument est le nom de la fonction que je vais créer
             new \Twig_SimpleFilter('state', array($this, 'state')),
+            new \Twig_SimpleFilter('active', array($this, 'active'))
+
         );
     }
 
@@ -51,6 +53,29 @@ class StoreBackendExtension extends \Twig_Extension {
         } else {
 
             $badge = "<span class='label label-warning'> En attente de paiement </span>";
+        }
+
+        return $badge;
+
+    }
+
+
+
+    /**
+     * Active helper
+     * @param $active
+     * @return string
+     */
+    public function active($active) {
+
+        if($active == 1) {
+
+            $badge = "<span class='fa fa-check btn btn-success'> </span>";
+
+        } else {
+
+            $badge = "<span class='fa fa-times btn btn-danger'> </span>";
+
         }
 
         return $badge;

@@ -112,6 +112,81 @@ class ProductRepository extends EntityRepository {
 
 
     /**
+     * DASHBOARD GRAPHIQUE CIRCULAIRE N°1
+     *
+     * SELECT COUNT(id)
+     * FROM `product`
+     * WHERE summary IS NOT NULL
+     * AND description IS NOT NULL
+     * AND composition IS NOT NULL
+     * AND jeweler_id = 1
+     *
+     * @param null $user
+     */
+    public function getCountProductCompletedByUser($user = null) {
+
+        // Compte le nombre de produits qui a les 3 champs summary, description et composition de rempli
+        // pour 1 bijoutier (graphique dashboard n°1)
+        $query = $this->getEntityManager()
+
+            ->createQuery(
+                "SELECT COUNT(p) AS nb
+                 FROM StoreBackendBundle:Product p
+                 WHERE p.summary IS NOT NULL
+                 AND p.description IS NOT NULL
+                 AND p.composition IS NOT NULL
+                 AND p.jeweler = :user"
+            )
+            ->setParameter('user', $user);
+
+        // retourne 1 résultat ou null (correspond au row dans CodeIgniter)
+        return $query->getOneOrNullResult();
+
+    }
+
+
+
+    /**
+     * DASHBOARD GRAPHIQUE CIRCULAIRE N°2
+     *
+     * SELECT COUNT(product_meta.id)
+     * FROM `product_meta`
+     * INNER JOIN product
+     * ON product_id = product.id
+     * WHERE meta_keyword IS NOT NULL
+     * AND meta_description IS NOT NULL
+     * AND meta_title IS NOT NULL
+     * AND jeweler_id = 1
+     *
+     * @param null $user
+     */
+    public function getCountProductReferencedByUser($user = null) {
+
+        // Compte le nombre de produits qui a les 3 champs meta keyword, description et title de rempli
+        // pour 1 bijoutier (graphique dashboard n°2)
+        $query = $this->getEntityManager()
+
+            ->createQuery(
+                "SELECT COUNT(pm) AS nb
+                 FROM StoreBackendBundle:ProductMeta pm
+                 JOIN pm.product p
+                 WHERE pm.metaKeyword IS NOT NULL
+                 AND pm.metaDescription IS NOT NULL
+                 AND pm.metaTitle IS NOT NULL
+                 AND p.jeweler = :user"
+            )
+            ->setParameter('user', $user);
+
+        // retourne 1 résultat ou null (correspond au row dans CodeIgniter)
+        return $query->getOneOrNullResult();
+
+    }
+
+
+
+    /**
+     * DASHBOARD GRAPHIQUE CIRCULAIRE N°3
+     *
      * SELECT COUNT(product.id)
      * FROM `product`
      * INNER JOIN product_cms
@@ -119,11 +194,14 @@ class ProductRepository extends EntityRepository {
      * INNER JOIN cms
      * ON product_cms.cms_id = cms.id
      * WHERE cms.id = 1
+     *
      * @param null $user
      */
     public function getCountProductCmsByUser($user = null) {
 
-        // Compte le nombre de produits (bijoux) liés à une page CMS pour 1 bijoutier (graphique dashboard)
+
+        // Compte le nombre de produits (bijoux) liés à une page CMS pour 1 bijoutier (graphique dashboard n°3)
+
         $query = $this->getEntityManager()
 
             ->createQuery(

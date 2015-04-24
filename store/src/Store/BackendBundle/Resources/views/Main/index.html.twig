@@ -131,9 +131,9 @@
                     <div class="stat-row">
                         <!-- Bordered, without top border, without horizontal padding -->
                         <div class="stat-cell bordered no-border-t no-padding-hr">
-                            <div class="pie-chart" data-percent="43" id="easy-pie-chart-1">
-                                <div class="pie-chart-label">12.3TB</div>
-                                <canvas height="90" width="90"></canvas></div>
+                            <div class="pie-chart" data-percent="{{ (nbproductcompleted.nb // nbprod.nb) * 100  }}" id="easy-pie-chart-1">
+                                <div class="pie-chart-label"> {{ (nbproductcompleted.nb // nbprod.nb) * 100  }} % </div>
+                            </div>
                         </div>
                     </div> <!-- /.stat-row -->
                 </div> <!-- /.stat-panel -->
@@ -149,9 +149,9 @@
                     <div class="stat-row">
                         <!-- Bordered, without top border, without horizontal padding -->
                         <div class="stat-cell bordered no-border-t no-padding-hr">
-                            <div class="pie-chart" data-percent="93" id="easy-pie-chart-2">
-                                <div class="pie-chart-label">93%</div>
-                                <canvas height="90" width="90"></canvas></div>
+                            <div class="pie-chart" data-percent="{{ (nbproductreferenced.nb // nbprod.nb) * 100  }}" id="easy-pie-chart-2">
+                                <div class="pie-chart-label"> {{ (nbproductreferenced.nb // nbprod.nb) * 100  }} % </div>
+                            </div>
                         </div>
                     </div> <!-- /.stat-row -->
                 </div> <!-- /.stat-panel -->
@@ -169,8 +169,9 @@
 
                         <!-- Bordered, without top border, without horizontal padding -->
                         <div class="stat-cell bordered no-border-t no-padding-hr">
-                            <div class="pie-chart" data-percent="{{ (nbproductcms.nb // nbproductcms.nb) * 100  }}" id="easy-pie-chart-3">
-                                <div class="pie-chart-label"> {{ (nbproductcms.nb // nbproductcms.nb) * 100  }} </div>
+
+                            <div class="pie-chart" data-percent="{{ (nbproductcms.nb // nbprod.nb) * 100  }}" id="easy-pie-chart-3">
+                                <div class="pie-chart-label"> {{ (nbproductcms.nb // nbprod.nb) * 100  }} % </div>
                             </div>
                         </div>
 

@@ -59,6 +59,10 @@ class MainController extends Controller {
 
         $nblikes = $em->getRepository('StoreBackendBundle:Product')->getCountLikesByUser($user);
 
+        $nbproductcompleted = $em->getRepository('StoreBackendBundle:Product')->getCountProductCompletedByUser($user);
+
+        $nbproductreferenced = $em->getRepository('StoreBackendBundle:Product')->getCountProductReferencedByUser($user);
+
         $nbproductcms = $em->getRepository('StoreBackendBundle:Product')->getCountProductCmsByUser($user);
 
         $lastcomact = $em->getRepository('StoreBackendBundle:Comment')->getLastCommentsActByUser($user);
@@ -78,6 +82,7 @@ class MainController extends Controller {
         $detailsjeweler = $em->getRepository('StoreBackendBundle:Jeweler')->getAllDetailsByUser($user);
 
 
+
         // Je retourne la vue index contenue dans le dossier Main de mon bundle StorebackendBundle
         return $this->render('StoreBackendBundle:Main:index.html.twig', array(
             'nbprod' => $nbprod,
@@ -92,6 +97,8 @@ class MainController extends Controller {
             'nbcomval' => $nbcomval,
             'nbcominact' => $nbcominact,
             'nblikes' => $nblikes,
+            'nbproductcompleted' => $nbproductcompleted,
+            'nbproductreferenced' => $nbproductreferenced,
             'nbproductcms' => $nbproductcms,
             'lastcomact' => $lastcomact,
             'lastcomval' => $lastcomval,

@@ -17,9 +17,9 @@ store_backend_index:
     # Le Controller et l'action appelée
 
 # Page Boutique
-store_backend_jeweler_myaccount:
-    resource: "@StoreBackendBundle/Resources/config/modules/boutique.yml"
-    prefix:   /boutique
+store_backend_jewelers:
+    resource: "@StoreBackendBundle/Resources/config/modules/jeweler.yml"
+    prefix:   /jewelers
 
 # Page Products
 store_backend_products:

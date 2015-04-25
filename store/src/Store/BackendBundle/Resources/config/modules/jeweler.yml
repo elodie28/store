@@ -1,0 +1,5 @@
+# Page View of Jeweler's Account
+
+store_backend_jeweler_myaccount: # Nom de la root -> Nom du namespace _ nom du bundle _ nom du controller _ nom de l'action du controller
+      path:     /my-account # chemin vers l'URI
+      defaults: { _controller: StoreBackendBundle:Jeweler:myaccount } # NomduBundle:NomduController:Nomdel'Action

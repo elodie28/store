@@ -572,7 +572,7 @@
                     <img src="{{ detailsjeweler.image }}" alt="" class="widget-profile-avatar">
                     <div class="widget-profile-header">
                         <span>{{ detailsjeweler.title }}</span><br>
-                        <a href="https://twitter.com/test">{{ detailsjeweler.description }}</a>
+                        <a href="{{ path('store_backend_product_list') }}"> {{ detailsjeweler.description }} </a>
                     </div>
                 </div> <!-- / .panel-heading -->
 
@@ -583,8 +583,6 @@
                         <p> {{ detailsjeweler.meta.website }} </p>
                         <p> {{ detailsjeweler.meta.address }} </p>
                         <p> {{ detailsjeweler.meta.city }} </p>
-                        <p><i class="fa fa-link"></i> {{ detailsjeweler.meta.dawanda }} </p>
-                        <p><i class="fa fa-link"></i> {{ detailsjeweler.meta.littlemarket }} </p>
                     </div>
                 </div>
 

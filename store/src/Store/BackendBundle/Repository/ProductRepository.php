@@ -52,7 +52,7 @@ class ProductRepository extends EntityRepository {
          */
         $queryBuilder = $this->createQueryBuilder('p') // 'p' est le paramètre directement sous forme d'alias
             ->where('p.jeweler = :user')
-            ->orderBy('p.title', 'ASC')
+            ->orderBy('p.id', 'ASC')
             ->setParameter('user', $user);
 
         return $queryBuilder;

@@ -91,6 +91,8 @@ class Orders
      */
     private $product;
 
+
+
     /**
      * Constructor
      */
@@ -294,15 +296,6 @@ class Orders
         $this->product->removeElement($product);
     }
 
-    /**
-     * Get product
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getProduct()
-    {
-        return $this->product;
-    }
 
 
     /**

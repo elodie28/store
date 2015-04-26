@@ -32,6 +32,8 @@ class MainController extends Controller {
         // récupérer l'utilisateur courant connecté (à la place du 1 dans (1))
         $user = $this->getUser();
 
+
+
         // Je récupère le nombre de produits de mon bijoutier numéro 1
         // Je fais appel à mon repository ProductRepository et à la fonction getCountByUser(1)
         $nbprod = $em->getRepository('StoreBackendBundle:Product')->getCountByUser($user); // NomduBundle:Nomdel'entité

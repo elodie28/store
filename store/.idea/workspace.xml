@@ -24,38 +24,7 @@
     <favorites_list name="store" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="main_menu.html.twig" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Store/BackendBundle/Resources/views/Partial/main_menu.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.56153846" vertical-offset="415" max-vertical-offset="1080">
-              <caret line="52" column="12" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Store/BackendBundle/Resources/views/Product/list.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.833333" vertical-offset="205" max-vertical-offset="2160">
-              <caret line="31" column="56" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main_navigation.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Store/BackendBundle/Resources/views/Partial/main_navigation.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.25" vertical-offset="420" max-vertical-offset="1755">
-              <caret line="54" column="59" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="59" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -82,7 +51,6 @@
         <option value="$PROJECT_DIR$/src/Store/BackendBundle/Resources/config/modules/boutique.yml" />
         <option value="$PROJECT_DIR$/src/Store/BackendBundle/Resources/config/routing.yml" />
         <option value="$PROJECT_DIR$/src/Store/BackendBundle/Resources/config/modules/jeweler.yml" />
-        <option value="$PROJECT_DIR$/src/Store/BackendBundle/Resources/views/layout.html.twig" />
         <option value="$PROJECT_DIR$/src/Store/BackendBundle/Repository/ProductRepository.php" />
         <option value="$PROJECT_DIR$/src/Store/BackendBundle/Controller/MainController.php" />
         <option value="$PROJECT_DIR$/src/Store/BackendBundle/Entity/Orders.php" />
@@ -91,10 +59,12 @@
         <option value="$PROJECT_DIR$/src/Store/BackendBundle/Repository/CommentRepository.php" />
         <option value="$PROJECT_DIR$/src/Store/BackendBundle/Controller/JewelerController.php" />
         <option value="$PROJECT_DIR$/src/Store/BackendBundle/Repository/MessageRepository.php" />
-        <option value="$PROJECT_DIR$/src/Store/BackendBundle/Resources/views/Jeweler/myaccount.html.twig" />
-        <option value="$PROJECT_DIR$/src/Store/BackendBundle/Resources/views/Main/index.html.twig" />
         <option value="$PROJECT_DIR$/src/Store/BackendBundle/Resources/views/Partial/main_navigation.html.twig" />
         <option value="$PROJECT_DIR$/src/Store/BackendBundle/Resources/views/Partial/main_menu.html.twig" />
+        <option value="$PROJECT_DIR$/src/Store/BackendBundle/Resources/views/layout.html.twig" />
+        <option value="$PROJECT_DIR$/src/Store/BackendBundle/Resources/views/Jeweler/myaccount.html.twig" />
+        <option value="$PROJECT_DIR$/src/Store/BackendBundle/Repository/CategoryRepository.php" />
+        <option value="$PROJECT_DIR$/src/Store/BackendBundle/Resources/views/Main/index.html.twig" />
       </list>
     </option>
   </component>
@@ -316,7 +286,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Partial" />
+              <option name="myItemId" value="Main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -350,7 +320,41 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Main" />
+              <option name="myItemId" value="Jeweler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="store" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="store" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Store" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BackendBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Category" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -629,7 +633,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="37" y="23" width="1224" height="771" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -637,7 +641,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22303921" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22303921" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -675,32 +679,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Store/BackendBundle/Resources/views/CMS/list.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4615384" vertical-offset="565" max-vertical-offset="2055">
-          <caret line="101" column="136" selection-start-line="101" selection-start-column="136" selection-end-line="101" selection-end-column="136" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Store/BackendBundle/Resources/views/Product/_form.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1755">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Store/BackendBundle/Resources/views/Product/new.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-15.0" vertical-offset="0" max-vertical-offset="735">
           <caret line="24" column="14" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Store/BackendBundle/Resources/views/Partial/form.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.47692308" vertical-offset="310" max-vertical-offset="960">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -801,14 +783,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.089020774" vertical-offset="0" max-vertical-offset="674">
           <caret line="4" column="113" selection-start-line="4" selection-start-column="113" selection-end-line="4" selection-end-column="113" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Store/BackendBundle/Resources/views/layout.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.6538463" vertical-offset="0" max-vertical-offset="1950">
-          <caret line="115" column="62" selection-start-line="115" selection-start-column="62" selection-end-line="115" selection-end-column="62" />
           <folding />
         </state>
       </provider>
@@ -1019,26 +993,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Store/BackendBundle/Resources/views/Main/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25361156" vertical-offset="7657" max-vertical-offset="9015">
-          <caret line="521" column="84" selection-start-line="521" selection-start-column="84" selection-end-line="521" selection-end-column="84" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Store/BackendBundle/Resources/views/Jeweler/myaccount.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37692308" vertical-offset="3130" max-vertical-offset="4095">
-          <caret line="225" column="38" selection-start-line="225" selection-start-column="38" selection-end-line="225" selection-end-column="38" />
-          <folding>
-            <element signature="e#3987#4009#0#HTML" expanded="true" />
-            <element signature="e#4136#4158#0#HTML" expanded="true" />
-            <element signature="e#4283#4302#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Store/BackendBundle/Repository/MessageRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.56153846" vertical-offset="910" max-vertical-offset="1560">
@@ -1067,44 +1021,93 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Store/BackendBundle/Repository/CommentRepository.php">
+    <entry file="file://$PROJECT_DIR$/src/Store/BackendBundle/Resources/views/Partial/main_menu.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.86153847" vertical-offset="3325" max-vertical-offset="4005">
-          <caret line="259" column="5" selection-start-line="228" selection-start-column="4" selection-end-line="259" selection-end-column="5" />
-          <folding>
-            <marker date="1430043454000" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..StoreBackendBundle..." />
-            <marker date="1430043454000" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..StoreBackendBundle..." />
-            <marker date="1430043454000" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..StoreBackendBundle..." />
-            <marker date="1430043454000" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..StoreBackendBundle..." />
-            <marker date="1430043454000" expanded="true" signature="-1:-1" placeholder="SELECT com F..StoreBackendBundle..." />
-            <marker date="1430043454000" expanded="true" signature="-1:-1" placeholder="SELECT com F..StoreBackendBundle..." />
-            <marker date="1430043454000" expanded="true" signature="-1:-1" placeholder="SELECT com F..StoreBackendBundle..." />
-            <marker date="1430043454000" expanded="true" signature="-1:-1" placeholder="SELECT com F..StoreBackendBundle..." />
-          </folding>
+        <state vertical-scroll-proportion="1.2" vertical-offset="0" max-vertical-offset="1080">
+          <caret line="52" column="12" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Store/BackendBundle/Resources/views/Product/list.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Store/BackendBundle/Resources/views/Partial/form.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.833333" vertical-offset="205" max-vertical-offset="2160">
-          <caret line="31" column="56" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="56" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="960">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Store/BackendBundle/Resources/views/layout.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.88461536" vertical-offset="325" max-vertical-offset="1665">
+          <caret line="60" column="119" selection-start-line="60" selection-start-column="119" selection-end-line="60" selection-end-column="119" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Store/BackendBundle/Resources/views/Partial/main_navigation.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.25" vertical-offset="420" max-vertical-offset="1755">
+        <state vertical-scroll-proportion="0.44615385" vertical-offset="520" max-vertical-offset="1755">
           <caret line="54" column="59" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="59" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Store/BackendBundle/Resources/views/Partial/main_menu.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Store/BackendBundle/Repository/CommentRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.56153846" vertical-offset="415" max-vertical-offset="1080">
-          <caret line="52" column="12" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="12" />
+        <state vertical-scroll-proportion="-10.833333" vertical-offset="3055" max-vertical-offset="4005">
+          <caret line="221" column="31" selection-start-line="221" selection-start-column="12" selection-end-line="221" selection-end-column="31" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Store/BackendBundle/Repository/CategoryRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.833334" vertical-offset="1150" max-vertical-offset="1875">
+          <caret line="110" column="30" selection-start-line="110" selection-start-column="30" selection-end-line="110" selection-end-column="30" />
+          <folding>
+            <marker date="1430059863000" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..StoreBackendBundle..." />
+            <marker date="1430059863000" expanded="true" signature="-1:-1" placeholder="SELECT c.id,..StoreBackendBundle..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Store/BackendBundle/Resources/views/Category/list.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.76153845" vertical-offset="420" max-vertical-offset="1725">
+          <caret line="61" column="139" selection-start-line="61" selection-start-column="50" selection-end-line="61" selection-end-column="139" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Store/BackendBundle/Resources/views/Product/list.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.583334" vertical-offset="565" max-vertical-offset="2160">
+          <caret line="69" column="50" selection-start-line="69" selection-start-column="50" selection-end-line="69" selection-end-column="136" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Store/BackendBundle/Resources/views/Jeweler/myaccount.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-54.583332" vertical-offset="2200" max-vertical-offset="4095">
+          <caret line="234" column="64" selection-start-line="234" selection-start-column="64" selection-end-line="234" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Store/BackendBundle/Resources/views/Main/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.50769234" vertical-offset="7785" max-vertical-offset="9015">
+          <caret line="541" column="47" selection-start-line="541" selection-start-column="47" selection-end-line="541" selection-end-column="47" />
+          <folding>
+            <element signature="e#5270#5292#0#HTML" expanded="true" />
+            <element signature="e#14692#14745#0#HTML" expanded="true" />
+            <element signature="e#16343#16396#0#HTML" expanded="true" />
+            <element signature="e#17995#18048#0#HTML" expanded="true" />
+            <element signature="e#20096#20149#0#HTML" expanded="true" />
+            <element signature="e#27073#27092#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

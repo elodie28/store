@@ -104,12 +104,15 @@ class CategoryRepository extends EntityRepository {
         $query = $this->getEntityManager()
 
             ->createQuery(
-                "SELECT c
+                "SELECT c.id, c.title, COUNT(p) AS nb
                  FROM StoreBackendBundle:Category c
                  JOIN c.product p
-                 WHERE p.jeweler = :user"
+                 WHERE c.jeweler = :user
+                 GROUP BY c.id
+                 ORDER BY nb DESC"
             )
-            ->setParameter('user', $user);
+            ->setParameter('user', $user)
+            ->setMaxResults(5);
 
         return $query->getResult();
     }

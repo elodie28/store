@@ -147,22 +147,27 @@ class ProductController extends Controller {
             // Je récupère la quantité du produit enregistré
             $quantity = $product->getQuantity();
 
-            if($quantity == 1) {
-                $this->get('session')->getFlashBag()->add(
-                    'warning',
-                    "Ce bijou n'existe qu'en un seul exemplaire"
-                );
-            }
+            // Si ma quantité de produits est égale à 1
+            if($product->getQuantity() == 1) {
 
-            // Si ma quantité de produits est inférieure à 5
-            if($quantity < 5) {
+                $this->get('store.backend.notification')
+                    ->notify($product->getId(),
+                        "Il ne vous reste plus qu'un seul exemplaire de votre produit " . $product->getTitle() . ".",
+                        'product',
+                        'danger'
+                    );
+
+                // ou si ma quantité de produits est inférieure à 5
+            } elseif($product->getQuantity() < 5) {
 
                 // $this->get() => accède au conteneur de services
                 // La méthode notify() sera exécutée avec un message d'alerte concernant la quantité restante de produits
                 $this->get('store.backend.notification')
-                    ->notify('Attention, votre produit ' . $product->getTitle() . ' est bientôt épuisé', 'danger');
+                    ->notify($product->getId(),
+                        "Attention, votre produit " . $product->getTitle() . " est bientôt épuisé.",
+                        "product",
+                        "warning");
             }
-
 
 
             return $this->redirectToRoute('store_backend_product_list'); // redirection selon la route
@@ -220,15 +225,29 @@ class ProductController extends Controller {
             $em->flush();
 
 
+            // Création d'un écouteur ProductListener.php
 
-            // Si ma quantité de produits est inférieure à 5
-            if($product->getQuantity() < 5) {
-
-            // $this->get() => accède au conteneur de services
-            // La méthode notify() sera exécutée avec un message d'alerte concernant la quantité restante de produits
-            $this->get('store.backend.notification')
-                 ->notify('Attention, votre produit ' . $product->getTitle() . ' est bientôt épuisé', 'danger');
-            }
+//            // Si ma quantité de produits est égale à 1
+//            if($product->getQuantity() == 1) {
+//
+//                $this->get('store.backend.notification')
+//                    ->notify($product->getId(),
+//                        "Il ne vous reste plus qu'un seul exemplaire de votre produit " . $product->getTitle() . ".",
+//                        'product',
+//                        'danger'
+//                    );
+//
+//            // ou si ma quantité de produits est inférieure à 5
+//            } elseif($product->getQuantity() < 5) {
+//
+//                // $this->get() => accède au conteneur de services
+//                // La méthode notify() sera exécutée avec un message d'alerte concernant la quantité restante de produits
+//                $this->get('store.backend.notification')
+//                    ->notify($product->getId(),
+//                        "Attention, votre produit " . $product->getTitle() . " est bientôt épuisé.",
+//                        "product",
+//                        "warning");
+//            }
 
 
 

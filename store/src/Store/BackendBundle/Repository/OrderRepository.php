@@ -122,4 +122,25 @@ class OrderRepository extends EntityRepository {
         return $query->getResult();
     }
 
+
+
+    /**
+     * @param null $user
+     * @return array
+     */
+    public function getAllDetailsOrdersByUser($user = null) {
+
+        // Donne le détail de toutes les commandes pour 1 bijoutier (page "ma boutique" onglet "commandes")
+        $query = $this->getEntityManager()
+
+            ->createQuery(
+                "SELECT o
+                 FROM StoreBackendBundle:Orders o
+                 WHERE o.jeweler = :user"
+            )
+            ->setParameter('user', $user);
+
+        return $query->getResult();
+    }
+
 }

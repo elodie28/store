@@ -224,4 +224,39 @@ class CommentRepository extends EntityRepository {
         return $query->getResult();
     }
 
+
+
+    /**
+     * SELECT content
+     * FROM comment
+     * INNER JOIN product
+     * ON product_id = product.id
+     * WHERE jeweler_id = 1
+     * AND state = 2
+     * OR state = 1
+     * OR state = 0
+     * ORDER BY comment.date_created DESC
+     * @param null $user
+     * @return mixed
+     */
+    public function getAllDetailsCommentsByUser($user = null) {
+
+        // Donne tous les commentaires ACTIFS, EN COURS et INACTIFS pour 1 bijoutier
+        $query = $this->getEntityManager()
+
+            ->createQuery(
+                "SELECT com
+                 FROM StoreBackendBundle:Comment com
+                 JOIN com.product p
+                 WHERE p.jeweler = :user
+                 AND com.state = 2
+                 OR com.state = 1
+                 OR com.state = 0
+                 ORDER BY com.dateCreated DESC"
+            )
+            ->setParameter('user', $user);
+
+        return $query->getResult();
+    }
+
 }

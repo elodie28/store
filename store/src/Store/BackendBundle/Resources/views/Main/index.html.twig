@@ -8,11 +8,6 @@
 
     <script>
 
-        init.push(function () {
-            $('#dashboard-recent .panel-body > div').slimScroll({ height: 300, alwaysVisible: true, color: '#888',allowPageScroll: true });
-        })
-
-
         // Graphique du nombre de commandes des 6 derniers mois
         init.push(function () {
             var uploads_data = [
@@ -58,6 +53,13 @@
                 barColor: PixelAdmin.settings.consts.COLORS[1]
             }));
         });
+
+
+        // Scrollbar des 5 derniers commentaires et des 5 dernières commandes
+        init.push(function () {
+            $('#comment .panel-body > div').slimScroll({ height: 300, alwaysVisible: true, color: '#888',allowPageScroll: true });
+        })
+
 
     </script>
 
@@ -212,7 +214,7 @@
                     <div class="stat-panel">
                         <!-- Success background, bordered, without top and bottom borders, without left border, without padding, vertically and horizontally centered text, large text -->
                         <a href="#" class="stat-cell col-xs-5 bg-warning bordered no-border-vr no-border-l no-padding valign-middle text-center text-lg">
-                            <i class="fa fa-comments"></i>&nbsp;&nbsp;<strong> {{ nbcom.nb|default('0') }} Commentaires </strong>
+                            <i class="fa fa-comments"></i>&nbsp;&nbsp;<strong> {{ nbcom.nb|default('0') }} </strong>
                         </a> <!-- /.stat-cell -->
                         <!-- Without padding, extra small text -->
                         <div class="stat-cell col-xs-7 no-padding valign-middle">
@@ -273,125 +275,123 @@
 
         <div class="col-md-6">
 
-            <div class="panel panel-info" id="dashboard-recent">
-            <div class="panel-heading">
-                <span class="panel-title"><i class="panel-title-icon fa fa-comment text-danger"></i> 5 Derniers Commentaires </span>
-                <ul class="nav nav-tabs nav-tabs-xs">
-                    <li class="active">
-                        <a href="#dashboard-recent-comments-act" data-toggle="tab">Actifs</a>
-                    </li>
-                    <li>
-                        <a href="#dashboard-recent-comments-val" data-toggle="tab">En cours</a>
-                    </li>
-                    <li>
-                        <a href="#dashboard-recent-comments-inact" data-toggle="tab">Inactifs</a>
-                    </li>
-                </ul>
-            </div> <!-- / .panel-heading -->
-            <div class="tab-content">
+            <div class="panel panel-info" id="comment">
 
-            <!-- Comments widget -->
+                <div class="panel-heading">
+                    <span class="panel-title"><i class="panel-title-icon fa fa-comments"></i> 5 Derniers Commentaires </span>
+                    <ul class="nav nav-tabs nav-tabs-xs">
+                        <li class="active">
+                            <a href="#actifs-comments" data-toggle="tab">Actifs</a>
+                        </li>
+                        <li>
+                            <a href="#encours-comments" data-toggle="tab">En cours</a>
+                        </li>
+                        <li>
+                            <a href="#inactifs-comments" data-toggle="tab">Inactifs</a>
+                        </li>
+                    </ul>
+                </div> <!-- / .panel-heading -->
 
-            <!-- Without padding -->
-            <div class="widget-comments panel-body tab-pane no-padding fade active in" id="dashboard-recent-comments-act">
-                <!-- Panel padding, without vertical padding -->
-                <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 300px;"><div class="panel-padding no-padding-vr" style="overflow: hidden; width: auto; height: 300px;">
+                <div class="tab-content">
 
-                    {% for value in lastcomact %}
+                    <!-- Comments widget -->
 
-                        <div class="comment">
-                            <img src="{{ value.user.photo }}" alt="" class="comment-avatar">
-                            <div class="comment-body">
-                                <div class="comment-by">
-                                    <a href="#" title="">{{ value.user.firstname ~ " " ~ value.user.lastname }}</a> a commenté sur <a href="#" title="">{{ value.product.title }}</a>
-                                </div>
-                                <div class="comment-text">
-                                    {{ value.content }}
-                                </div>
-                                <div class="comment-actions">
-                                    <a href="#"><i class="fa fa-pencil"></i>Edit</a>
-                                    <a href="#"><i class="fa fa-times"></i>Remove</a>
-                                    <span class="pull-right">2 hours ago</span>
-                                </div>
-                            </div> <!-- / .comment-body -->
-                        </div> <!-- / .comment -->
+                    <!-- Without padding -->
+                    <div class="widget-comments panel-body tab-pane no-padding fade active in" id="actifs-comments">
+                        <!-- Panel padding, without vertical padding -->
+                        <div class="panel-padding no-padding-vr" style="overflow: hidden; width: auto; height: 300px;">
 
-                    {% endfor %}
+                            {% for value in lastcomact %}
 
-                    </div></div>
-            </div> <!-- / .widget-comments -->
+                                <div class="comment">
+                                    <img src="{{ value.user.photo }}" alt="" class="comment-avatar">
+                                    <div class="comment-body">
+                                        <div class="comment-by">
+                                            <a href="#" title="">{{ value.user.firstname ~ " " ~ value.user.lastname }}</a> a commenté sur <a href="#" title="">{{ value.product.title }}</a>
+                                        </div>
+                                        <div class="comment-text">
+                                            {{ value.content }}
+                                        </div>
+                                        <div class="comment-actions">
+                                            Le {{ value.dateCreated|date('d/m/Y') }} à {{ value.dateCreated|date('H:i') }}
+                                        </div>
+                                    </div> <!-- / .comment-body -->
+                                </div> <!-- / .comment -->
 
-            <!-- Comments widget -->
+                            {% endfor %}
 
-            <!-- Without padding -->
-            <div class="widget-comments panel-body tab-pane no-padding fade" id="dashboard-recent-comments-val">
-                <!-- Panel padding, without vertical padding -->
-                <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 300px;"><div class="panel-padding no-padding-vr" style="overflow: hidden; width: auto; height: 300px;">
+                        </div>
 
-                    {% for value in lastcomval %}
+                    </div> <!-- / .widget-comments -->
 
-                        <div class="comment">
-                            <img src="{{ value.user.photo }}" alt="" class="comment-avatar">
-                            <div class="comment-body">
-                                <div class="comment-by">
-                                    <a href="#" title="">{{ value.user.firstname ~ " " ~ value.user.lastname }}</a> a commenté sur <a href="#" title="">{{ value.product.title }}</a>
-                                </div>
-                                <div class="comment-text">
-                                    {{ value.content }}
-                                </div>
-                                <div class="comment-actions">
-                                    <a href="#"><i class="fa fa-pencil"></i>Edit</a>
-                                    <a href="#"><i class="fa fa-times"></i>Remove</a>
-                                    <span class="pull-right">2 hours ago</span>
-                                </div>
-                            </div> <!-- / .comment-body -->
-                        </div> <!-- / .comment -->
+                    <!-- Comments widget -->
 
-                    {% endfor %}
+                    <!-- Without padding -->
+                    <div class="widget-comments panel-body tab-pane no-padding fade in" id="encours-comments">
+                        <!-- Panel padding, without vertical padding -->
+                        <div class="panel-padding no-padding-vr" style="overflow: hidden; width: auto; height: 300px;">
 
-                    </div></div>
-            </div> <!-- / .widget-comments -->
+                            {% for value in lastcomval %}
 
-            <!-- Comments widget -->
+                                <div class="comment">
+                                    <img src="{{ value.user.photo }}" alt="" class="comment-avatar">
+                                    <div class="comment-body">
+                                        <div class="comment-by">
+                                            <a href="#" title="">{{ value.user.firstname ~ " " ~ value.user.lastname }}</a> a commenté sur <a href="#" title="">{{ value.product.title }}</a>
+                                        </div>
+                                        <div class="comment-text">
+                                            {{ value.content }}
+                                        </div>
+                                        <div class="comment-actions">
+                                            Le {{ value.dateCreated|date('d/m/Y') }} à {{ value.dateCreated|date('H:i') }}
+                                        </div>
+                                    </div> <!-- / .comment-body -->
+                                </div> <!-- / .comment -->
 
-            <!-- Without padding -->
-            <div class="widget-comments panel-body tab-pane no-padding fade" id="dashboard-recent-comments-inact">
-                <!-- Panel padding, without vertical padding -->
-                <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 300px;"><div class="panel-padding no-padding-vr" style="overflow: hidden; width: auto; height: 300px;">
+                            {% endfor %}
 
-                    {% for value in lastcominact %}
+                        </div>
 
-                        <div class="comment">
-                            <img src="{{ value.user.photo }}" alt="" class="comment-avatar">
-                            <div class="comment-body">
-                                <div class="comment-by">
-                                    <a href="#" title="">{{ value.user.firstname ~ " " ~ value.user.lastname }}</a> a commenté sur <a href="#" title="">{{ value.product.title }}</a>
-                                </div>
-                                <div class="comment-text">
-                                    {{ value.content }}
-                                </div>
-                                <div class="comment-actions">
-                                    <a href="#"><i class="fa fa-pencil"></i>Edit</a>
-                                    <a href="#"><i class="fa fa-times"></i>Remove</a>
-                                    <span class="pull-right">2 hours ago</span>
-                                </div>
-                            </div> <!-- / .comment-body -->
-                        </div> <!-- / .comment -->
+                    </div> <!-- / .widget-comments -->
 
-                    {% endfor %}
+                    <!-- Comments widget -->
 
-                    </div></div>
-            </div> <!-- / .widget-comments -->
+                    <!-- Without padding -->
+                    <div class="widget-comments panel-body tab-pane no-padding fade in" id="inactifs-comments">
+                        <!-- Panel padding, without vertical padding -->
+                        <div class="panel-padding no-padding-vr" style="overflow: hidden; width: auto; height: 300px;">
 
-        </div>
+                            {% for value in lastcominact %}
 
-        </div>
+                                <div class="comment">
+                                    <img src="{{ value.user.photo }}" alt="" class="comment-avatar">
+                                    <div class="comment-body">
+                                        <div class="comment-by">
+                                            <a href="#" title="">{{ value.user.firstname ~ " " ~ value.user.lastname }}</a> a commenté sur <a href="#" title="">{{ value.product.title }}</a>
+                                        </div>
+                                        <div class="comment-text">
+                                            {{ value.content }}
+                                        </div>
+                                        <div class="comment-actions">
+                                            Le {{ value.dateCreated|date('d/m/Y') }} à {{ value.dateCreated|date('H:i') }}
+                                        </div>
+                                    </div> <!-- / .comment-body -->
+                                </div> <!-- / .comment -->
+
+                            {% endfor %}
+
+                        </div>
+                    </div> <!-- / .widget-comments -->
+
+                </div>
+
+            </div>
 
         </div>
 
         <div class="col-md-6">
 
-            <div class="panel panel-info widget-support-tickets" id="dashboard-support-tickets">
+            <div class="panel panel-info widget-support-tickets" id="comment">
 
                 <div class="panel-heading">
 
@@ -405,7 +405,7 @@
 
                 <div class="panel-body tab-content-padding">
                     <!-- Panel padding, without vertical padding -->
-                    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 300px;"><div class="panel-padding no-padding-vr" style="overflow: hidden; width: auto; height: 300px;">
+                    <div class="panel-padding no-padding-vr" style="overflow: hidden; width: auto; height: 300px;">
 
                         {% for value in  lastorders %}
                             <div class="ticket">
@@ -430,7 +430,7 @@
                         {% endfor %}
 
                     </div>
-                        <div class="slimScrollBar" style="width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; right: 1px; height: 93.5550935550936px; background: rgb(136, 136, 136);"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div></div>
+                </div>
                 </div> <!-- / .panel-body -->
             </div> <!-- / .panel -->
 
@@ -461,10 +461,10 @@
                         {% for value in catpop %}
 
                             <tr>
-                                <td>1</td>
-                                <td> {{ value.title}} </td>
-                                <td> <a href="#" class="badge badge-info"> {{ value.product|length }} </a> </td>
-                                <td> <button class="btn btn-xs btn-danger btn-rounded">Voir la catégorie</button> </td>
+                                <td> {{ value.id }} </td>
+                                <td> {{ value.title }} </td>
+                                <td> <span class="badge badge-info"> {{ value.nb }} </span> </td>
+                                <td> <a href="{{ path('store_backend_category_view', {'name' : value.title , 'id': value.id} ) }}" class="btn btn-xs btn-danger btn-rounded">Voir la catégorie</a> </td>
                             </tr>
 
                         {% endfor %}
@@ -481,7 +481,7 @@
             <div class="panel panel-info widget-tasks">
 
                 <div class="panel-heading">
-                    <span class="panel-title"><i class="panel-title-icon fa fa-comments"></i>Messages récents</span>
+                    <span class="panel-title"><i class="panel-title-icon fa fa-envelope"></i>Messages récents</span>
                 </div> <!-- / .panel-heading -->
 
                 <div class="panel-body ui-sortable">
@@ -499,7 +499,7 @@
                             </span>
 
                             <div class="fa fa-arrows-v task-sort-icon"></div>
-                            <a href="#" class="task-title">{{ value.content }}<span> {{ value.dateCreated|date('d/m/Y') }} </span></a>
+                            <a href="#" class="task-title">{{ value.title }}<span> {{ value.dateCreated|date('d/m/Y') }} </span></a>
                         </div> <!-- / .task -->
 
                     {% endfor %}
@@ -519,7 +519,7 @@
             <div class="panel panel-info widget-followers">
 
                 <div class="panel-heading">
-                    <span class="panel-title"><i class="panel-title-icon fa fa-euro"></i>Promotions & Réductions</span>
+                    <span class="panel-title"><i class="panel-title-icon fa fa-money"></i>Promotions & Réductions</span>
                 </div> <!-- / .panel-heading -->
 
                 <div class="panel-body">
@@ -536,18 +536,18 @@
 
                                 <div class="follower-controls">
                                     {% if value.type == 0 %}
-                                        <a href="#" class="btn btn-sm btn-success"><i class="fa fa-check"></i><span>&nbsp;&nbsp;{{ value.message }}</span></a>
+                                        <span class="btn btn-sm btn-success"><i class="fa fa-check"></i><span>&nbsp;&nbsp;{{ value.message }}</span></span>
                                     {% else %}
-                                        <a href="#" class="btn btn-sm btn-info"><i class="fa fa-check"></i><span>&nbsp;&nbsp;{{ value.message }}</span></a>
+                                        <span class="btn btn-sm btn-info"><i class="fa fa-check"></i><span>&nbsp;&nbsp;{{ value.message }}</span></span>
                                     {% endif %}
                                 </div>
 
-                                <a href="#" class="follower-name"> {{ values.title }} </a> <span class="badge badge-info"> {{ value.amount }} €</span> <br>
+                                <a href="{{ path('store_backend_product_view', {'name' : values.title , 'id': values.id} ) }}" class="follower-name"> {{ values.title }} </a> <span class="badge badge-info"> {{ value.amount }} €</span> <br>
 
                                 {% if value.type == 0 %}
-                                    <a href="#" class="follower-username">Promotion</a>
+                                    <span class="follower-username">Promotion</span>
                                 {% else %}
-                                    <a href="#" class="follower-username">Réduction</a>
+                                    <span href="#" class="follower-username">Réduction</span>
                                 {% endif %}
 
                             </div>
@@ -572,7 +572,7 @@
                     <img src="{{ detailsjeweler.image }}" alt="" class="widget-profile-avatar">
                     <div class="widget-profile-header">
                         <span>{{ detailsjeweler.title }}</span><br>
-                        <a href="https://twitter.com/test">{{ detailsjeweler.description }}</a>
+                        <a href="{{ path('store_backend_product_list') }}"> {{ detailsjeweler.description }} </a>
                     </div>
                 </div> <!-- / .panel-heading -->
 
@@ -583,8 +583,6 @@
                         <p> {{ detailsjeweler.meta.website }} </p>
                         <p> {{ detailsjeweler.meta.address }} </p>
                         <p> {{ detailsjeweler.meta.city }} </p>
-                        <p><i class="fa fa-link"></i> {{ detailsjeweler.meta.dawanda }} </p>
-                        <p><i class="fa fa-link"></i> {{ detailsjeweler.meta.littlemarket }} </p>
                     </div>
                 </div>
 

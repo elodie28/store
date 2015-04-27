@@ -1,0 +1,268 @@
+{% extends "StoreBackendBundle::layout.html.twig" %}
+
+
+
+{% block classname %} theme-clean main-menu-animated page-profile {% endblock %}
+
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('assets/backend/stylesheets/pages.min.css') }}" rel="stylesheet" />
+{% endblock %}
+
+
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script type="text/javascript">
+
+        init.push(function () {
+            $('#profile-tabs').tabdrop();
+
+            $("#leave-comment-form").expandingInput({
+                target: 'textarea',
+                hidden_content: '> div',
+                placeholder: 'Write message',
+                onAfterExpand: function () {
+                    $('#leave-comment-form textarea').attr('rows', '3').autosize();
+                }
+            });
+        })
+        window.PixelAdmin.start(init);
+
+    </script>
+
+{% endblock %}
+
+
+
+{% block titlepage %}
+
+    <i class="menu-icon fa fa-user"></i> Mon compte
+
+{% endblock %}
+
+
+
+{% block content %}
+
+    <div class="profile-full-name">
+        Boutique de <span class="text-semibold"> {{ detailsjeweler.username }} </span>
+    </div>
+
+    <div class="profile-row">
+
+        <div class="left-col">
+
+            <div class="profile-block">
+                <div class="panel profile-photo">
+                    <img src="{{ detailsjeweler.image }}" alt="">
+                </div><br>
+                <a href="{{ path('store_backend_index') }}" class="btn btn-success"><i class="fa fa-heart"></i>&nbsp;&nbsp;{{ nblikes.nb|default('0') }}</a>&nbsp;&nbsp;
+                <a href="{{ path('store_backend_index') }}" class="btn btn-warning"><i class="fa fa-comment"></i>&nbsp;&nbsp;{{ nbcom.nb|default('0') }}</a>&nbsp;&nbsp;
+                <a href="#" class="btn btn-danger"><i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;{{ nborder.nb|default('0') }}</a>&nbsp;&nbsp;
+            </div>
+
+            <div class="panel panel-transparent">
+                <div class="panel-heading">
+                    <span class="panel-title"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Description</span>
+                </div>
+                <div class="panel-body">
+                    {{ detailsjeweler.description }}
+                </div>
+            </div>
+
+            <div class="panel panel-transparent">
+                <div class="panel-heading">
+                    <span class="panel-title"><i class="fa fa-bar-chart-o"></i>&nbsp;&nbsp;Statistiques</span>
+                </div>
+                <div class="list-group">
+                    <a href="#" class="list-group-item"><strong><span class="label label-info">{{ totalorder.total|default('0')|number_format(2, ',', ' ') }} €</span></strong> Chiffre d'affaires</a>
+                    <a href="#" class="list-group-item"><strong><span class="label label-info">{{ nbprod.nb|default('0') }}</span></strong> Produits</a>
+                    <a href="#" class="list-group-item"><strong><span class="label label-info">{{ nbpage.nb|default('0') }}</span></strong> Pages CMS</a>
+                </div>
+            </div>
+
+            <div class="panel panel-transparent profile-skills">
+                <div class="panel-heading">
+                    <span class="panel-title">Mots clés</span>
+                </div>
+                <div class="panel-body">
+                    <span class="label label-primary">UI/UX</span>
+                    <span class="label label-primary">Web design</span>
+                    <span class="label label-primary">Photoshop</span>
+                    <span class="label label-primary">HTML</span>
+                    <span class="label label-primary">CSS</span>
+                </div>
+            </div>
+
+            <div class="panel panel-transparent">
+                <div class="panel-heading">
+                    <span class="panel-title">Social</span>
+                </div>
+                <div class="list-group">
+                    <a href="#" class="list-group-item"><i class="profile-list-icon fa fa-twitter" style="color: #4ab6d5"></i> @dsteiner</a>
+                    <a href="#" class="list-group-item"><i class="profile-list-icon fa fa-facebook-square" style="color: #1a7ab9"></i> Denise Steiner</a>
+                    <a href="#" class="list-group-item"><i class="profile-list-icon fa fa-envelope" style="color: #888"></i> dsteiner@example.com</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="right-col">
+
+            <hr class="profile-content-hr no-grid-gutter-h">
+
+            <div class="profile-content">
+
+                <ul id="profile-tabs" class="nav nav-tabs"><li class="dropdown pull-right tabdrop hide"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-bars"></i> <b class="caret"></b></a><ul class="dropdown-menu"></ul></li>
+                    <li class="active">
+                        <a href="#profile-tabs-board" data-toggle="tab">{{ nborder.nb|default('0') }} Commandes</a>
+                    </li>
+                    <li>
+                        <a href="#profile-tabs-activity" data-toggle="tab">{{ nbcom.nb|default('0') }} Commentaires</a>
+                    </li>
+
+
+                    <li>
+                        <a href="#profile-tabs-followers" data-toggle="tab">{{ nbmess.nb|default('0') }} Messages</a>
+                    </li><li>
+                        <a href="#profile-tabs-following" data-toggle="tab"><i class="fa fa-star"></i> Mes informations</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content tab-content-bordered panel-padding">
+
+                    <div class="widget-article-comments tab-pane panel no-padding no-border fade in active" id="profile-tabs-board">
+
+                        {% for value in allorder %}
+
+                        <div class="comment">
+                            <img src="{{ value.user.photo }}" alt="" class="comment-avatar">
+                            <div class="comment-body">
+                                <div class="comment-text">
+                                    <div class="comment-heading">
+                                        <a href="#" title="">{{ value.user.firstname ~ " " ~ value.user.lastname }}</a> |<span>{{ value.user.email }}</span>
+                                    </div>
+                                    <p><i class="fa fa-map-marker"></i>&nbsp;&nbsp;Adresse de livraison : <strong>{{ value.address }}</strong></p>
+                                    <p><i class="fa fa-euro"></i>&nbsp;&nbsp;Total : <span class="label label-info">{{ value.total }}</span></p>
+                                    <hr/>
+                                    <ol>
+                                        <li></li>
+                                    </ol>
+                                </div>
+                            </div> <!-- / .comment-body -->
+                        </div>
+
+                        {% endfor %}
+
+                    </div> <!-- / .tab-pane -->
+
+                    <div class="tab-pane fade" id="profile-tabs-activity">
+
+                        <div class="timeline">
+
+                            <!-- Timeline header -->
+                            <div class="tl-header now">Aujourd'hui</div>
+
+                            {% for value in allcom %}
+
+                            <div class="tl-entry">
+
+                                <div class="tl-time">
+                                    <p> Le {{ value.dateCreated|date('d/m/Y') }} </p>
+                                    <p> à {{ value.dateCreated|date('H:i') }} </p>
+                                </div>
+
+                                {% if value.state == 2 %}
+                                <div class="tl-icon bg-success"><i class="fa fa-envelope"></i></div>
+                                {% elseif value.state == 1 %}
+                                    <div class="tl-icon bg-warning"><i class="fa fa-envelope"></i></div>
+                                {% else %}
+                                    <div class="tl-icon bg-danger"><i class="fa fa-envelope"></i></div>
+                                {% endif %}
+
+                                <div class="panel tl-body">
+
+                                    {% if value.state == 2 %}
+                                        <h4 class="text-success"> {{ value.product.title }} </h4>
+                                    {% elseif value.state == 1 %}
+                                        <h4 class="text-warning"> {{ value.product.title }} </h4>
+                                    {% else %}
+                                        <h4 class="text-danger"> {{ value.product.title }} </h4>
+                                    {% endif %}
+
+                                    {{ value.content }}
+
+                                </div> <!-- / .tl-body -->
+
+                            </div> <!-- / .tl-entry -->
+
+                            {% endfor %}
+
+                        </div> <!-- / .timeline -->
+
+                    </div> <!-- / .tab-pane -->
+
+                    <div class="tab-pane fade widget-followers" id="profile-tabs-followers">
+
+                        {% for value in allmess %}
+
+                        <div class="follower">
+
+                            <img src="{{ value.user.photo }}" alt="" class="follower-avatar">
+
+                            <div class="body">
+
+                                <div class="follower-controls">
+                                    {% if value.state == 1 %}
+                                        <a href="#" class="btn btn-sm btn-success"><i class="fa fa-check"></i><span>&nbsp;&nbsp;Lu</span></a>
+                                    {% else %}
+                                        <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-times"></i><span>&nbsp;&nbsp;Non lu</span></a>
+                                    {% endif %}
+                                </div>
+
+                                <a href="#" class="follower-name">{{ value.user.firstname ~ " " ~ value.user.lastname }}</a><br>
+
+                                <a href="#" class="follower-username">{{ value.user.email }}</a>
+
+                                <h4> {{ value.title }} </h4>
+                                <p> {{ value.content }} </p>
+
+                                <span class="label label-default"> Le {{ value.dateCreated|date('d/m/Y') }} à {{ value.dateCreated|date('H:i') }} </span>
+
+                            </div>
+
+                        </div>
+
+                        {% endfor %}
+
+                    </div> <!-- / .tab-pane -->
+
+                    <div class="tab-pane fade widget-followers" id="profile-tabs-following">
+
+                        <div class="follower">
+                            <img src="assets/demo/avatars/1.jpg" alt="" class="follower-avatar">
+                            <div class="body">
+                                <div class="follower-controls">
+                                    <a href="#" class="btn btn-sm btn-success"><i class="fa fa-check"></i><span>&nbsp;&nbsp;Following</span></a>
+                                </div>
+                                <a href="#" class="follower-name">John Doe</a><br>
+                                <a href="#" class="follower-username">@jdoe</a>
+                            </div>
+                        </div>
+
+                    </div> <!-- / .tab-pane -->
+
+                </div> <!-- / .tab-content -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -33,7 +33,7 @@ class BusinessRepository extends EntityRepository {
                  ORDER BY b.dateCreated DESC"
             )
             ->setParameter('user', $user)
-            ->setMaxResults(4);
+            ->setMaxResults(5);
 
         return $query->getResult();
     }

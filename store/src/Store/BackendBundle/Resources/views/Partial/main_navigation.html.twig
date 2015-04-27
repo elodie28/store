@@ -62,17 +62,17 @@
         </li>
         {% endif %}
 
-        {# {% if is_granted('ROLE_COMMERCIAL') %}#}
-    {#<li class="{% if app.request.attributes.get('_route') == "store_backend_supplier_list" %} active {% endif %}">
+        {% if is_granted('ROLE_COMMERCIAL') %}
+        <li class="{% if app.request.attributes.get('_route') == "store_backend_supplier_list" %} active {% endif %}">
         <a href="{{ path('store_backend_supplier_list') }}"> <i class="menu-icon fa fa-truck"></i> Fournisseurs </a>
-    </li>
-    {% endif %}
+        </li>
+        {% endif %}
 
-    {% if is_granted('ROLE_COMMERCIAL') %}
-    <li class="{% if app.request.attributes.get('_route') == "store_backend_slider_list" %} active {% endif %}">
-        <a href="{{ path('store_backend_slider_list') }}"> <i class="menu-icon fa fa-video-camera"></i> Diaporama </a>
-    </li>
-    {% endif %}#}
+        {% if is_granted('ROLE_COMMERCIAL') %}
+        <li class="{% if app.request.attributes.get('_route') == "store_backend_slider_list" %} active {% endif %}">
+            <a href="{{ path('store_backend_slider_list') }}"> <i class="menu-icon fa fa-video-camera"></i> Diaporama </a>
+        </li>
+        {% endif %}
 
     </ul>
     <!-- / .navbar-nav -->

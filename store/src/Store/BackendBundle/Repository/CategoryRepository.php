@@ -53,7 +53,7 @@ class CategoryRepository extends EntityRepository {
          */
         $queryBuilder = $this->createQueryBuilder('c') // 'c' est le paramètre directement sous forme d'alias
             ->where('c.jeweler = :user')
-            ->orderBy('c.title', 'ASC')
+            ->orderBy('c.id', 'ASC')
             ->setParameter('user', $user);
 
         return $queryBuilder;
@@ -109,7 +109,7 @@ class CategoryRepository extends EntityRepository {
                  JOIN c.product p
                  WHERE c.jeweler = :user
                  GROUP BY c.id
-                 ORDER BY nb DESC"
+                 ORDER BY c.id ASC"
             )
             ->setParameter('user', $user)
             ->setMaxResults(5);

@@ -39,17 +39,17 @@
 
 
 
-            {%  if app.session.get('alert') is not empty %}
+            {#{%  if app.session.get('alert') is not empty %}#}
 
-                <div class="alert alert-dark alert-{{ app.session.get('alert').criticity }}">
+                {#<div class="alert alert-dark alert-{{ app.session.get('alert').criticity }}">#}
 
-                    {# app.session permet de récupérer la session en Twig #}
-                    {# La méthode .get() récupère la valeur selon une clef en session #}
-                    {{ app.session.get('alert').message }}
+                    {#&#123;&#35; app.session permet de récupérer la session en Twig &#35;&#125;#}
+                    {#&#123;&#35; La méthode .get() récupère la valeur selon une clef en session &#35;&#125;#}
+                    {#{{ app.session.get('alert').message }}#}
 
-                </div>
+                {#</div>#}
 
-            {%  endif %}
+            {#{%  endif %}#}
 
 
 

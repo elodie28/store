@@ -11,7 +11,7 @@ services:
          class: Store\BackendBundle\Listener\AuthentificationListener # Nom de ma classe avec nom du namespace
 
          # Injection des dépendances
-         arguments: ["@doctrine.orm.entity_manager", "@security.context"] # Nom des services injectés en constructeur de ma classe
+         arguments: ["@doctrine.orm.entity_manager", "@security.context", "@store.backend.notification"] # Nom des services injectés en constructeur de ma classe
 
          # J'étends le mécanisme de security au niveau de l'interaction login avce un mécanisme d'écouteur
          tags:
@@ -29,6 +29,44 @@ services:
      store.backend.notification:
          class: Store\BackendBundle\Notification\Notification # Classe du service
          arguments: ["@session"] # Service Session injecté dans ma classe Notification (argument du contructeur de ma classe en service)
+
+
+
+     store.backend.listener.product.persist: # Nom du service
+
+         class: Store\BackendBundle\Listener\ProductListener # Nom de la classe
+
+         # Argument du constructeur -> service de notification que l'on a créé juste au-dessus
+         # ATTENTION : L'injection des dépendances se fait si mon service n'est pas déjà injecté,
+         # notamment par le tag qui est associé à mon service
+         arguments: ["@store.backend.notification"]
+
+         # ma classe utilisera le mécanisme d'écouteur de Symfony 2
+         tags:
+            # name : correspond au mécanisme ou ma classe sera affectée
+            #        et plus particulièrement au mécanisme d'écouteur de doctrine
+            # event : sera l'événement déclencheur de mon service
+            #         et plus particulièrement à la modification d'un objet
+            # method : la méthode qui sera appelée après déclenchement de mon event
+            #          et plus particulièrement la méthode appelée dans mon service postUpdate()
+            # Événement à doctrine : (Lifecycle)
+            # Doctrine a une liste exhaustive d'événements appelés LifeCycle (cycle de vie)
+            # Cycle de vie d'un objet en Doctrine :
+            # + preRemove
+            # + postRemove
+            # + prePersist
+            # + postPersist
+            # + preUpdate
+            # + postUpdate
+            # + postLoad
+            # + loadClassMetadata
+            # postUpdate : appelé
+
+          - { name: doctrine.event_listener, event:postUpdate, method: postUpdate }
+          - { name: doctrine.event_listener, event:postPersist, method: postPersist }
+          - { name: doctrine.event_listener, event:prePersist, method: prePersist }
+
+
 
 
 

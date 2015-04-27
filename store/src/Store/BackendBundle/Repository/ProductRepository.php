@@ -199,7 +199,6 @@ class ProductRepository extends EntityRepository {
      */
     public function getCountProductCmsByUser($user = null) {
 
-
         // Compte le nombre de produits (bijoux) liés à une page CMS pour 1 bijoutier (graphique dashboard n°3)
 
         $query = $this->getEntityManager()
@@ -215,6 +214,29 @@ class ProductRepository extends EntityRepository {
 
         // retourne 1 résultat ou null (correspond au row dans CodeIgniter)
         return $query->getOneOrNullResult();
+    }
+
+
+
+    /**
+     * @param null $user
+     * @return array
+     */
+    public function getProductsQuantityIsLower($user = null) {
+
+        // Récupère tous les produits dont la quantité est inférieure à 5 pour 1 bijoutier
+
+        $query = $this->getEntityManager()
+
+            ->createQuery(
+                " SELECT p
+                  FROM StoreBackendBundle:Product p
+                  WHERE p.jeweler = :jeweler
+                  AND p.quantity < 5"
+            )
+            ->setParameter('jeweler', $user);
+
+        return $query->getResult();
     }
 
 

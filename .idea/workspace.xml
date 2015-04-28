@@ -88,7 +88,7 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="73" />
+    <option name="x" value="75" />
     <option name="y" value="92" />
     <option name="width" value="1794" />
     <option name="height" value="915" />
@@ -811,7 +811,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="73" y="92" width="1794" height="915" extended-state="0" />
+    <frame x="75" y="92" width="1794" height="915" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -908,11 +908,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Entity/Product.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="385" column="29" selection-start="11120" selection-end="11245" vertical-scroll-proportion="-2.7108433" vertical-offset="6705" max-vertical-offset="21564">
-          <folding>
-            <element signature="e#46#78#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="385" column="29" selection-start="11120" selection-end="11245" vertical-scroll-proportion="-2.7108433" vertical-offset="6705" max-vertical-offset="21564" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Repository/CmsRepository.php">
@@ -982,16 +978,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/store/app/cache/dev/classes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3046" column="6" selection-start="90966" selection-end="90966" vertical-scroll-proportion="0.7720685" vertical-offset="52226" max-vertical-offset="133452">
-          <folding />
-        </state>
+        <state line="3046" column="6" selection-start="90966" selection-end="90966" vertical-scroll-proportion="0.7720685" vertical-offset="52226" max-vertical-offset="133452" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/app/cache/prod/classes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3419" column="6" selection-start="102684" selection-end="102684" vertical-scroll-proportion="1.9104084" vertical-offset="57950" max-vertical-offset="140040">
-          <folding />
-        </state>
+        <state line="3419" column="6" selection-start="102684" selection-end="102684" vertical-scroll-proportion="1.9104084" vertical-offset="57950" max-vertical-offset="140040" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/vendor/twig/twig/lib/Twig/Template.php">
@@ -1026,145 +1018,92 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Jeweler/myaccount.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.66484267" vertical-offset="486" max-vertical-offset="4914">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.66484267" vertical-offset="486" max-vertical-offset="4914" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Entity/Orders.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="37" selection-start="1795" selection-end="1798" vertical-scroll-proportion="0.93837535" vertical-offset="806" max-vertical-offset="5652">
-          <folding />
-        </state>
+        <state line="82" column="37" selection-start="1795" selection-end="1798" vertical-scroll-proportion="0.93837535" vertical-offset="806" max-vertical-offset="5652" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Controller/MainController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="688" selection-end="688" vertical-scroll-proportion="0.30041724" vertical-offset="270" max-vertical-offset="2376">
-          <folding />
-        </state>
+        <state line="27" column="0" selection-start="688" selection-end="688" vertical-scroll-proportion="0.30041724" vertical-offset="270" max-vertical-offset="2376" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Email/Email.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="38" selection-start="355" selection-end="355" vertical-scroll-proportion="0.10848401" vertical-offset="408" max-vertical-offset="1152">
-          <folding />
-        </state>
+        <state line="27" column="38" selection-start="355" selection-end="355" vertical-scroll-proportion="0.10848401" vertical-offset="408" max-vertical-offset="1152" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/DependencyInjection/StoreBackendExtension.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="1" selection-start="882" selection-end="882" vertical-scroll-proportion="0.58064514" vertical-offset="0" max-vertical-offset="744">
-          <folding />
-        </state>
+        <state line="27" column="1" selection-start="882" selection-end="882" vertical-scroll-proportion="0.58064514" vertical-offset="0" max-vertical-offset="744" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/layout.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="61" selection-start="1544" selection-end="1591" vertical-scroll-proportion="0.33870968" vertical-offset="486" max-vertical-offset="1998">
-          <folding />
-        </state>
+        <state line="41" column="61" selection-start="1544" selection-end="1591" vertical-scroll-proportion="0.33870968" vertical-offset="486" max-vertical-offset="1998" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Controller/JewelerController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="289" selection-end="289" vertical-scroll-proportion="-0.07258064" vertical-offset="324" max-vertical-offset="1242">
-          <folding />
-        </state>
+        <state line="15" column="0" selection-start="289" selection-end="289" vertical-scroll-proportion="-0.07258064" vertical-offset="324" max-vertical-offset="1242" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/config/routing.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.28404668" vertical-offset="219" max-vertical-offset="1044">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.28404668" vertical-offset="219" max-vertical-offset="1044" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Event/LifecycleEventArgs.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="0" selection-start="1488" selection-end="1488" vertical-scroll-proportion="0.550765" vertical-offset="0" max-vertical-offset="1404">
-          <folding />
-        </state>
+        <state line="39" column="0" selection-start="1488" selection-end="1488" vertical-scroll-proportion="0.550765" vertical-offset="0" max-vertical-offset="1404" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/app/config/services.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="17" selection-start="507" selection-end="507" vertical-scroll-proportion="0.32142857" vertical-offset="0" max-vertical-offset="784">
-          <folding />
-        </state>
+        <state line="14" column="17" selection-start="507" selection-end="507" vertical-scroll-proportion="0.32142857" vertical-offset="0" max-vertical-offset="784" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Partial/main_menu.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.7120211" vertical-offset="539" max-vertical-offset="1296">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.7120211" vertical-offset="539" max-vertical-offset="1296" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/views/Partial/main_navigation.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="152" column="50" selection-start="7026" selection-end="7026" vertical-scroll-proportion="0.59248954" vertical-offset="2310" max-vertical-offset="3492">
-          <folding>
-            <element signature="e#4417#4437#0" expanded="true" />
-            <element signature="e#4519#4572#0" expanded="true" />
-            <element signature="e#6200#6221#0" expanded="true" />
-            <element signature="e#6266#6339#0" expanded="true" />
-            <element signature="e#6393#6446#0" expanded="true" />
-            <element signature="e#7081#7362#0" expanded="true" />
-            <element signature="e#7397#7667#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="152" column="50" selection-start="7026" selection-end="7026" vertical-scroll-proportion="0.59248954" vertical-offset="2310" max-vertical-offset="3492" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Repository/ProductRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="234" column="33" selection-start="6723" selection-end="6723" vertical-scroll-proportion="0.6340819" vertical-offset="3732" max-vertical-offset="4518">
-          <folding>
-            <marker date="1430150922260" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..StoreBackendBundle..." />
-            <marker date="1430150922260" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..StoreBackendBundle..." />
-            <marker date="1430150922260" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..StoreBackendBundle..." />
-            <marker date="1430150922260" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..StoreBackendBundle..." />
-            <marker date="1430150922260" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..StoreBackendBundle..." />
-            <marker date="1430150922260" expanded="true" signature="-1:-1" placeholder="SELECT p FRO..StoreBackendBundle..." />
-          </folding>
-        </state>
+        <state line="234" column="33" selection-start="6723" selection-end="6723" vertical-scroll-proportion="0.6340819" vertical-offset="3732" max-vertical-offset="4518" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Listener/AuthentificationListener.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="46" selection-start="2033" selection-end="2033" vertical-scroll-proportion="0.38044915" vertical-offset="972" max-vertical-offset="1800">
-          <folding>
-            <element signature="e#48#79#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="70" column="46" selection-start="2033" selection-end="2033" vertical-scroll-proportion="0.38044915" vertical-offset="972" max-vertical-offset="1800" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Listener/ProductListener.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="45" selection-start="48" selection-end="99" vertical-scroll-proportion="0.09677419" vertical-offset="0" max-vertical-offset="2376">
-          <folding />
-        </state>
+        <state line="4" column="45" selection-start="48" selection-end="99" vertical-scroll-proportion="0.09677419" vertical-offset="0" max-vertical-offset="2376" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Resources/config/services.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="103" selection-start="481" selection-end="481" vertical-scroll-proportion="0.2984694" vertical-offset="0" max-vertical-offset="1404">
-          <folding />
-        </state>
+        <state line="13" column="103" selection-start="481" selection-end="481" vertical-scroll-proportion="0.2984694" vertical-offset="0" max-vertical-offset="1404" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Controller/ProductController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="228" column="0" selection-start="9178" selection-end="9178" vertical-scroll-proportion="4.969617" vertical-offset="216" max-vertical-offset="7110">
-          <folding />
-        </state>
+        <state line="228" column="0" selection-start="9178" selection-end="9178" vertical-scroll-proportion="4.969617" vertical-offset="216" max-vertical-offset="7110" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/src/Store/BackendBundle/Notification/Notification.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="0" selection-start="1739" selection-end="1739" vertical-scroll-proportion="0.8097754" vertical-offset="485" max-vertical-offset="1242">
-          <folding />
-        </state>
+        <state line="61" column="0" selection-start="1739" selection-end="1739" vertical-scroll-proportion="0.8097754" vertical-offset="485" max-vertical-offset="1242" />
       </provider>
     </entry>
   </component>

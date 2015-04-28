@@ -13,8 +13,6 @@ store_backend_category_view:
       defaults: { _controller: StoreBackendBundle:Category:view }
       requirements:
           id: \d+
-          name: "[a-zA-Z0-9- ]{5,30}"
-          _method: GET
 
 
 

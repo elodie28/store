@@ -1,0 +1,13 @@
+# Je vais pouvoir traduire mes textes de vues et mes textes de contrôleur
+
+cms:
+  list:
+    title: Liste de pages CMS
+    nb: Il y a %count% page trouvé | Il y a %count% pages trouvées
+    table:
+      th:
+        title: Titre
+        summary: Résumé
+        state: État
+        nb: Nombre de produits associés
+        date: Date de création

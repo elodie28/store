@@ -19,7 +19,8 @@
 
 
 {% block titlepage %}
-    <i class="menu-icon fa fa-pencil"></i> Liste des pages CMS
+    {# Le filtre trans de Twig va me chercher la traduction  pour le texte "Liste de spages CMS" #}
+    <i class="menu-icon fa fa-pencil"></i> {{ "cms.list.title"|trans }}
 {% endblock %}
 
 
@@ -27,11 +28,25 @@
 {% block content %}
 
     <div class="row">
+        <div class="btn-group pull-right">
+            <a href="{{ path('store_backend_cms_list', {'_locale': 'en'}) }}" class="btn btn-primary btn-outline {% if app.request.get('_locale') == 'en' %} active {% endif %}"> Anglais </a>
+            <a href="{{ path('store_backend_cms_list', {'_locale': 'fr'}) }}" class="btn btn-primary btn-outline {% if app.request.get('_locale') == 'fr' %} active {% endif %}"> Français </a>
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="row">
         <a href="{{ path('store_backend_cms_new') }}" class="pull-right btn btn-primary btn-lg btn-rounded">
-            <i class="fa fa-plus"></i> Ajouter un CMS
+            <i class="fa fa-plus"></i> Ajouter une page CMS
         </a>
     </div>
     <hr/>
+
+    <div class="alert alert-info alert-dark">
+        {# Le filtre |transchoice permet de choisir la traduction en fonction du nombre que je lui donne #}
+        {{ "cms.list.nb"|transchoice(cms|length) }}
+    </div>
 
     <div class="table-info">
 
@@ -41,13 +56,13 @@
 
             <tr>
                 <th class="text-center">ID</th>
-                <th class="text-center">Titre</th>
+                <th class="text-center">{{ "cms.list.table.th.title"|trans }}</th>
                 <th class="text-center">Image</th>
-                <th class="col-md-4 text-center">Résumé</th>
+                <th class="col-md-4 text-center">{{ "cms.list.table.th.summary"|trans }}</th>
                 <th class="text-center">Activation</th>
-                <th class="text-center">État</th>
-                <th class="text-center">Nombre de produits associés</th>
-                <th class="text-center">Date de création</th>
+                <th class="text-center">{{ "cms.list.table.th.state"|trans }}</th>
+                <th class="text-center">{{ "cms.list.table.th.nb"|trans }}</th>
+                <th class="text-center">{{ "cms.list.table.th.date"|trans }}</th>
                 <th class="text-center">Actions</th>
             </tr>
 

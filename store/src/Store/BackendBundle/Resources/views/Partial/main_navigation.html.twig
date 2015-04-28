@@ -122,40 +122,22 @@
             </div> <!-- / .dropdown-menu -->
         </li>
 
-        <li class="nav-icon-btn nav-icon-btn-success dropdown">
-            <a href="#messages" class="dropdown-toggle" data-toggle="dropdown">
-                <span class="label">10</span>
-                <i class="nav-icon fa fa-envelope"></i>
-                <span class="small-screen-text">Messages</span>
-            </a>
 
-            <!-- MESSAGES -->
 
-            <!-- Javascript -->
-            <script>
-                init.push(function () {
-                    $('#main-navbar-messages').slimScroll({ height: 250 });
-                });
-            </script>
-            <!-- / Javascript -->
+        {# Inclure mes messages depuis le contrôleur pour rendre une vue dynamique #}
+        {# La fonction render() va appeler le contrôleur layout et l'action mymessages #}
 
-            <div class="dropdown-menu widget-messages-alt no-padding" style="width: 300px;">
-                <div class="messages-list" id="main-navbar-messages" style="overflow: hidden; width: auto; height: 250px;">
+        {# À la différence de include qui va inclure une vue statique, #}
+        {# render() va appeler dynamiquement un contrôleur et une action de contrôleur #}
 
-                        <div class="message">
-                            <img src="assets/demo/avatars/2.jpg" alt="" class="message-avatar">
-                            <a href="#" class="message-subject">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
-                            <div class="message-description">
-                                from <a href="#">Robert Jang</a>
-                                &nbsp;&nbsp;·&nbsp;&nbsp;
-                                2h ago
-                            </div>
-                        </div> <!-- / .message -->
+        {{ render(controller('StoreBackendBundle:Layout:mymessages')) }}
 
-                </div> <!-- / .messages-list -->
-                <a href="#" class="messages-link">PLUS DE MESSAGES</a>
-            </div> <!-- / .dropdown-menu -->
-        </li>
+        {# Inclure mes commandes depuis le contrôleur pour rendre une vue dynamique #}
+        {# La fonction render() va appeler le contrôleur layout et l'action myorders #}
+
+        {{ render(controller('StoreBackendBundle:Layout:myorders')) }}
+
+
 
     <li>
         <form class="navbar-form pull-left">

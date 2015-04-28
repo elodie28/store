@@ -53,7 +53,7 @@ class CmsRepository extends EntityRepository {
          */
         $queryBuilder = $this->createQueryBuilder('cms')
             ->where('cms.jeweler = :user')
-            ->orderBy('cms.title', 'ASC')
+            ->orderBy('cms.id', 'ASC')
             ->setParameter('user', $user);
 
         return $queryBuilder;

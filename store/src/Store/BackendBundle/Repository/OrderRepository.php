@@ -102,10 +102,11 @@ class OrderRepository extends EntityRepository {
 
 
     /**
+     * $limit = null revient à aucune limite
      * @param null $user
      * @return mixed
      */
-    public function getLastOrdersByUser($user = null) {
+    public function getLastOrdersByUser($user = null, $limit = null) {
 
         // Donne les 5 dernières commandes pour 1 bijoutier
         $query = $this->getEntityManager()
@@ -117,7 +118,7 @@ class OrderRepository extends EntityRepository {
                  ORDER BY o.id DESC"
             )
             ->setParameter('user', $user)
-            ->setMaxResults(5);
+            ->setMaxResults($limit);
 
         return $query->getResult();
     }
@@ -142,5 +143,6 @@ class OrderRepository extends EntityRepository {
 
         return $query->getResult();
     }
+
 
 }

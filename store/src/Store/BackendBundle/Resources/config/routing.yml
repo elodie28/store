@@ -39,7 +39,9 @@ store_backend_orders: #nom du jeu de root
 # Page CMS
 store_backend_cms: #nom du jeu de root
     resource: "@StoreBackendBundle/Resources/config/modules/cms.yml"
-    prefix:   /cms
+    prefix:   /{_locale}/cms # argument {_locale} pour traduire tout mon module CMS au niveau du routing
+    requirements:            # {_locale} : argument spécial au routing reconnu par le système d'internationalisation de Symfony
+      _locale: en|fr
 
 # Page Supplier
 store_backend_suppliers: #nom du jeu de root

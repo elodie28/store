@@ -91,6 +91,14 @@ class Orders
      */
     private $product;
 
+//    /**
+//     * @var \Doctrine\Common\Collections\ArrayCollection
+//     *
+//     * @ORM\OneToMany(targetEntity="OrderDetail", mappedBy="orders")
+//     *
+//     */
+//    private $orderDetail;
+
 
 
     /**
@@ -99,13 +107,14 @@ class Orders
     public function __construct()
     {
         $this->product = new \Doctrine\Common\Collections\ArrayCollection();
+//        $this->orderDetail = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -128,7 +137,7 @@ class Orders
     /**
      * Get address
      *
-     * @return string 
+     * @return string
      */
     public function getAddress()
     {
@@ -151,7 +160,7 @@ class Orders
     /**
      * Get date
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDate()
     {
@@ -174,7 +183,7 @@ class Orders
     /**
      * Get total
      *
-     * @return float 
+     * @return float
      */
     public function getTotal()
     {
@@ -197,7 +206,7 @@ class Orders
     /**
      * Get state
      *
-     * @return integer 
+     * @return integer
      */
     public function getState()
     {
@@ -220,7 +229,7 @@ class Orders
     /**
      * Get dateCreated
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateCreated()
     {
@@ -243,7 +252,7 @@ class Orders
     /**
      * Get user
      *
-     * @return \Store\BackendBundle\Entity\User 
+     * @return \Store\BackendBundle\Entity\User
      */
     public function getUser()
     {
@@ -266,7 +275,7 @@ class Orders
     /**
      * Get jeweler
      *
-     * @return \Store\BackendBundle\Entity\Jeweler 
+     * @return \Store\BackendBundle\Entity\Jeweler
      */
     public function getJeweler()
     {
@@ -296,6 +305,26 @@ class Orders
         $this->product->removeElement($product);
     }
 
+//    /**
+//     * @param \Doctrine\Common\Collections\ArrayCollection $orderDetail
+//     */
+//    public function setOrderDetail($orderDetail)
+//    {
+//        $this->orderDetail = $orderDetail;
+//    }
+//
+//    /**
+//     * @return \Doctrine\Common\Collections\ArrayCollection
+//     */
+//    public function getOrderDetail()
+//    {
+//        return $this->orderDetail;
+//    }
+
+
+
+
+
 
 
     /**
@@ -304,5 +333,15 @@ class Orders
      */
     public function __toString() {
         return $this->id;
+    }
+
+    /**
+     * Get product
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProduct()
+    {
+        return $this->product;
     }
 }

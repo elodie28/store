@@ -1,0 +1,39 @@
+<li class="nav-icon-btn nav-icon-btn-warning dropdown">
+    <a href="#messages" class="dropdown-toggle" data-toggle="dropdown">
+        <span class="label">{{ orders|length }}</span>
+        <i class="nav-icon fa fa-shopping-cart"></i>
+        <span class="small-screen-text">Commandes</span>
+    </a>
+
+    <!-- MESSAGES -->
+
+    <!-- Javascript -->
+    <script>
+        init.push(function () {
+            $('#main-navbar-message').slimScroll({ height: 250 });
+        });
+    </script>
+    <!-- / Javascript -->
+
+    <div class="dropdown-menu widget-messages-alt no-padding" style="width: 300px;">
+        <div class="messages-list" id="main-navbar-message" style="overflow: hidden; width: auto; height: 250px;">
+
+            {% for value in orders %}
+
+                <div class="message">
+                    <img src="{{ value.user.photo }}" alt="" class="message-avatar">
+                    <a href="#" class="message-subject">{{ value.address }}</a>
+                    <div class="message-description">
+                        Commande par <a href="#">{{ value.user.firstname ~ " " ~ value.user.lastname }}</a>
+                        &nbsp;&nbsp;·&nbsp;&nbsp;
+                        <p>Le {{ value.date|date('d/m/Y') }}</p>
+                        {#<p class="row pull-left"> {{ value.state|state|raw }}</p>#}
+                    </div>
+                </div> <!-- / .message -->
+
+            {% endfor %}
+
+        </div> <!-- / .messages-list -->
+        <a href="#" class="messages-link">PLUS DE COMMANDES</a>
+    </div> <!-- / .dropdown-menu -->
+</li>

@@ -94,6 +94,7 @@ class MainController extends Controller {
 
 
 
+
         // Je retourne la vue index contenue dans le dossier Main de mon bundle StorebackendBundle
         return $this->render('StoreBackendBundle:Main:index.html.twig', array(
             'nbprod' => $nbprod,

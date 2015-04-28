@@ -1,0 +1,13 @@
+# Je vais pouvoir traduire mes textes de vues et mes textes de contrôleur
+
+cms:
+  list:
+    title: List of CMS pages
+    nb: There is %count% page founded | There are %count% pages founded
+    table:
+      th:
+        title: Title
+        summary: Summary
+        state: State
+        nb: Number of associated products
+        date: Date of creation

@@ -68,5 +68,19 @@ services:
 
 
 
+     strore.backend.voter: # Nom du service
+
+         class: Store\BackendBundle\Security\Authorization\Voter\OwnerVoter # Nom de la classe affectée à notre service
+
+         # Mécanisme de sécutité au niveau des votes de la gestion des rôles
+         # Implémente notre service parmi le mécanisme de vote des autorisations de la sécurité
+         tags:
+         - { name: security.voter }
+
+
+
+
+
+
 
 

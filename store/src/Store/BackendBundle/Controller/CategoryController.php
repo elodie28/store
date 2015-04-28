@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Store\BackendBundle\Form\CategoryType;
 use Store\BackendBundle\Entity\Category;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 
 /**
@@ -143,14 +144,16 @@ class CategoryController extends Controller {
      * Je récupère l'objet Request qui contient toutes mes données en GET, POST ...
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * is_granted
+     * 1er argument : attribut à vide
+     * 2ème argument objet : produit
+     * @Security("is_granted('', id)")
      */
-    public function editAction(Request $request, $id) {
-
-        $em = $this->getDoctrine()->getManager();
-        $category = $em->getRepository('StoreBackendBundle:Category')->find($id);
+    public function editAction(Request $request, Category $id) {
 
         // Je crée un formulaire de category en l'associant avec ma category
-        $form = $this->createForm(new CategoryType(1), $category, array(
+        $form = $this->createForm(new CategoryType(1), $id, array(
             'validation_groups' => 'edit',
             'attr' => array(
                 'method' => 'post',
@@ -176,10 +179,10 @@ class CategoryController extends Controller {
         if($form->isValid()) {
 
             //J'upload mon fichier en faisant appel à la méthode upload si mon formulaire est valide
-            $category->upload();
+            $id->upload();
 
             $em = $this->getDoctrine()->getManager();
-            $em->persist($category);
+            $em->persist($id);
             $em->flush();
 
             // Permet d'écrire un message flash avec pour clef "success" et un message de confirmation

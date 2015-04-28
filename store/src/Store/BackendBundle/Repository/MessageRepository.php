@@ -20,19 +20,21 @@ class MessageRepository extends EntityRepository {
      * @param null $user
      * @return mixed
      */
-    public function getLastMessByUser($user = null) {
+    public function getLastMessByUser($user = null, $limit = 5) {
 
-        // Donne les 5 derniers messages pour 1 bijoutier
+        // Donne les 5 derniers messages pour 1 bijoutier (dashboard)
+        // Donne les derniers messages dans l'onglet main navigation
         $query = $this->getEntityManager()
 
             ->createQuery(
                 "SELECT m
                  FROM StoreBackendBundle:Message m
+                 JOIN m.user u
                  WHERE m.jeweler = :user
                  ORDER BY m.dateCreated DESC"
             )
             ->setParameter('user', $user)
-            ->setMaxResults(5);
+            ->setMaxResults($limit);
 
         return $query->getResult();
     }

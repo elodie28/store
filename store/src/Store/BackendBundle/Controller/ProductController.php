@@ -186,14 +186,16 @@ class ProductController extends Controller {
      * Je récupère l'objet Request qui contient toutes mes données en GET, POST ...
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * is_granted
+     * 1er argument : attribut à vide
+     * 2ème argument objet : produit
+     * @Security("is_granted('', id)")
      */
-    public function editAction(Request $request, $id) {
-
-        $em = $this->getDoctrine()->getManager();
-        $product = $em->getRepository('StoreBackendBundle:Product')->find($id);
+    public function editAction(Request $request, Product $id) {
 
         // Je crée un formulaire de produit en l'associant avec mon produit
-        $form = $this->createForm(new ProductType(1), $product, array(
+        $form = $this->createForm(new ProductType(1), $id, array(
             'validation_groups' => 'edit',
             'attr' => array(
                 'method' => 'post',
@@ -218,10 +220,10 @@ class ProductController extends Controller {
 
         if($form->isValid()) {
 
-            $product->upload();
+            $id->upload();
 
             $em = $this->getDoctrine()->getManager();
-            $em->persist($product);
+            $em->persist($id);
             $em->flush();
 
 
@@ -263,7 +265,7 @@ class ProductController extends Controller {
         // createView() est toujours la méthode utilisée pour renvoyer la vue d'un formulaire
         return $this->render('StoreBackendBundle:Product:edit.html.twig', array(
             'form' => $form->createView(),
-            'product' => $product
+            'product' => $id
         ));
     }
 

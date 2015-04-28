@@ -91,13 +91,13 @@ class Orders
      */
     private $product;
 
-//    /**
-//     * @var \Doctrine\Common\Collections\ArrayCollection
-//     *
-//     * @ORM\OneToMany(targetEntity="OrderDetail", mappedBy="orders")
-//     *
-//     */
-//    private $orderDetail;
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="OrderDetail", mappedBy="orders")
+     *
+     */
+    private $orderDetail;
 
 
 
@@ -107,7 +107,7 @@ class Orders
     public function __construct()
     {
         $this->product = new \Doctrine\Common\Collections\ArrayCollection();
-//        $this->orderDetail = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->orderDetail = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -305,25 +305,48 @@ class Orders
         $this->product->removeElement($product);
     }
 
-//    /**
-//     * @param \Doctrine\Common\Collections\ArrayCollection $orderDetail
-//     */
-//    public function setOrderDetail($orderDetail)
-//    {
-//        $this->orderDetail = $orderDetail;
-//    }
-//
-//    /**
-//     * @return \Doctrine\Common\Collections\ArrayCollection
-//     */
-//    public function getOrderDetail()
-//    {
-//        return $this->orderDetail;
-//    }
+    /**
+     * Get product
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
 
+    /**
+     * Add orderDetail
+     *
+     * @param \Store\BackendBundle\Entity\OrderDetail $orderDetail
+     * @return Orders
+     */
+    public function addOrderDetail(\Store\BackendBundle\Entity\OrderDetail $orderDetail)
+    {
+        $this->orderDetail[] = $orderDetail;
 
+        return $this;
+    }
 
+    /**
+     * Remove orderDetail
+     *
+     * @param \Store\BackendBundle\Entity\OrderDetail $orderDetail
+     */
+    public function removeOrderDetail(\Store\BackendBundle\Entity\OrderDetail $orderDetail)
+    {
+        $this->orderDetail->removeElement($orderDetail);
+    }
 
+    /**
+     * Get orderDetail
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getOrderDetail()
+    {
+        return $this->orderDetail;
+    }
 
 
 
@@ -335,13 +358,5 @@ class Orders
         return $this->id;
     }
 
-    /**
-     * Get product
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getProduct()
-    {
-        return $this->product;
-    }
+
 }

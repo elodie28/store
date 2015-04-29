@@ -35,7 +35,8 @@ class ProductRepository extends EntityRepository {
          */
         $query = $this->getProductByUserBuilder($user)->getQuery();
 
-        return $query->getResult();
+        // Je retourne une requête et non pas un résultat de requête pour le tri
+        return $query;
     }
 
 

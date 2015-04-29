@@ -35,6 +35,12 @@
     </div>
     <hr/>
 
+    {# Compte le nombre total de produits (sur les 3 pages de pagination) #}
+    {# On ne peut pas utiliser le filtre |length à cause de la pagination #}
+    <div class="alert alert-info alert-dark">
+        {{ products.getTotalItemCount }} produits trouvés
+    </div>
+
     <div class="table-info">
 
         <table class="table table-bordered">
@@ -42,15 +48,19 @@
             <thead>
 
             <tr>
-                <th class="text-center">ID</th>
-                <th class="col-md-2 text-center">Titre</th>
+                {# 1er argument : le tableau de produits,
+                   2ème argument : le label de la colonne
+                   3ème argument : la colonne sur laquelle le tri va s'effectuer #}
+
+                <th class="text-center"> {{ knp_pagination_sortable(products, 'ID', 'p.id')|raw }} </th>
+                <th class="col-md-2 text-center"> {{ knp_pagination_sortable(products, 'Titre', 'p.title')|raw }} </th>
                 <th class="text-center">Photo</th>
                 <th class="text-center">Référence</th>
                 <th class="col-md-2 text-center">Résumé</th>
                 <th class="text-center">Prix</th>
                 <th class="text-center">Quantité</th>
                 <th class="text-center">Activation</th>
-                <th class="text-center">État</th>
+                <th class="text-center">Visible</th>
                 <th class="text-center">Date de création</th>
                 <th class="text-center">Actions</th>
             </tr>
@@ -115,7 +125,7 @@
 
                 <td class="text-center"> {{ product.dateCreated|date('d/m/Y') }} </td>
 
-                <td class="text-center">
+                <td>
                     <div class="btn-group">
                         <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-cogs"></i> Actions <i class="fa fa-caret-down"></i></button>
                         <ul class="dropdown-menu">
@@ -133,6 +143,10 @@
             </tbody>
 
         </table>
+
+        <div class="pagination">
+            <li> {{ knp_pagination_render(products) }} </li>
+        </div>
 
     </div>
 

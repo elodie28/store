@@ -146,12 +146,21 @@
                                 <div class="comment-text">
                                     <div class="comment-heading">
                                         <a href="#" title="">{{ value.user.firstname ~ " " ~ value.user.lastname }}</a> |<span>{{ value.user.email }}</span>
+                                        <span class="pull-right btn btn-xs btn-info"> {{ value.date|date('d/m/Y') }} </span>
                                     </div>
                                     <p><i class="fa fa-map-marker"></i>&nbsp;&nbsp;Adresse de livraison : <strong>{{ value.address }}</strong></p>
                                     <p><i class="fa fa-euro"></i>&nbsp;&nbsp;Total : <span class="label label-info">{{ value.total }}</span></p>
-                                    <hr/>
+
+                                    <span class="pull-right"> {{ value.state|state|raw  }}</span> <hr/>
+
                                     <ol>
-                                        <li></li>
+                                        {% for values in value.orderDetail %}
+                                        <li>
+                                            {{ values.quantity }}
+                                            {{ values.product.title }}
+                                            {{ values.price }}
+                                        </li>
+                                        {% endfor %}
                                     </ol>
                                 </div>
                             </div> <!-- / .comment-body -->

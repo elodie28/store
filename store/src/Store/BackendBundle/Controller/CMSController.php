@@ -22,7 +22,7 @@ class CMSController extends Controller {
      * Page liste des CMS
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function listAction() {
+    public function listAction(Request $request) {
 
         // Je récupère le manager de doctrine : le conteneur d'objets de Doctrine
         $em = $this->getDoctrine()->getManager();
@@ -33,9 +33,19 @@ class CMSController extends Controller {
         // Je récupère tous les CMS du jeweler connecté
         $cms = $em->getRepository('StoreBackendBundle:Cms')->getCmsByUser($user); // NomduBundle:Nomdel'entité
 
+        // Paginer mes CMS
+        // Je récupère le service knp_paginator qui me sert à paginer
+        $paginator  = $this->get('knp_paginator');
+        // J'utilise la méthode paginate() du service knp_paginator
+        $pagination = $paginator->paginate(
+            $cms, // Je lui envoie mon tableau de cms
+            $request->query->get('page', 1) , // Je récupère le numéro de page sur lequel je me trouve, par défaut, il prendra la page numéro 1
+            1 // je limite à 5 mes résultats de cms (5 par page)
+        );
+
         // Je retourne la vue List contenue dans le dossier CMS de mon bundle StorebackendBundle
         return $this->render('StoreBackendBundle:CMS:list.html.twig', array(
-            'cms' => $cms
+            'cms' => $pagination
         ));
     }
 
@@ -243,7 +253,7 @@ class CMSController extends Controller {
         // Permet d'écrire un message flash avec pour clef "info" et un message de confirmation
         $this->get('session')->getFlashBag()->add(
             'info',
-            'Votre page CMS a bien été désactivée'
+            $this->get('translator')->trans('cms.flashdata.activate', array(), 'cms')
         );
 
         return $this->redirectToRoute('store_backend_cms_list'); // redirection vers la liste des pages CMS
@@ -266,7 +276,7 @@ class CMSController extends Controller {
         // Permet d'écrire un message flash avec pour clef "info" et un message de confirmation
         $this->get('session')->getFlashBag()->add(
             'info',
-            'Votre page CMS a bien été activée'
+            $this->get('translator')->trans('cms.flashdata.desactivate', array(), 'cms')
         );
 
         return $this->redirectToRoute('store_backend_cms_list'); // redirection vers la liste des pages CMS

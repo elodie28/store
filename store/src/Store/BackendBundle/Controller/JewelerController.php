@@ -44,6 +44,7 @@ class JewelerController extends Controller {
         $allmess = $em->getRepository('StoreBackendBundle:Message')->getAllDetailsMessByUser($user);
 
 
+
         // Je retourne la vue myaccount contenue dans le dossier Jeweler de mon bundle StorebackendBundle
         return $this->render('StoreBackendBundle:Jeweler:myaccount.html.twig', array(
             'detailsjeweler' => $detailsjeweler,

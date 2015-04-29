@@ -24,7 +24,9 @@ store_backend_jewelers:
 # Page Products
 store_backend_products:
     resource: "@StoreBackendBundle/Resources/config/modules/product.yml"
-    prefix:   /products
+    prefix:   /{_locale}/products
+    requirements:            # {_locale} : argument spécial au routing reconnu par le système d'internationalisation de Symfony
+      _locale: en|fr
 
 # Page Categories
 store_backend_categories: #nom du jeu de root

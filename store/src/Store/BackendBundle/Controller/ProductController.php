@@ -26,7 +26,7 @@ class ProductController extends Controller {
      * @return \Symfony\Component\HttpFoundation\Response
      * @Security("has_role('ROLE_COMMERCIAL')")
      */
-    public function listAction() {
+    public function listAction(Request $request) {
 
 //        // Méthode n° 1 : si on veut restreindre l'accès au niveau de la méthode de contrôleur
 //        if (false === $this->get('security.context')->isGranted('ROLE_COMMERCIAL')) {
@@ -43,9 +43,21 @@ class ProductController extends Controller {
         $products = $em->getRepository('StoreBackendBundle:Product')->getProductByUser($user); // NomduBundle:Nomdel'entité
         // = requête : SELECT * FROM product
 
+
+        // Paginer mes produits
+        // Je récupère le service knp_paginator qui me sert à paginer
+        $paginator  = $this->get('knp_paginator');
+        // J'utilise la méthode paginate() du service knp_paginator
+        $pagination = $paginator->paginate(
+            $products, // Je lui envoie mon tableau de produits
+            $request->query->get('page', 1) , // Je récupère le numéro de page sur lequel je me trouve, par défaut, il prendra la page numéro 1
+            5 // je limite à 5 mes résultats de produits (5 par page)
+        );
+
+
         // Je retourne la vue List contenue dans le dossier Product de mon bundle StorebackendBundle
         return $this->render('StoreBackendBundle:Product:list.html.twig', array(
-            'products' => $products
+            'products' => $pagination
         ));
     }
 

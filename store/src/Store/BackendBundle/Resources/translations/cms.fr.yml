@@ -1,0 +1,41 @@
+# Je vais pouvoir traduire mes textes de vues et mes textes de contrôleur
+
+cms:
+
+  form:
+    title: Titre de ma page CMS
+    summary: Résumé de ma page CMS
+    description: Description de ma page CMS
+    image: Image de présentation de ma page CMS
+    date: Date active de ma page CMS
+    video: Vidéo de ma page CMS
+    state: État de ma page CMS
+    placeholder:
+      image: Aucun fichier sélectionné ...
+    statelabel:
+      read: Lu
+      inwaiting: En cours
+      unread: Non lu
+
+  flashdata:
+    activate: Votre page CMS a bien été désactivée
+    desactivate: Votre page CMS a bien été activée
+
+  list:
+    title: Liste de pages CMS
+    button: Ajouter une page CMS
+    nb: Il y a %count% page trouvée | Il y a %count% pages trouvées
+    table:
+      th:
+        title: Titre
+        summary: Résumé
+        state: État
+        nb: Nombre de produits associés
+        date: Date de création
+      td:
+        activate: Activer cette page CMS
+        desactivate: Désactiver cette page CMS
+        product: produits associés
+
+  new:
+    title: Creation d'une page CMS

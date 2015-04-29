@@ -86,3 +86,18 @@ swiftmailer:
     username: "elodie.perrotton@gmail.com" # Gmail compte login
     password: "" # Mot de passe
     spool:     { type: memory }
+
+
+
+# KNP Paginator Bundle Configuration
+knp_paginator:
+    page_range: 5                      # default page range used in pagination control
+    default_options:
+        page_name: page                # Nom du paramètre mis en URL ?page=1... ?page=2
+        sort_field_name: sort          # Nom du paramètre en URL pour le tri
+        sort_direction_name: direction # Nom du paramètre en URL pour la direction du tri (ascendante/descendante)
+        distinct: true                 # Pagination de manière disctincte (SQL)
+    template:
+        # Vue partielle pour mettre en forme la pagination
+        pagination: StoreBackendBundle:Partial:pagination.html.twig     # Template de pagination
+        sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # Template de tri

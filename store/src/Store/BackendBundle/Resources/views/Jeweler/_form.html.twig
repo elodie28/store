@@ -1,0 +1,50 @@
+{#Crée une balise ouvrante <form>#}
+    {{ form_start(form) }}
+
+
+
+<div class="row alert alert-dark alert-warning">
+    <div class="col-md-4">
+        {{ form_row(form.title) }}
+    </div>
+    <div class="col-md-2">
+        {{ form_row(form.type) }}
+    </div>
+    <div class="col-md-2">
+        <span class='fa fa-envelope'> {{ form_row(form.email) }} </span>
+    </div>
+    <div class="col-md-4">
+        <span class="fa fa-picture-o"></span> {{ form_row(form.file) }}
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-2">
+
+       {# {% for meta in form.meta %}
+            {{ form_row(meta.phone) }}
+        {% endfor %} #}
+
+    </div>
+</div>
+
+
+<div class="row">
+    <i class="fa fa-pencil"></i>{{ form_row(form.description) }}
+</div>
+
+<div class="row">
+    <br/> <br/> <br/>
+</div>
+
+
+
+{# Bouton envoyer #}
+{{  form_widget(form.envoyer, {'attr': {'class': 'pull-left btn btn-lg btn-primary'}}) }}
+
+{# ATTENTION : token  à ne pas oublier -> clef de sécurité du formulaire #}
+    {{ form_widget(form._token) }}
+
+    {# Crée une balise fermante </form> #}
+    {{ form_end(form, {'render_rest': false}) }}

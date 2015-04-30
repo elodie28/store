@@ -1,13 +1,25 @@
 # Je vais pouvoir traduire mes textes de vues et mes textes de contrôleur
 
+fileupload: 'No selected file ...'
+
+pagination:
+  previous: Previous
+  next: Next
+
+
+
 cms:
+
   list:
-    title: List of CMS pages
-    nb: There is %count% page founded | There are %count% pages founded
+    choice: Choose your language please %username%
+    btnen: English
+    btnfr: French
     table:
-      th:
-        title: Title
-        summary: Summary
-        state: State
-        nb: Number of associated products
-        date: Date of creation
+      state:
+        read: Read
+        inwaiting: In waiting
+        unread: Unread
+      btn:
+        see: See
+        edit: Edit
+        delete: Delete

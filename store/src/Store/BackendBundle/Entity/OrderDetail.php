@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class OrderDetail
+ * @ORM\Table(name="order_detail")
  * @ORM\Entity
  * @package Store\BackendBundle\Entity
  */

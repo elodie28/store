@@ -1,0 +1,10 @@
+# Je vais pouvoir traduire mes textes de vues et mes textes de contrôleur
+
+cms:
+  form:
+    validation:
+      title:
+        notblank: Votre titre ne doit pas être vide
+        length:
+          min: Votre titre doit faire au moins {{ limit }} caractères
+          max: Votre titre ne peut pas être plus long que {{ limit }} caractères

@@ -97,7 +97,7 @@
             $('div.alert-danger').delay(3000).slideUp('fast');
 
             // Utilisation du plugin pixelFileInput pour tous les champs de type file (upload d'image dans les formulaires)
-            $('input[type=file]').pixelFileInput({ placeholder: 'Aucun fichier sélectionné ...' });
+            $('input[type=file]').pixelFileInput({ placeholder: "{{ 'fileupload'|trans }}" });
 
         })
         window.PixelAdmin.start(init);

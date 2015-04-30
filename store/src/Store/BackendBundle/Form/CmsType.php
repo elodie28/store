@@ -24,7 +24,7 @@ class CmsType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
 
         $builder->add('title', null, array(
-            'label'    => 'Titre de ma page CMS',
+            'label'    => 'cms.form.title',
             'required' => true,
             'attr'     => array(
                 'class'       => 'form-control',
@@ -34,7 +34,7 @@ class CmsType extends AbstractType {
         ));
 
         $builder->add('summary', null, array(
-            'label'    => 'Petit résumé',
+            'label'    => 'cms.form.summary',
             'required' => true,
             'attr'     => array(
                 'class'       => 'form-control',
@@ -44,7 +44,7 @@ class CmsType extends AbstractType {
         ));
 
         $builder->add('description', null, array(
-            'label'    => 'Description',
+            'label'    => 'cms.form.description',
             'required' => true,
             'attr'     => array(
                 'class'       => 'form-control',
@@ -54,7 +54,7 @@ class CmsType extends AbstractType {
         ));
 
         $builder->add('image', 'text', array(
-            'label'    => 'Image',
+            'label'    => 'cms.form.image',
             'attr'     => array(
                 'class'       => 'form-control',
                 'placeholder' => 'http://',
@@ -62,7 +62,7 @@ class CmsType extends AbstractType {
         ));
 
         $builder->add('file', 'file', array(
-            'label'    => 'Image de présentation de ma page CMS',
+            'label'    => 'cms.form.image',
             'required' => false,
             'attr'     => array(
                 'class' => 'form-control',
@@ -72,7 +72,7 @@ class CmsType extends AbstractType {
         ));
 
         $builder->add('dateActive', 'date', array(
-            'label'    => 'Date active',
+            'label'    => 'cms.form.date',
             //'pattern' => '{{ day }}-{{ month }}-{{ year }}',
             'format' => 'dd/MM/yyyy',
             'widget' => 'single_text',
@@ -82,7 +82,7 @@ class CmsType extends AbstractType {
         ));
 
         $builder->add('video', null, array(
-            'label'    => 'Vidéo',
+            'label'    => 'cms.form.video',
             'attr'     => array(
                 'class'       => 'form-control',
                 'placeholder' => '<iframe src = "...">'
@@ -90,10 +90,10 @@ class CmsType extends AbstractType {
         ));
 
         $builder->add('state', 'choice', array(
-            'choices' => array('0' => 'Inactif', '1' => 'En cours de relecture', '2' => 'En ligne'),
+            'choices' => array('0' => 'cms.form.statelabel.unread', '1' => 'cms.form.statelabel.inwaiting', '2' => 'cms.form.statelabel.read'),
             'required' => true,
             'preferred_choices' => array('2'),
-            'label' => 'État de votre page',
+            'label' => 'cms.form.state',
             'attr'  => array(
                 'class' => 'form-control',
             )
@@ -124,6 +124,7 @@ class CmsType extends AbstractType {
 
         $resolver->setDefaults(array(
             'data_class' => 'Store\BackendBundle\Entity\Cms',
+            'translation_domain' => 'cms'
         ));
     }
 

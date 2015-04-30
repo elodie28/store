@@ -1,6 +1,11 @@
 {% extends "StoreBackendBundle::layout.html.twig" %}
 
 
+
+{%  trans_default_domain "cms" %}
+
+
+
 {% block javascripts %}
 
     {{ parent() }} {# on appelle la méthode parent pour éviter d'écraser #}
@@ -24,7 +29,7 @@
 
 {% block titlepage %}
 
-    <i class="fa fa-plus"></i> Création d'une page CMS
+    <i class="fa fa-plus"></i> {{ "cms.new.title"|trans }}
 
 {% endblock %}
 

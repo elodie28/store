@@ -137,6 +137,7 @@ class OrderRepository extends EntityRepository {
             ->createQuery(
                 "SELECT o
                  FROM StoreBackendBundle:Orders o
+                 JOIN o.orderDetail od
                  WHERE o.jeweler = :user"
             )
             ->setParameter('user', $user);

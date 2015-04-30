@@ -1,0 +1,76 @@
+{% extends "StoreBackendBundle::layout.html.twig" %}
+
+
+
+{% block titlepage %}
+    <i class="menu-icon fa fa-shopping-cart"></i> Ma Liste de Commandes
+{% endblock %}
+
+
+
+{% block content %}
+
+    <div class="table-info">
+
+        <table class="table table-bordered">
+
+            <thead>
+
+            <tr>
+                <th class="text-center">ID</th>
+                <th class="text-center">Client</th>
+                <th class="text-center">Détails de la commande</th>
+                <th class="text-center">Adresse de livraison</th>
+                <th class="text-center">Date de livraison</th>
+                <th class="text-center">Total</th>
+                <th class="text-center">Date de création</th>
+                <th class="text-center">État</th>
+                <th class="text-center">Actions</th>
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for order in orders %}
+
+            <tr>
+
+                <td class="text-center"> {{ order.id }} </td>
+
+                <td class="text-center"> {{ order.user.firstname ~ " " ~ order.user.lastname }} </td>
+
+                <td class="text-center">  </td>
+
+                <td class="text-center"> {{ order.address }} </td>
+
+                <td class="text-center"> {{ order.date|date('d/m/Y') }} </td>
+
+                <td class="text-center"> {{ order.total }} €</td>
+
+                <td class="text-center"> {{ order.dateCreated|date('d/m/Y') }} </td>
+
+                <td class="text-center"> {{ order.state|state|raw  }}</td>
+
+                <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-cogs"></i> Actions <i class="fa fa-caret-down"></i></button>
+                        <ul class="dropdown-menu">
+                            <li><a href=""> <i class="fa fa-search"></i> Voir </a></li>
+                            <li><a href=""> <i class="fa fa-pencil"></i> Éditer </a></li>
+                            <li><a href=""> <i class="fa fa-times"></i> Supprimer </a></li>
+                        </ul>
+                    </div>
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+{% endblock %}

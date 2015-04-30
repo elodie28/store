@@ -21,11 +21,16 @@
 
 <div class="row">
     <div class="col-md-2">
-
-       {# {% for meta in form.meta %}
-            {{ form_row(meta.phone) }}
-        {% endfor %} #}
-
+        <span class="fa fa-phone"></span> {{ form_row(form.meta.phone) }}
+    </div>
+    <div class="col-md-2">
+        <span class="fa fa-chain"></span> {{ form_row(form.meta.website) }}
+    </div>
+    <div class="col-md-4">
+        <span class="fa fa-map-marker"></span> {{ form_row(form.meta.city) }}
+    </div>
+    <div class="col-md-4">
+        {{ form_row(form.meta.address) }}
     </div>
 </div>
 
@@ -33,6 +38,37 @@
 <div class="row">
     <i class="fa fa-pencil"></i>{{ form_row(form.description) }}
 </div>
+
+
+<div class="row">
+    <div class="col-md-6">
+        <span class="fa fa-retweet"></span> {{ form_row(form.meta.retour) }}
+    </div>
+    <div class="col-md-6">
+        <span class="fa fa-user"></span> {{ form_row(form.meta.propos) }}
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-2">
+        <span class="fa fa-clock-o"></span> {{ form_row(form.meta.delai) }}
+    </div>
+    <div class="col-md-10">
+        <span class="fa fa-truck"></span> {{ form_row(form.meta.expedition) }}
+    </div>
+</div>
+
+
+<div class="row">
+    <span class="fa fa-gavel"></span> {{ form_row(form.meta.mention) }}
+</div>
+
+
+<div class="row">
+    {{ form_row(form.meta.optin) }}
+</div>
+
 
 <div class="row">
     <br/> <br/> <br/>

@@ -63,19 +63,6 @@ class JewelerType extends AbstractType {
             )
         ));
 
-        //$builder->add('meta', 'collection', array(
-        //    'type' => new jewelerMetaType(),
-        //    'label'    => 'Mon téléphone',
-        //    'required' => true,
-        //    'attr'     => array(
-        //        'class'       => 'form-control',
-        //        'placeholder' => '06-XX-XX-XX-XX',
-                //'pattern'     => '[A-Z]{2}[0-9]{2,}'
-         //   )
-        //));
-
-
-
         $builder->add('description', null, array(
             'label'    => 'Description de ma boutique',
             'required' => true,
@@ -85,6 +72,7 @@ class JewelerType extends AbstractType {
             )
         ));
 
+        $builder->add('meta', new JewelerMetaType());
 
     }
 

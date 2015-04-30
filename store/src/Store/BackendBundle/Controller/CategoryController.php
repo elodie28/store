@@ -174,7 +174,7 @@ class CategoryController extends Controller {
             )
         ));
 
-        $form->handleRequest($request);
+        $form->handleRequest($request); // Je lie mon formulaire à ma requête et j'hydrate mon formulaire des données que j'ai saisies
 
         if($form->isValid()) {
 
